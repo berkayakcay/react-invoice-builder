@@ -1,9 +1,11 @@
 import { Button, Collapse, Layout } from 'antd';
 import React from 'react';
 import './App.css';
+import CompanyInfo from './components/CompanyInfo';
+import CompanyAddInfo from './components/CompnayAddInfo';
+import InvoiceNotting from './components/InvoiceNotting';
 
 const { Header, Content, Footer, Sider } = Layout;
-const ButtonGroup = Button.Group;
 
 function App() {
   return (
@@ -23,10 +25,10 @@ function App() {
 
         <Collapse accordion>
           <Collapse.Panel header="Firma Bilgileri" key="1">
-            <p>aaaa</p>
+            <CompanyInfo />
           </Collapse.Panel>
           <Collapse.Panel header="Firma Ek Bilgiler" key="2">
-            <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            <CompanyAddInfo />
           </Collapse.Panel>
           <Collapse.Panel header="Logo ve İmza" key="3">
             <p>aaaa</p>
@@ -35,7 +37,7 @@ function App() {
             <p>aaaa</p>
           </Collapse.Panel>
           <Collapse.Panel header="Doküman Notları" key="5">
-            <p>aaaa</p>
+            <InvoiceNotting />
           </Collapse.Panel>
           <Collapse.Panel header="Tema Seçimi" key="6">
             <p>aaaa</p>
