@@ -1,6 +1,7 @@
 import { Button, Collapse, Layout } from 'antd';
 import React from 'react';
 import './App.css';
+import BankInfo from './components/BankInfo';
 import CompanyInfo from './components/CompanyInfo';
 import CompanyAddInfo from './components/CompnayAddInfo';
 import InvoiceNotting from './components/InvoiceNotting';
@@ -34,7 +35,7 @@ function App() {
             <p>aaaa</p>
           </Collapse.Panel>
           <Collapse.Panel header="Banka Bilgileri" key="4">
-            <p>aaaa</p>
+            <BankInfo />
           </Collapse.Panel>
           <Collapse.Panel header="Doküman Notları" key="5">
             <InvoiceNotting />
