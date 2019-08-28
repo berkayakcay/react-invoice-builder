@@ -1,21 +1,20 @@
-import { Button, Col, Form, Icon, Input, Row, Table } from 'antd';
+import { Button, Col, Form, Icon, Input, Row, Table, Popconfirm } from 'antd';
 import React, { Component } from 'react';
 
-//TODO: Tablo sutununda kayma oluyor kontrol edilecek
 const columns = [
-  //   {
-  //     key: 'operasyon',
-  //     title: 'Operasyon',
-  //     render: (text, record) => (
-  //       <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.handleDelete(record.key)}>
-  //         <a>Sil</a>
-  //       </Popconfirm>
-  //     )
-  //   },
+    {
+      key: 'operasyon',
+      title: 'Operasyon',
+      render: (text, record) => (
+        <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.handleDelete(record.key)}>
+          Sil
+        </Popconfirm>
+      )
+    },
   {
+    key: 'bankName',
     title: 'Banka Adı',
     dataIndex: 'bankName',
-    key: 'namkName'
   },
   {
     title: 'Şube',
@@ -43,19 +42,6 @@ const columns = [
     key: 'ibanNo'
   }
 ];
-
-// rowSelection objects indicates the need for row selection
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  onSelect: (record, selected, selectedRows) => {
-    console.log(record, selected, selectedRows);
-  },
-  onSelectAll: (selected, selectedRows, changeRows) => {
-    console.log(selected, selectedRows, changeRows);
-  }
-};
 
 class BankInfo extends Component {
   constructor(props) {
@@ -155,14 +141,9 @@ class BankInfo extends Component {
           </Form.Item>
         </Form>
         <Table
-          key={'1'}
-          rowKey={'A'}
           columns={columns}
-          rowClassName={() => 'editable-row'}
           bordered
-          rowSelection={rowSelection}
           dataSource={this.state.data}
-          pagination={{ pageSize: 50 }}
           scroll={{ y: 200, x: 750 }}
         />
       </div>

@@ -4,70 +4,48 @@ import React, { PureComponent } from 'react';
 const { Option } = Select;
 
 export default class CompanyInfo extends PureComponent {
+
+
   render() {
     return (
       <Form className="login-form">
         <Form.Item>
           <Input
+            value={1}
             prefix={
-              <Icon
-                type="user"
-                style={{
-                  color: 'rgba(0,0,0,.25)'
-                }}
-              />
+              <Icon type="user" />
             }
             placeholder="Firma Ünvan"
           />
-        </Form.Item>{' '}
+        </Form.Item>
         <Form.Item>
           <Input
             prefix={
-              <Icon
-                type="user"
-                style={{
-                  color: 'rgba(0,0,0,.25)'
-                }}
-              />
+              <Icon type="user" />
             }
             placeholder="Firma VKN"
           />
-        </Form.Item>{' '}
+        </Form.Item>
         <Form.Item>
           <Input
             prefix={
-              <Icon
-                type="user"
-                style={{
-                  color: 'rgba(0,0,0,.25)'
-                }}
-              />
+              <Icon type="user" />
             }
             placeholder="Adres"
           />
-        </Form.Item>{' '}
+        </Form.Item>
         <Form.Item>
           <Input
             prefix={
-              <Icon
-                type="user"
-                style={{
-                  color: 'rgba(0,0,0,.25)'
-                }}
-              />
+              <Icon type="user" />
             }
             placeholder="İl"
           />
-        </Form.Item>{' '}
+        </Form.Item>
         <Form.Item>
           <Input
             prefix={
-              <Icon
-                type="user"
-                style={{
-                  color: 'rgba(0,0,0,.25)'
-                }}
-              />
+              <Icon type="user" />
             }
             placeholder="İlçe"
           />
