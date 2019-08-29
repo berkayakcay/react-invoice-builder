@@ -1,75 +1,96 @@
-import { Button, Collapse, Layout } from 'antd';
+import { Button, Icon, Layout, Menu } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
+import { modalCompanyInfo, updateCompanyInfo } from './actions/companyInfoAction';
 import './App.css';
-
-import BankInfo from './components/BankInfo';
-import CompanyInfo from './components/CompanyInfo';
-import CompanyAddInfo from './components/CompnayAddInfo';
-import InvoiceNotting from './components/InvoiceNotting';
-import { updateCompanyInfo } from './actions/companyInfoAction'
+import CompanyInfo from './components/Modals/CompanyInfo';
 
 const { Header, Content, Footer, Sider } = Layout;
-
-
-
-
+const { SubMenu } = Menu;
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.updateCompanyInfo({
       companyInfo: {
-        name: 'bBBBBBb',
+        name: 'AAAAA',
         registerNumber: '',
         address: '',
         city: '',
-        district: '',
+        district: ''
       }
-    })
-
-    console.log(this.props);
-    console.log(this.state);
-
+    });
   }
   render() {
-
     return (
       <Layout>
+        <CompanyInfo
+          modalVisible={this.props.modalVisible}
+          //TODO: Close işlemi yapılmyor kontrol edilecek
+          onOk={() => this.props.modalCompanyInfo({ modalVisible: false })}
+          onCancel={() => this.props.modalCompanyInfo({ modalVisible: false })}
+        />
         <Sider
-          width={600}
+          width={450}
           style={{
             overflow: 'auto',
             height: '100vh',
             position: 'fixed',
             left: 0
-          }}>
+          }}
+        >
           <div className="App-logo">
             <img src="https://nesbilgi.com.tr/wp-content/uploads/2018/03/nes-beyaz-logo.svg" alt="invoice builder" />
           </div>
-
-          <Collapse accordion>
-            <Collapse.Panel header="Firma Bilgileri" key="1">
-              <CompanyInfo />
-            </Collapse.Panel>
-            <Collapse.Panel header="Firma Ek Bilgiler" key="2">
-              <CompanyAddInfo />
-            </Collapse.Panel>
-            <Collapse.Panel header="Logo ve İmza" key="3">
-              <p>aaaa</p>
-            </Collapse.Panel>
-            <Collapse.Panel header="Banka Bilgileri" key="4">
-              <BankInfo />
-            </Collapse.Panel>
-            <Collapse.Panel header="Doküman Notları" key="5">
-              <InvoiceNotting />
-            </Collapse.Panel>
-            <Collapse.Panel header="Tema Seçimi" key="6">
-              <p>aaaa</p>
-            </Collapse.Panel>
-          </Collapse>
+          <Menu style={{ width: 450 }} mode="vertical">
+            <SubMenu
+              key="sub1"
+              onTitleClick={() => this.props.modalCompanyInfo({ modalVisible: true })}
+              title={
+                <span style={{ fontSize: 15 }}>
+                  <Icon style={{ fontSize: 15 }} type="mail" />
+                  <span>Firma Bilgileri</span>
+                </span>
+              }
+            />
+            <SubMenu
+              key="sub2"
+              title={
+                <span style={{ fontSize: 15 }}>
+                  <Icon style={{ fontSize: 15 }} type="mail" />
+                  <span>Logo ve İmza</span>
+                </span>
+              }
+            />
+            <SubMenu
+              key="sub3"
+              title={
+                <span style={{ fontSize: 15 }}>
+                  <Icon style={{ fontSize: 15 }} type="mail" />
+                  <span>Banka Bilgileri</span>
+                </span>
+              }
+            />
+            <SubMenu
+              key="sub4"
+              title={
+                <span style={{ fontSize: 15 }}>
+                  <Icon style={{ fontSize: 15 }} type="mail" />
+                  <span>Doküman Notları</span>
+                </span>
+              }
+            />
+            <SubMenu
+              key="sub5"
+              title={
+                <span style={{ fontSize: 15 }}>
+                  <Icon style={{ fontSize: 15 }} type="mail" />
+                  <span>Tema Seçimi</span>
+                </span>
+              }
+            />
+          </Menu>
         </Sider>
-        <Layout style={{ marginLeft: 600, minHeight: '100vh' }}>
+        <Layout style={{ marginLeft: 450, minHeight: '100vh' }}>
           <Header style={{ margin: '12px 16px 0', background: '#fff' }}>
             <div style={{ float: 'right' }}>
               <Button.Group>
@@ -94,12 +115,14 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    state
+    modalVisible: state.companyInfo.modalVisible,
+    companyInfo: state.companyInfo.companyInfo
   };
 };
 
 const mapDispatchToProps = {
-  updateCompanyInfo
+  updateCompanyInfo,
+  modalCompanyInfo
 };
 
 export default connect(

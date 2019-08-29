@@ -1,20 +1,20 @@
-import { Button, Col, Form, Icon, Input, Row, Table, Popconfirm } from 'antd';
+import { Button, Col, Form, Icon, Input, Popconfirm, Row, Table } from 'antd';
 import React, { Component } from 'react';
 
 const columns = [
-    {
-      key: 'operasyon',
-      title: 'Operasyon',
-      render: (text, record) => (
-        <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.handleDelete(record.key)}>
-          Sil
-        </Popconfirm>
-      )
-    },
+  {
+    key: 'operasyon',
+    title: 'Operasyon',
+    render: (text, record) => (
+      <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.handleDelete(record.key)}>
+        Sil
+      </Popconfirm>
+    )
+  },
   {
     key: 'bankName',
     title: 'Banka Adı',
-    dataIndex: 'bankName',
+    dataIndex: 'bankName'
   },
   {
     title: 'Şube',
@@ -140,17 +140,12 @@ class BankInfo extends Component {
             </Button>
           </Form.Item>
         </Form>
-        <Table
-          columns={columns}
-          bordered
-          dataSource={this.state.data}
-          scroll={{ y: 200, x: 750 }}
-        />
+        <Table columns={columns} bordered dataSource={this.state.data} scroll={{ y: 200, x: 750 }} />
       </div>
     );
   }
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(BankInfo);
+const WrappedBankInfoForm = Form.create({ name: 'normal_login' })(BankInfo);
 
-export default WrappedNormalLoginForm;
+export default WrappedBankInfoForm;
