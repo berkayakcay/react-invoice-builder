@@ -1,12 +1,13 @@
 import { Button, Col, Form, Icon, Input, Popconfirm, Row, Table } from 'antd';
 import React, { Component } from 'react';
+import { FormComponentProps } from 'antd/lib/form';
 
 const columns = [
   {
     key: 'operasyon',
     title: 'Operasyon',
     render: (text, record) => (
-      <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.handleDelete(record.key)}>
+      <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => console.log("")}>
         Sil
       </Popconfirm>
     )
@@ -43,29 +44,18 @@ const columns = [
   }
 ];
 
-class BankInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-      data: []
-    };
-  }
+interface IProps {
 
-  //TODO handleDelete Silme işlemi kontrol edilecek
-  handleDelete = key => {
-    const data = [...this.state.data];
-    this.setState({ data: data.filter(item => item.key !== key) });
-  };
+}
 
-  addBankInfo = () => {
-    this.props.form.validateFields((errors, values) => {
-      if (!errors) {
-        this.state.data.push(values);
-      }
-    });
-    this.props.form.resetFields();
-  };
+interface IDispatches {
+
+} 
+
+type AllProps = IProps & IDispatches & FormComponentProps
+
+class BankInfo extends Component <AllProps>{
+
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -135,17 +125,17 @@ class BankInfo extends Component {
             </Col>
           </Row>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.addBankInfo}>
+            <Button type="primary" htmlType="submit" className="login-form-button" >
               Ekle
             </Button>
           </Form.Item>
         </Form>
-        <Table columns={columns} bordered dataSource={this.state.data} scroll={{ y: 200, x: 750 }} />
+        <Table columns={columns} />
       </div>
     );
   }
 }
 
-const WrappedBankInfoForm = Form.create({ name: 'normal_login' })(BankInfo);
+const WrappedForm = Form.create<AllProps>()(BankInfo);
 
-export default WrappedBankInfoForm;
+export default WrappedForm;

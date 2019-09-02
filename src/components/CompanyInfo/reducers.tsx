@@ -1,4 +1,4 @@
-import { MODAL_COMPANYINFO, UPDATE_COMPANYINFO } from '../actions/companyInfoAction';
+import { MODAL_COMPANYINFO, UPDATE_COMPANYINFO } from './actions';
 export const initialState = {
   modalVisible: false,
   companyInfo: {
