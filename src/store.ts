@@ -1,5 +1,5 @@
 import { combineReducers, applyMiddleware, createStore } from "redux";
-import companyInfoReducer from "./components/CompanyInfo/reducers";
+import companyInfoReducer from "./containers/CompanyInfo/reducers";
 
 import thunk from "redux-thunk";
 import createSagaMiddleware from 'redux-saga'
@@ -16,7 +16,7 @@ export type AppState = ReturnType<typeof rootReducer>;
 
 export default function configureStore() {
   const sagaMiddleware = createSagaMiddleware()
-  const middlewares = [thunk,sagaMiddleware,logger];
+  const middlewares = [thunk, sagaMiddleware, logger];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
 

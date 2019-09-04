@@ -1,46 +1,43 @@
-import { Button, Layout, Menu, Icon } from "antd";
+import { Button, Layout, Menu, Icon, Typography } from "antd";
 import React from "react";
 import { connect } from "react-redux";
-import {
-  modalCompanyInfo,
-  updateCompanyInfo
-} from "./components/CompanyInfo/actions";
 import "./App.scss";
+import MenuItemModalTrigger from "./components/Modal";
+import WrappedCompanyForm from "./containers/CompanyInfo";
 
 class App extends React.Component {
   render() {
     return (
-      <Layout >
-        
-        <Layout.Sider style={{ background: "#fff", flex: 1 }}>
-          <Layout.Header style={{ background: "#fff" }}>
-            <h1>BUILDER</h1>
-          </Layout.Header>
+      <Layout>
+        <Layout.Sider style={{ background: "#fff" }} width={250}>
+          <Typography.Title level={4}></Typography.Title>
           <Menu>
+            <Menu.Item key="0">#DOCUMENT.BUILDER</Menu.Item>
             <Menu.Item key="1">
-              <Icon type="mail" />
-              Firma Bilgileri
+              <MenuItemModalTrigger text="Firma Bilgileri">
+                <WrappedCompanyForm />
+              </MenuItemModalTrigger>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="mail" />
+              <Icon type="right" />
               Banka Bilgileri
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="mail" />
+              <Icon type="right" />
               Doküman Notları
             </Menu.Item>
             <Menu.Item key="4">
-              <Icon type="mail" />
+              <Icon type="right" />
               Logo ve İmza
             </Menu.Item>
             <Menu.Item key="5">
-              <Icon type="mail" />
+              <Icon type="right" />
               Tema Seçimi
             </Menu.Item>
           </Menu>
         </Layout.Sider>
         <Layout>
-          <Layout.Header style={{ margin: 12, padding: 6, background: "#fff" }}>
+          <Layout.Header style={{ margin: 12, background: "#fff" }}>
             <div style={{ float: "right" }}>
               <Button.Group>
                 <Button type="danger" icon="cloud">
@@ -53,28 +50,19 @@ class App extends React.Component {
             </div>
           </Layout.Header>
           <Layout.Content
-            style={{ margin: 12, padding: 6, background: "#fff" }}
+            style={{ margin: 12, padding: 12, background: "#fff" }}
           >
             .HTML CONTENT
           </Layout.Content>
         </Layout>
       </Layout>
-
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    modalVisible: state.companyInfo.modalVisible,
-    companyInfo: state.companyInfo.companyInfo
-  };
-};
+const mapStateToProps = state => {};
 
-const mapDispatchToProps = {
-  updateCompanyInfo,
-  modalCompanyInfo
-};
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,
