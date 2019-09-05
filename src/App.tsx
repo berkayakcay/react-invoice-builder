@@ -2,8 +2,6 @@ import { Button, Layout, Menu, Icon, Typography } from "antd";
 import React from "react";
 import { connect } from "react-redux";
 import "./App.scss";
-import MenuItemModalTrigger from "./components/Modal";
-import WrappedCompanyForm from "./containers/CompanyInfo";
 
 class App extends React.Component {
   render() {
@@ -14,9 +12,8 @@ class App extends React.Component {
           <Menu>
             <Menu.Item key="0">#DOCUMENT.BUILDER</Menu.Item>
             <Menu.Item key="1">
-              <MenuItemModalTrigger text="Firma Bilgileri">
-                <WrappedCompanyForm />
-              </MenuItemModalTrigger>
+              <Icon type="right" />
+              Firma Bilgileri
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="right" />

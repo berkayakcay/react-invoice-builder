@@ -1,31 +1,24 @@
-import { combineReducers, applyMiddleware, createStore } from "redux";
+import { Dispatch, Action, AnyAction } from "redux";
 import companyInfoReducer from "./containers/CompanyInfo/reducers";
+import modalReducer from './components/Modals/ModalRoot/reducers'
+import { ModalData } from './components/Modals/ModalRoot/types';
 
-import thunk from "redux-thunk";
-import createSagaMiddleware from 'redux-saga'
-import logger from "redux-logger";
+export interface ApplicationState {
+  modal: ModalData
+}
 
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootSaga from './sagas';
-
-const rootReducer = combineReducers({
+export const reducers: any = {
+  modal: modalReducer,
   companyInfo: companyInfoReducer
-});
+};
 
-export type AppState = ReturnType<typeof rootReducer>;
-
-export default function configureStore() {
-  const sagaMiddleware = createSagaMiddleware()
-  const middlewares = [thunk, sagaMiddleware, logger];
-  const middlewareEnhancer = applyMiddleware(...middlewares);
+export interface ConnectedReduxProps<A extends Action = AnyAction> {
+  dispatch: Dispatch<A>
+}
 
 
-  const store = createStore(
-    rootReducer,
-    composeWithDevTools(middlewareEnhancer)
-  );
-
-  sagaMiddleware.run(rootSaga)
-
-  return store;
+// This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
+// correctly typed to match your store.
+export interface AppThunkAction<TAction> {
+  (dispatch: (action: TAction) => void, getState: () => ApplicationState): void
 }
