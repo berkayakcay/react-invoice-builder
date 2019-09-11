@@ -1,11 +1,8 @@
 import { Form, Input } from "antd";
 import React from "react";
 import { FormComponentProps } from "antd/lib/form";
-import { Button } from "antd/lib/radio";
 
-interface IProps {
-  handleCancel?: Function;
-}
+interface IProps {}
 
 interface IDispatches {}
 
@@ -16,8 +13,6 @@ class CompanyInfo extends React.Component<AllProps> {
     const { getFieldDecorator } = this.props.form;
     return (
       <React.Fragment>
-        {console.log("this.props", this.props)}
-        <Button onClick={() => this.props.handleCancel}>TEST</Button>
         <Form>
           <Form.Item>
             {getFieldDecorator("name", {
@@ -63,6 +58,27 @@ class CompanyInfo extends React.Component<AllProps> {
                 }
               ]
             })(<Input placeholder="İlçe" />)}
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="Vergi Dairesi" />
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="Ticaret Sicil No" />
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="Mersis No" />
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="Telefon" />
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="Fax" />
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="E-Posta" />
+          </Form.Item>
+          <Form.Item>
+            <Input placeholder="İnternet Sitesi" />
           </Form.Item>
         </Form>
       </React.Fragment>

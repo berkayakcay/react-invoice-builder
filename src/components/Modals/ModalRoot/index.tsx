@@ -1,10 +1,12 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { hideModal } from "../../../actions";
+import { hideModal } from "../../../common/actions";
 import { ModalData } from "./types";
-import { ApplicationState } from "../../../store";
+import { ApplicationState } from "../../../common/store";
 import CompanyInfoModal from "../CompanyInfoModal";
+import BankInfoModal from "../BankInfoModal";
+import DocumentNotesModal from "../DocumentNotesModal";
 
 const mapStateToProps = ({ modal }: ApplicationState) => ({
   type: modal.type,
@@ -23,7 +25,9 @@ interface IState {
 }
 
 const MODAL_TYPES = {
-  CompanyInfo: CompanyInfoModal
+  CompanyInfoModal: CompanyInfoModal,
+  BankInfoModal: BankInfoModal,
+  DocumentNotesModal: DocumentNotesModal
 };
 
 interface PropsFromDispatch {

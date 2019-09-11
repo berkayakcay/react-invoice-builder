@@ -4,12 +4,13 @@ import App from "./App";
 import { createBrowserHistory } from "history";
 
 import { Provider } from "react-redux";
-import { ApplicationState } from "./store";
-import configureStore from "./configureStore";
-import * as serviceWorker from "./serviceWorker";
-import sagas from "./sagas";
+import { ApplicationState } from "./common/store";
+import configureStore from "./common/configureStore";
+import sagas from "./common/sagas";
+import ModalRoot from "./components/Modals/ModalRoot";
 
 const history = createBrowserHistory();
+
 const initialState = (window as any).initialReduxState as ApplicationState;
 const { store, sagaMiddleware } = configureStore(history, initialState);
 sagaMiddleware.run(sagas);
@@ -17,9 +18,9 @@ sagaMiddleware.run(sagas);
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    <ModalRoot />
   </Provider>,
   document.getElementById("root")
 );
 
-serviceWorker.register();
 export { store, history };

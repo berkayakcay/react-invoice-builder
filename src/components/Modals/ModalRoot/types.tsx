@@ -9,7 +9,11 @@ export interface IModalOpenState {
   value: boolean;
 }
 
-export enum ModalType {}
+export enum ModalType {
+  CompanyInfoModal = "CompanyInfoModal",
+  BankInfoModal = "BankInfoModal",
+  DocumentNotesModal = "DocumentNotesModal"
+}
 
 export interface ModalData {
   type?: ModalType | null;

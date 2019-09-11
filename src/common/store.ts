@@ -1,7 +1,9 @@
 import { Dispatch, Action, AnyAction } from "redux";
-import companyInfoReducer from "./containers/CompanyInfo/reducers";
-import modalReducer from './components/Modals/ModalRoot/reducers'
-import { ModalData } from './components/Modals/ModalRoot/types';
+import companyInfoReducer from "../containers/CompanyInfo/reducers";
+import bankInfoReducer from "../containers/BankInfo/reducers"
+import documentNotesReducer from '../containers/DocumentNotes/reducers'
+import modalReducer from '../components/Modals/ModalRoot/reducers'
+import { ModalData } from '../components/Modals/ModalRoot/types';
 
 export interface ApplicationState {
   modal: ModalData
@@ -9,7 +11,9 @@ export interface ApplicationState {
 
 export const reducers: any = {
   modal: modalReducer,
-  companyInfo: companyInfoReducer
+  companyInfo: companyInfoReducer,
+  bankInfo: bankInfoReducer,
+  documentNotes: documentNotesReducer
 };
 
 export interface ConnectedReduxProps<A extends Action = AnyAction> {

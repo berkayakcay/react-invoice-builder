@@ -3,7 +3,7 @@ import "antd/lib/timeline/style/index.css";
 import React from "react";
 import { connect } from "react-redux";
 import { ApplicationState } from "../../common/store";
-import CompanyInfo from "../../containers/CompanyInfo";
+import DocumentNotes from "../../containers/DocumentNotes";
 interface IProps {
   open: boolean;
   close: () => void;
@@ -15,10 +15,10 @@ interface PropsFromState {
 
 type AllProps = IProps & PropsFromState;
 
-const CompanyInfoModal = (props: AllProps) => {
+const BankInfoModal = (props: AllProps) => {
   return (
     <Modal
-      title="Firma Bilgileri"
+      title="Banka Bilgileri"
       onCancel={() => props.close()}
       width={1024}
       visible={props.open}
@@ -33,7 +33,7 @@ const CompanyInfoModal = (props: AllProps) => {
         </Button>
       ]}
     >
-      <CompanyInfo />
+      <DocumentNotes />
     </Modal>
   );
 };
@@ -43,4 +43,4 @@ const mapStateToProps = ({ modal }: ApplicationState) => ({});
 export default connect(
   mapStateToProps,
   null
-)(CompanyInfoModal);
+)(BankInfoModal);

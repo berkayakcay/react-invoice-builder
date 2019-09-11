@@ -2,8 +2,18 @@ import { Button, Layout, Menu, Icon, Typography } from "antd";
 import React from "react";
 import { connect } from "react-redux";
 import "./App.scss";
+import { Dispatch } from "redux";
+import { showCompanyInfoModal } from "./containers/CompanyInfo/actions";
+import { showBankInfoModal } from "./containers/BankInfo/actions";
+import { showDocumentNotesModal } from "./containers/DocumentNotes/actions";
 
-class App extends React.Component {
+interface IProps {
+  showCompanyInfoModal: typeof showCompanyInfoModal;
+  showBankInfoModal: typeof showBankInfoModal;
+  showDocumentNotesModal: typeof showDocumentNotesModal;
+}
+
+class App extends React.Component<IProps> {
   render() {
     return (
       <Layout>
@@ -11,15 +21,22 @@ class App extends React.Component {
           <Typography.Title level={4}></Typography.Title>
           <Menu>
             <Menu.Item key="0">#DOCUMENT.BUILDER</Menu.Item>
-            <Menu.Item key="1">
+            <Menu.Item
+              key="1"
+              onClick={() => this.props.showCompanyInfoModal()}
+            >
               <Icon type="right" />
               Firma Bilgileri
             </Menu.Item>
-            <Menu.Item key="2">
+
+            <Menu.Item key="2" onClick={() => this.props.showBankInfoModal()}>
               <Icon type="right" />
               Banka Bilgileri
             </Menu.Item>
-            <Menu.Item key="3">
+            <Menu.Item
+              key="3"
+              onClick={() => this.props.showDocumentNotesModal()}
+            >
               <Icon type="right" />
               Doküman Notları
             </Menu.Item>
@@ -59,7 +76,11 @@ class App extends React.Component {
 
 const mapStateToProps = state => {};
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  showCompanyInfoModal: () => dispatch(showCompanyInfoModal()),
+  showBankInfoModal: () => dispatch(showBankInfoModal()),
+  showDocumentNotesModal: () => dispatch(showDocumentNotesModal())
+});
 
 export default connect(
   mapStateToProps,
