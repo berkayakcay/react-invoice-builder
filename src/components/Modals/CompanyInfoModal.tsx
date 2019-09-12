@@ -1,9 +1,9 @@
-import { Button, Modal } from "antd";
-import "antd/lib/timeline/style/index.css";
-import React from "react";
-import { connect } from "react-redux";
-import { ApplicationState } from "../../common/store";
-import CompanyInfo from "../../containers/CompanyInfo";
+import { Button, Modal } from 'antd';
+import 'antd/lib/timeline/style/index.css';
+import React from 'react';
+import { connect } from 'react-redux';
+import { ApplicationState } from '../../common/store';
+import CompanyInfo from '../../containers/CompanyInfo';
 interface IProps {
   open: boolean;
   close: () => void;
@@ -23,14 +23,14 @@ const CompanyInfoModal = (props: AllProps) => {
       width={1024}
       visible={props.open}
       footer={[
-        <Button
-          key="submit"
-          type="primary"
-          icon="close"
-          onClick={() => props.close()}
-        >
-          KAPAT
-        </Button>
+        <>
+          <Button key="submit" type="primary" icon="check" onClick={() => props.close()}>
+            KAYDET
+          </Button>
+          <Button key="submit" type="danger" icon="close" onClick={() => props.close()}>
+            KAPAT
+          </Button>
+        </>
       ]}
     >
       <CompanyInfo />
