@@ -6,12 +6,10 @@ const reducer: Reducer<BankInfoState> = (state = initialState, action) => {
     case BankInfoActionTypes.SHOW_BANKINFO_MODAL: {
       return { ...state };
     }
-    case BankInfoActionTypes.ADD_BANKINFOTABLE_REQUEST: {
+    case BankInfoActionTypes.UPDATE_BANKINFO: {
       return {
         ...state,
-        bankInfoData: [action.payload, ...state.bankInfoData].map(item => {
-          return item;
-        })
+        list: [...state.list, action.payload]
       };
     }
     default:

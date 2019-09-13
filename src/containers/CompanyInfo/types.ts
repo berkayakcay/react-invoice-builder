@@ -1,13 +1,25 @@
-import { CompnayInfoModel } from '../../common/models';
+import { CompanyInfoModel } from '../../common/models';
 
-export const initialState: CompnayInfoModel = {
+export const initialState: CompanyInfoModel = {
     name: "",
     registerNumber: "",
+    taxOffice: "",
+    ticaretSicilNo: "",
+    mersisNo: "",
+    phone: "",
+    fax: "",
     address: "",
+    district: "",
     city: "",
-    district: ""
+    country: "",
 };
 
+
+export interface CompanyInfoState {
+    companyInfo: CompanyInfoModel
+}
+
 export enum CompanyInfoActionTypes {
-    SHOW_COMPANYINFO_MODAL = 'SHOW_COMPANYINFO_MODAL'
+    SHOW_COMPANYINFO_MODAL = 'SHOW_COMPANYINFO_MODAL',
+    UPDATE_COMPANYINFO = 'UPDATE_COMPANYINFO'
 }

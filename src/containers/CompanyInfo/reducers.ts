@@ -1,9 +1,12 @@
 import { Reducer } from "redux";
-import { CompnayInfoModel } from "../../common/models";
-import { initialState } from "./types";
+import { CompanyInfoModel } from "../../common/models";
+import { initialState, CompanyInfoActionTypes } from "./types";
 
-const reducer: Reducer<CompnayInfoModel> = (state = initialState, action) => {
+const reducer: Reducer<CompanyInfoModel> = (state = initialState, action) => {
   switch (action.type) {
+    case CompanyInfoActionTypes.UPDATE_COMPANYINFO: {
+      return action.payload
+    }
     default:
       return state;
   }

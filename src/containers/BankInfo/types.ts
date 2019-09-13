@@ -1,14 +1,19 @@
-import { BankInfoTypeModel } from '../../common/models';
+import { BankInfoModel } from '../../common/models';
 
 export const initialState: BankInfoState = {
-  bankInfoData: []
+  list: []
 };
 
+
+export interface BankInfoStateType {
+  bankInfo: BankInfoState
+}
+
 export interface BankInfoState {
-  readonly bankInfoData: Array<BankInfoTypeModel>;
+  readonly list: Array<BankInfoModel>;
 }
 
 export enum BankInfoActionTypes {
   SHOW_BANKINFO_MODAL = 'SHOW_BANKINFO_MODAL',
-  ADD_BANKINFOTABLE_REQUEST = 'ADD_BANKINFOTABLE_REQUEST'
+  UPDATE_BANKINFO = 'UPDATE_BANKINFO'
 }

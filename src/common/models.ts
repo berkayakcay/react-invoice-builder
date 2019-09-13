@@ -2,12 +2,18 @@ export interface GenericParameter<T> {
   body: T;
 }
 
-export interface CompnayInfoModel {
+export interface CompanyInfoModel {
   name: string;
   registerNumber: string;
+  taxOffice: string;
+  ticaretSicilNo: string;
+  mersisNo: string;
+  phone: string;
+  fax: string;
   address: string;
-  city: string;
   district: string;
+  city: string;
+  country: string;
 }
 
 export interface DocumentNotesModel {
@@ -18,7 +24,7 @@ export interface LogoAndSignatureModel {
   name: string;
 }
 
-export interface BankInfoTypeModel {
+export interface BankInfoModel {
   bankName: string;
   branch: string;
   branchCode: string;
