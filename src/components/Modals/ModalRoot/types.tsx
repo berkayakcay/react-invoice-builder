@@ -1,6 +1,6 @@
 export enum ModalRootActionTypes {
-  SHOW_MODAL = "@@common/SHOW_MODAL",
-  HIDE_MODAL = "@@common/HIDE_MODAL"
+  SHOW_MODAL = '@@common/SHOW_MODAL',
+  HIDE_MODAL = '@@common/HIDE_MODAL'
 }
 
 export interface IModalOpenState {
@@ -10,9 +10,10 @@ export interface IModalOpenState {
 }
 
 export enum ModalType {
-  CompanyInfoModal = "CompanyInfoModal",
-  BankInfoModal = "BankInfoModal",
-  DocumentNotesModal = "DocumentNotesModal"
+  CompanyInfoModal = 'CompanyInfoModal',
+  BankInfoModal = 'BankInfoModal',
+  DocumentNotesModal = 'DocumentNotesModal',
+  LogoAndSignatureModal = 'LogoAndSignatureModal'
 }
 
 export interface ModalData {

@@ -24,10 +24,10 @@ const CompanyInfoModal = (props: AllProps) => {
       visible={props.open}
       footer={[
         <>
-          <Button key="submit" type="primary" icon="check" onClick={() => props.close()}>
+          <Button key="kaydet" type="primary" icon="check" onClick={() => props.close()}>
             KAYDET
           </Button>
-          <Button key="submit" type="danger" icon="close" onClick={() => props.close()}>
+          <Button key="kapat" type="danger" icon="close" onClick={() => props.close()}>
             KAPAT
           </Button>
         </>

@@ -3,22 +3,18 @@ import 'antd/lib/timeline/style/index.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../common/store';
-import DocumentNotes from '../../containers/DocumentNotes';
+import LogoAndSignature from '../../containers/LogoAndSignature';
 interface IProps {
   open: boolean;
   close: () => void;
 }
 
-interface PropsFromState {
-  data: string;
-}
+type AllProps = IProps;
 
-type AllProps = IProps & PropsFromState;
-
-const BankInfoModal = (props: AllProps) => {
+const LogoAndSignatureModal = (props: AllProps) => {
   return (
     <Modal
-      title="Banka Bilgileri"
+      title="Logo Ve İmza"
       onCancel={() => props.close()}
       width={1024}
       visible={props.open}
@@ -33,7 +29,7 @@ const BankInfoModal = (props: AllProps) => {
         </>
       ]}
     >
-      <DocumentNotes />
+      <LogoAndSignature />
     </Modal>
   );
 };
@@ -43,4 +39,4 @@ const mapStateToProps = ({ modal }: ApplicationState) => ({});
 export default connect(
   mapStateToProps,
   null
-)(BankInfoModal);
+)(LogoAndSignatureModal);

@@ -1,25 +1,28 @@
 export interface GenericParameter<T> {
-  baseUrl: string
-  subUrl?: string
-  id?: string
-  body: T
+  body: T;
 }
-
 
 export interface CompnayInfoModel {
-  name: string,
-  registerNumber: string,
-  address: string,
-  city: string,
-  district: string
+  name: string;
+  registerNumber: string;
+  address: string;
+  city: string;
+  district: string;
 }
-
-
-export interface BankInfoModel {
-  name: string
-}
-
 
 export interface DocumentNotesModel {
-  name: string
+  name: string;
+}
+
+export interface LogoAndSignatureModel {
+  name: string;
+}
+
+export interface BankInfoTypeModel {
+  bankName: string;
+  branch: string;
+  branchCode: string;
+  accountCode: string;
+  accountType: string;
+  iban: string;
 }

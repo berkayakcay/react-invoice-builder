@@ -1,28 +1,29 @@
-import { Dispatch, Action, AnyAction } from "redux";
-import companyInfoReducer from "../containers/CompanyInfo/reducers";
-import bankInfoReducer from "../containers/BankInfo/reducers"
-import documentNotesReducer from '../containers/DocumentNotes/reducers'
-import modalReducer from '../components/Modals/ModalRoot/reducers'
+import { Action, AnyAction, Dispatch } from 'redux';
+import modalReducer from '../components/Modals/ModalRoot/reducers';
 import { ModalData } from '../components/Modals/ModalRoot/types';
+import bankInfoReducer from '../containers/BankInfo/reducers';
+import companyInfoReducer from '../containers/CompanyInfo/reducers';
+import documentNotesReducer from '../containers/DocumentNotes/reducers';
+import logoAndSignatureReducer from '../containers/LogoAndSignature/reducers';
 
 export interface ApplicationState {
-  modal: ModalData
+  modal: ModalData;
 }
 
 export const reducers: any = {
   modal: modalReducer,
   companyInfo: companyInfoReducer,
   bankInfo: bankInfoReducer,
-  documentNotes: documentNotesReducer
+  documentNotes: documentNotesReducer,
+  logoAndSignature: logoAndSignatureReducer
 };
 
 export interface ConnectedReduxProps<A extends Action = AnyAction> {
-  dispatch: Dispatch<A>
+  dispatch: Dispatch<A>;
 }
-
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
 // correctly typed to match your store.
 export interface AppThunkAction<TAction> {
-  (dispatch: (action: TAction) => void, getState: () => ApplicationState): void
+  (dispatch: (action: TAction) => void, getState: () => ApplicationState): void;
 }

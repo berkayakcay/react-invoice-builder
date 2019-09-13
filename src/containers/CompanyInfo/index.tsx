@@ -206,7 +206,6 @@ class CompanyInfo extends React.Component<AllProps> {
                       <Select
                         suffixIcon={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faGlobeEurope} />}
                         placeholder="Ülke"
-                        defaultValue={countryOption}
                         style={{ width: '100%' }}
                       >
                         {countryOption.map(option => (
