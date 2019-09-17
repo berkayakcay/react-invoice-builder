@@ -1,7 +1,7 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 import { showModal } from '../../common/actions';
 import { ModalType } from '../../components/Modals/ModalRoot/types';
-import { updateBankInfo, showBankInfoModal } from './actions';
+import { showBankInfoModal, updateBankInfo } from './actions';
 import { BankInfoActionTypes } from './types';
 
 export function* handleShowBankInfoModal(action: ReturnType<typeof showBankInfoModal>) {
@@ -20,9 +20,17 @@ export function* handleUpdateBankInfo(action: ReturnType<typeof updateBankInfo>)
   }
 }
 
+// function* handleDeleteRequest(action: ReturnType<typeof deleteBankInfo>) {
+//   const { response } = yield action.payload
+//   if (response) {
+//     yield put(action.payload!)
+//   }
+// }
+
 export default function* BankInfoSaga() {
   yield all([
     takeLatest(BankInfoActionTypes.SHOW_BANKINFO_MODAL, handleShowBankInfoModal),
     takeLatest(BankInfoActionTypes.UPDATE_BANKINFO, handleUpdateBankInfo)
+    //takeLatest(BankInfoActionTypes.DELETE_BANKINFO, handleDeleteRequest)
   ]);
 }

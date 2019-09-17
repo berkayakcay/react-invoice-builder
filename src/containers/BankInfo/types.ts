@@ -4,9 +4,8 @@ export const initialState: BankInfoState = {
   list: []
 };
 
-
 export interface BankInfoStateType {
-  bankInfo: BankInfoState
+  bankInfo: BankInfoState;
 }
 
 export interface BankInfoState {
@@ -15,5 +14,6 @@ export interface BankInfoState {
 
 export enum BankInfoActionTypes {
   SHOW_BANKINFO_MODAL = 'SHOW_BANKINFO_MODAL',
-  UPDATE_BANKINFO = 'UPDATE_BANKINFO'
+  UPDATE_BANKINFO = 'UPDATE_BANKINFO',
+  DELETE_BANKINFO = 'DELETE_BANKINFO'
 }
