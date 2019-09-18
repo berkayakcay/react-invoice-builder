@@ -7,8 +7,6 @@ const reducer: Reducer<BankInfoState> = (state = initialState, action) => {
       return { ...state };
     }
     case BankInfoActionTypes.UPDATE_BANKINFO: {
-      console.log('...state.list:', ...state.list);
-      console.log('...action.payload:', action.payload);
       return {
         ...state,
         list: [...state.list, action.payload]

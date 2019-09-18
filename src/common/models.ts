@@ -17,7 +17,9 @@ export interface CompanyInfoModel {
 }
 
 export interface DocumentNotesModel {
-  name: string;
+  firstNote: string;
+  secondNote: string;
+  thirdNote: string;
 }
 
 export interface LogoAndSignatureModel {

@@ -1,13 +1,13 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { hideModal } from "../../../common/actions";
-import { ApplicationState } from "../../../common/store";
-import BankInfoModal from "../../../containers/BankInfo/Components/Modals/BankInfoModal";
-import CompanyInfoModal from "../../../containers/CompanyInfo/Components/Modals/CompanyInfoModal";
-import DocumentNotesModal from "../DocumentNotesModal";
-import LogoAndSignatureModal from "../LogoAndSignatureModal";
-import { ModalData } from "./types";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { hideModal } from '../../../common/actions';
+import { ApplicationState } from '../../../common/store';
+import BankInfoModal from '../../../containers/BankInfo/Components/Modals/BankInfoModal';
+import CompanyInfoModal from '../../../containers/CompanyInfo/Components/Modals/CompanyInfoModal';
+import DocumentNotesModal from '../../../containers/DocumentNotes/Components/Modals/DocumentNotesModal';
+import LogoAndSignatureModal from '../LogoAndSignatureModal';
+import { ModalData } from './types';
 
 const mapStateToProps = ({ modal }: ApplicationState) => ({
   type: modal.type,
@@ -62,13 +62,7 @@ class RootModal extends PureComponent<AllProps, IState> {
     }
     const SpecifiedModal = MODAL_TYPES[this.props.type];
 
-    return (
-      <SpecifiedModal
-        {...this.props.props}
-        open={this.state.modalIsOpen}
-        close={() => this.closeModal()}
-      />
-    );
+    return <SpecifiedModal {...this.props.props} open={this.state.modalIsOpen} close={() => this.closeModal()} />;
   }
 }
 
