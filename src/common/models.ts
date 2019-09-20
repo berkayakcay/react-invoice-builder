@@ -6,14 +6,19 @@ export interface CompanyInfoModel {
   name: string;
   registerNumber: string;
   taxOffice: string;
-  ticaretSicilNo: string;
-  mersisNo: string;
+  tradeRegistryNumber: string;
+  mersisNumber: string;
   phone: string;
   fax: string;
   address: string;
   district: string;
   city: string;
   country: string;
+  postalCode: string;
+  buildingNumber: string;
+  doorNumber: string;
+  mail: string;
+  webSite: string;
 }
 
 export interface DocumentNotesModel {

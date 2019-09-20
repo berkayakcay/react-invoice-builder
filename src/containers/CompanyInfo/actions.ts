@@ -1,9 +1,8 @@
 import { action } from 'typesafe-actions';
-import { CompanyInfoActionTypes } from './types'
 import { CompanyInfoModel } from '../../common/models';
+import { CompanyInfoActionTypes } from './types';
 
+export const showCompanyInfoModal = () => action(CompanyInfoActionTypes.SHOW_COMPANYINFO_MODAL);
 
-
-export const showCompanyInfoModal = () => action(CompanyInfoActionTypes.SHOW_COMPANYINFO_MODAL)
-
-export const updateCompanyInfo = (payload: CompanyInfoModel) => action(CompanyInfoActionTypes.UPDATE_COMPANYINFO, payload)
+export const updateCompanyInfo = (payload: CompanyInfoModel) =>
+  action(CompanyInfoActionTypes.UPDATE_COMPANYINFO, payload);
