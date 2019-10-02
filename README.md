@@ -1,5 +1,6 @@
 # Template Structure
 
+```
 templates << Templates folder
 |_ default << template
     |_  default.html  << template html
@@ -9,7 +10,9 @@ templates << Templates folder
     |_  yellow.html  << template html
         yellow.xslt  << template xslt
         yellow.jpg   << template image
-        
+```
+
+
 
 ## Available Scripts
 
