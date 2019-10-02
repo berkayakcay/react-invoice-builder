@@ -13,7 +13,7 @@ const reducer: Reducer<BankInfoState> = (state = initialState, action) => {
       };
     }
     case BankInfoActionTypes.DELETE_BANKINFO: {
-      return { ...state, list: [...state.list.filter(x => x.accountCode !== action.payload.accountCode)] };
+      return { ...state, list: [...state.list.filter(x => x.iban !== action.payload.iban)] };
     }
     default:
       return state;

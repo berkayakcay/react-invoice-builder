@@ -6,7 +6,7 @@ import { ApplicationState } from '../../../common/store';
 import BankInfoModal from '../../../containers/BankInfo/Components/Modals/BankInfoModal';
 import CompanyInfoModal from '../../../containers/CompanyInfo/Components/Modals/CompanyInfoModal';
 import DocumentNotesModal from '../../../containers/DocumentNotes/Components/Modals/DocumentNotesModal';
-import LogoAndSignatureModal from '../LogoAndSignatureModal';
+import LogoAndSignatureModal from '../../../containers/LogoAndSignature/Components/Modals/LogoAndSignatureModal';
 import { ModalData } from './types';
 
 const mapStateToProps = ({ modal }: ApplicationState) => ({

@@ -27,8 +27,13 @@ export interface DocumentNotesModel {
   thirdNote: string;
 }
 
-export interface LogoAndSignatureModel {
-  name: string;
+export interface LogoModel {
+  logoSrc: string;
+  logoCrop: object | any;
+  logoZoom: number;
+  logoAspect: number;
+  logoCroppedAreaPixels: any;
+  logoCroppedImage: any;
 }
 
 export interface BankInfoModel {
