@@ -6,6 +6,7 @@ import { ApplicationState } from '../../../common/store';
 import BankInfoModal from '../../../containers/BankInfo/Components/Modals/BankInfoModal';
 import CompanyInfoModal from '../../../containers/CompanyInfo/Components/Modals/CompanyInfoModal';
 import DocumentNotesModal from '../../../containers/DocumentNotes/Components/Modals/DocumentNotesModal';
+import HtmlPreviewModal from '../../../containers/HtmlPreview/Components/Modals/HtmlPreview';
 import LogoAndSignatureModal from '../../../containers/LogoAndSignature/Components/Modals/LogoAndSignatureModal';
 import { ModalData } from './types';
 
@@ -29,7 +30,8 @@ const MODAL_TYPES = {
   CompanyInfoModal: CompanyInfoModal,
   BankInfoModal: BankInfoModal,
   DocumentNotesModal: DocumentNotesModal,
-  LogoAndSignatureModal: LogoAndSignatureModal
+  LogoAndSignatureModal: LogoAndSignatureModal,
+  HtmlPreviewModal: HtmlPreviewModal
 };
 
 interface PropsFromDispatch {

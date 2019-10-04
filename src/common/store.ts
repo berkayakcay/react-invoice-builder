@@ -4,6 +4,7 @@ import { ModalData } from '../components/Modals/ModalRoot/types';
 import bankInfoReducer from '../containers/BankInfo/reducers';
 import companyInfoReducer from '../containers/CompanyInfo/reducers';
 import documentNotesReducer from '../containers/DocumentNotes/reducers';
+import htmlPreviewReducer from '../containers/HtmlPreview/reducers';
 import logoAndSignatureReducer from '../containers/LogoAndSignature/reducers';
 
 export interface ApplicationState {
@@ -15,7 +16,8 @@ export const reducers: any = {
   companyInfo: companyInfoReducer,
   bankInfo: bankInfoReducer,
   documentNotes: documentNotesReducer,
-  logoAndSignature: logoAndSignatureReducer
+  logoAndSignature: logoAndSignatureReducer,
+  htmlPreview: htmlPreviewReducer
 };
 
 export interface ConnectedReduxProps<A extends Action = AnyAction> {

@@ -13,7 +13,8 @@ export enum ModalType {
   CompanyInfoModal = 'CompanyInfoModal',
   BankInfoModal = 'BankInfoModal',
   DocumentNotesModal = 'DocumentNotesModal',
-  LogoAndSignatureModal = 'LogoAndSignatureModal'
+  LogoAndSignatureModal = 'LogoAndSignatureModal',
+  HtmlPreviewModal = 'HtmlPreviewModal'
 }
 
 export interface ModalData {

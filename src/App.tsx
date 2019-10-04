@@ -6,6 +6,7 @@ import './App.scss';
 import { showBankInfoModal } from './containers/BankInfo/actions';
 import { showCompanyInfoModal } from './containers/CompanyInfo/actions';
 import { showDocumentNotesModal } from './containers/DocumentNotes/actions';
+import { showHtmlPreviewModal } from './containers/HtmlPreview/actions';
 import { showLogoAndSignatureModal } from './containers/LogoAndSignature/actions';
 
 interface IProps {
@@ -13,6 +14,7 @@ interface IProps {
   showBankInfoModal: typeof showBankInfoModal;
   showDocumentNotesModal: typeof showDocumentNotesModal;
   showLogoAndSignatureModal: typeof showLogoAndSignatureModal;
+  showHtmlPreviewModal: typeof showHtmlPreviewModal;
 }
 
 class App extends React.Component<IProps> {
@@ -40,7 +42,7 @@ class App extends React.Component<IProps> {
               <Icon type="right" />
               Logo ve İmza
             </Menu.Item>
-            <Menu.Item key="5">
+            <Menu.Item key="5" onClick={() => this.props.showHtmlPreviewModal()}>
               <Icon type="right" />
               Tema Seçimi
             </Menu.Item>
@@ -70,7 +72,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   showCompanyInfoModal: () => dispatch(showCompanyInfoModal()),
   showBankInfoModal: () => dispatch(showBankInfoModal()),
   showDocumentNotesModal: () => dispatch(showDocumentNotesModal()),
-  showLogoAndSignatureModal: () => dispatch(showLogoAndSignatureModal())
+  showLogoAndSignatureModal: () => dispatch(showLogoAndSignatureModal()),
+  showHtmlPreviewModal: () => dispatch(showHtmlPreviewModal())
 });
 
 export default connect(
