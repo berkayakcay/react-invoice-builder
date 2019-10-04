@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal } from 'antd';
+import { Button, Form, Input, message, Modal } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import 'antd/lib/timeline/style/index.css';
 import React, { Component } from 'react';
@@ -27,6 +27,8 @@ class DocumentNotesModal extends Component<AllProps> {
     this.props.form.validateFields((errors: any, values: DocumentNotesModel) => {
       if (errors === null) {
         this.props.addDocumentNotes(values);
+        message.success('Notlar Başarı İle Eklendi!', 2);
+        this.props.close();
       }
     });
   };
