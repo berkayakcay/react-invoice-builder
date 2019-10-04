@@ -36,6 +36,15 @@ export interface LogoModel {
   logoCroppedImage: any;
 }
 
+export interface SignatureModel {
+  signatureSrc: string;
+  signatureCrop: object | any;
+  signatureZoom: number;
+  signatureAspect: number;
+  signatureCroppedAreaPixels: any;
+  signatureCroppedImage: any;
+}
+
 export interface BankInfoModel {
   bankName: string;
   branch: string;

@@ -3,34 +3,66 @@ import { initialState, LogoAndSignatureActionTypes, LogoAndSignatureState } from
 
 const reducer: Reducer<LogoAndSignatureState> = (state = initialState, action) => {
   switch (action.type) {
-    case LogoAndSignatureActionTypes.FILE_READER: {
+    //LOGO
+    case LogoAndSignatureActionTypes.LOGO_FILE_READER: {
       return {
         ...state,
         logoSrc: action.payload
       };
     }
-    case LogoAndSignatureActionTypes.UPDATE_CROP: {
+    case LogoAndSignatureActionTypes.LOGO_UPDATE_CROP: {
       return {
         ...state,
         logoCrop: action.payload
       };
     }
-    case LogoAndSignatureActionTypes.ON_CROP_COMPLATE: {
+    case LogoAndSignatureActionTypes.LOGO_ON_CROP_COMPLATE: {
       return {
         ...state,
         logoCroppedAreaPixels: action.payload
       };
     }
-    case LogoAndSignatureActionTypes.ON_ZOOM: {
+    case LogoAndSignatureActionTypes.LOGO_ON_ZOOM: {
       return {
         ...state,
         logoZoom: action.payload
       };
     }
-    case LogoAndSignatureActionTypes.SHOW_CROPPED_IMAGE: {
+    case LogoAndSignatureActionTypes.LOGO_SHOW_CROPPED_IMAGE: {
       return {
         ...state,
         logoCroppedImage: action.payload
+      };
+    }
+    //SIGNATURE
+    case LogoAndSignatureActionTypes.SIGNATURE_FILE_READER: {
+      return {
+        ...state,
+        signatureSrc: action.payload
+      };
+    }
+    case LogoAndSignatureActionTypes.SIGNATURE_UPDATE_CROP: {
+      return {
+        ...state,
+        signatureCrop: action.payload
+      };
+    }
+    case LogoAndSignatureActionTypes.SIGNATURE_ON_CROP_COMPLATE: {
+      return {
+        ...state,
+        signatureCroppedAreaPixels: action.payload
+      };
+    }
+    case LogoAndSignatureActionTypes.SIGNATURE_ON_ZOOM: {
+      return {
+        ...state,
+        signatureZoom: action.payload
+      };
+    }
+    case LogoAndSignatureActionTypes.SIGNATURE_SHOW_CROPPED_IMAGE: {
+      return {
+        ...state,
+        signatureCroppedImage: action.payload
       };
     }
     default:

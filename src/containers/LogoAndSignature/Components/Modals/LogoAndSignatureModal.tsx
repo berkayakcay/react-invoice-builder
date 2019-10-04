@@ -2,7 +2,8 @@ import { Button, Col, Modal, Row } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import LogoFile from './LogoFile';
+import LogoFile from './Logo';
+import Signature from './Signature';
 import './styles.scss';
 
 interface IProps {
@@ -18,7 +19,7 @@ class LogoAndSignatureModal extends Component<AllProps> {
       <Modal
         title="Logo Ve İmza"
         onCancel={() => this.props.close()}
-        width={1024}
+        width={500}
         visible={this.props.open}
         footer={[
           <>
@@ -32,10 +33,15 @@ class LogoAndSignatureModal extends Component<AllProps> {
         ]}
       >
         <Row>
-          <Col span={12}>
+          <Col>
             <LogoFile />
           </Col>
-          <Col span={12}>İmza Alanı</Col>
+        </Row>
+        <hr style={{ marginTop: 20, marginBottom: 20 }} />
+        <Row>
+          <Col>
+            <Signature />
+          </Col>
         </Row>
       </Modal>
     );

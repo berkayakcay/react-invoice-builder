@@ -1,4 +1,6 @@
-import { Button, Col, message, Row, Slider } from 'antd';
+import { faCropAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Card, Col, Empty, Icon, message, Modal, Row, Slider } from 'antd';
 import React, { Component } from 'react';
 import Cropper from 'react-easy-crop';
 import { connect } from 'react-redux';
@@ -24,7 +26,7 @@ interface IPropsFromDispatch {
 
 type AllProps = IProps & IPropsFromDispatch;
 
-class LogoFile extends Component<AllProps> {
+class Logo extends Component<AllProps> {
   onLogoFile = (e: any) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
@@ -62,24 +64,62 @@ class LogoFile extends Component<AllProps> {
 
     const showCroppedLogo = async () => {
       const croppedImage = await getCroppedImg(logoSrc, logoCroppedAreaPixels);
-      console.log('croppedImage', croppedImage);
       this.props.showCroppedLogo(croppedImage);
     };
 
+    function preview() {
+      const modal = Modal.success({
+        width: 594,
+        okText: 'Tamam',
+        title: 'Logo Görüntüleme Sonucu',
+        content: (
+          <Card
+            hoverable
+            style={{ width: 450 }}
+            bodyStyle={{ display: 'none' }}
+            cover={
+              <img
+                style={{ minWidth: 450, minHeight: 450, maxWidth: 450, maxHeight: 450 }}
+                src={logoCroppedImage}
+                alt="Cropped"
+              />
+            }
+          />
+        )
+      });
+      return modal;
+    }
+
     return (
-      <React.Fragment>
+      <Card>
         <Row>
-          <Col>
-            <label className="fileContainer fileContainerFile">
-              Logo Yükle
+          <Col span={12} style={{ marginBottom: 5 }}>
+            <Button size="small" className="fileContainer">
+              <Icon type="upload" /> Logo Yükle
               <input type="file" onChange={this.onLogoFile} />
-            </label>
+            </Button>
+            {logoSrc && (
+              <Button size="small" onClick={showCroppedLogo} style={{ marginLeft: 25 }} type="primary">
+                <FontAwesomeIcon style={{ color: '#ffffff' }} icon={faCropAlt} />
+                <span style={{ marginLeft: 5 }}>Kırp</span>
+              </Button>
+            )}
+          </Col>
+          <Col span={12} style={{ marginBottom: 10, textAlign: 'center' }}>
+            {logoCroppedImage ? (
+              <div className="textstyle">Tasarımda Gözükecek Logo.</div>
+            ) : (
+              <div className="textstyle">Logo Burada Olacak!</div>
+            )}
           </Col>
         </Row>
         <Row>
           <Col span={12}>
-            {logoSrc && (
-              <div style={{ height: 200, width: 200 }}>
+            <Card
+              style={{ marginRight: 5 }}
+              bodyStyle={{ minWidth: 200, minHeight: 200, maxWidth: 200, maxHeight: 200 }}
+            >
+              {logoSrc ? (
                 <Cropper
                   image={this.props.croped.logoSrc}
                   crop={this.props.croped.logoCrop}
@@ -89,39 +129,41 @@ class LogoFile extends Component<AllProps> {
                   onCropComplete={this.logoOnCropComplete}
                   onZoomChange={this.logoOnZoomChange}
                 />
-              </div>
-            )}
+              ) : (
+                <Empty style={{ fontSize: 30 }} image={Empty.PRESENTED_IMAGE_SIMPLE} />
+              )}
+            </Card>
           </Col>
           <Col span={12}>
-            {logoCroppedImage && (
-              <div style={{ marginLeft: 20 }}>
-                <ImgDialog img={logoCroppedImage} />
-              </div>
-            )}
+            <Card
+              style={{ marginLeft: 5 }}
+              bodyStyle={{ display: 'none' }}
+              cover={logoCroppedImage && <ImgDialog img={logoCroppedImage} />}
+            />
           </Col>
         </Row>
         <Row>
           <Col span={12}>
             {logoSrc && (
-              <>
-                <div>
-                  <Slider
-                    value={this.props.croped.logoZoom}
-                    min={1}
-                    max={3}
-                    step={0.1}
-                    aria-labelledby="Zoom"
-                    onChange={zoom => this.logoOnZoomChange(zoom)}
-                  />
-                  <Button onClick={showCroppedLogo} color="primary">
-                    Logo'yu Kırp
-                  </Button>
-                </div>
-              </>
+              <Slider
+                value={this.props.croped.logoZoom}
+                min={1}
+                max={3}
+                step={0.1}
+                aria-labelledby="Zoom"
+                onChange={zoom => this.logoOnZoomChange(zoom)}
+              />
+            )}
+          </Col>
+          <Col span={12} style={{ textAlign: 'center' }}>
+            {logoCroppedImage && (
+              <Button icon="search" style={{ marginTop: 5 }} type="primary" onClick={preview}>
+                Görüntüle
+              </Button>
             )}
           </Col>
         </Row>
-      </React.Fragment>
+      </Card>
     );
   }
 }
@@ -141,4 +183,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LogoFile);
+)(Logo);
