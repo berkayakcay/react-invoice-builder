@@ -11,7 +11,7 @@ interface IProps {
   companyInfo: CompanyInfoModel;
 }
 
-class FirstInvoiceHtml extends PureComponent<IProps> {
+class SecondInvoiceHtml extends PureComponent<IProps> {
   render() {
     const bankInfoList = this.props.bankInfo.map(data => {
       return (
@@ -33,6 +33,17 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
         <table style={{ borderColor: '#0001ff', border: 0, width: 800 }} cellPadding={0}>
           <tbody>
             <tr>
+              <td style={{ textAlign: 'center', width: '40%', paddingTop: 20 }}>
+                <img style={{ minWidth: 150, minHeight: 150, maxWidth: 150, maxHeight: 150 }} src={this.props.logo} />
+              </td>
+              <td style={{ width: '20%' }} align="center" valign="middle">
+                <br />
+                <br />
+                <img style={{ width: 91 }} alt="E-Fatura Logo" src={GIBLogo} />
+                <h1>
+                  <span style={{ fontWeight: 'bold' }}>e-Arşiv Fatura</span>
+                </h1>
+              </td>
               <td style={{ width: '40%' }}>
                 <br />
                 <hr />
@@ -86,19 +97,52 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
                 </table>
                 <hr />
               </td>
-              <td style={{ width: '20%' }} align="center" valign="middle">
-                <br />
-                <br />
-                <img style={{ width: 91 }} alt="E-Fatura Logo" src={GIBLogo} />
-                <h1>
-                  <span style={{ fontWeight: 'bold' }}>e-Arşiv Fatura</span>
-                </h1>
-              </td>
-              <td style={{ textAlign: 'center', width: '40%', paddingTop: 20 }}>
-                <img style={{ minWidth: 150, minHeight: 150, maxWidth: 150, maxHeight: 150 }} src={this.props.logo} />
-              </td>
             </tr>
             <tr style={{ height: 118 }}>
+              <td align="left" style={{ textAlign: 'left', width: '40%' }} valign="bottom">
+                <table style={{ border: 1, height: 13, marginRight: 20 }} id="despatchTable">
+                  <tbody>
+                    <tr>
+                      <td style={{ width: 185 }} align="left">
+                        <span style={{ fontWeight: 'bold' }}>Özelleştirme No:</span>
+                      </td>
+                      <td style={{ width: 110 }} align="left">
+                        TR1.2
+                      </td>
+                    </tr>
+                    <tr style={{ height: 13 }}>
+                      <td align="left">
+                        <span style={{ fontWeight: 'bold' }}>Fatura Tipi:</span>
+                      </td>
+                      <td align="left">SATIS</td>
+                    </tr>
+                    <tr style={{ height: 13 }}>
+                      <td align="left">
+                        <span style={{ fontWeight: 'bold' }}>Fatura No:</span>
+                      </td>
+                      <td align="left">MER2019000000331</td>
+                    </tr>
+                    <tr style={{ height: 13 }}>
+                      <td align="left">
+                        <span style={{ fontWeight: 'bold' }}>Fatura Tarihi:</span>
+                      </td>
+                      <td align="left">16-08-2019</td>
+                    </tr>
+                    <tr style={{ height: 13 }}>
+                      <td align="left">
+                        <span style={{ fontWeight: 'bold' }}>Düzenlenme Saati:</span>
+                      </td>
+                      <td align="left">11:20:36</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td align="center" style={{ textAlign: 'center', width: '20%' }} valign="bottom">
+                <img
+                  style={{ minWidth: 100, minHeight: 100, maxWidth: 100, maxHeight: 100, marginBottom: 30 }}
+                  src={this.props.signature}
+                />
+              </td>
               <td style={{ width: '40%' }} align="right" valign="bottom">
                 <table id="customerPartyTable" style={{ border: 0, height: '50%' }}>
                   <tbody>
@@ -137,55 +181,11 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
                 </table>
                 <br />
               </td>
-              <td align="center" style={{ textAlign: 'center', width: '20%' }} valign="bottom">
-                <img
-                  style={{ minWidth: 100, minHeight: 100, maxWidth: 100, maxHeight: 100, marginBottom: 30 }}
-                  src={this.props.signature}
-                />
-              </td>
-              <td align="right" style={{ textAlign: 'right', width: '40%' }} valign="bottom">
-                <table style={{ border: 1, height: 13 }} id="despatchTable">
-                  <tbody>
-                    <tr>
-                      <td style={{ width: 185 }} align="left">
-                        <span style={{ fontWeight: 'bold' }}>Özelleştirme No:</span>
-                      </td>
-                      <td style={{ width: 110 }} align="left">
-                        TR1.2
-                      </td>
-                    </tr>
-                    <tr style={{ height: 13 }}>
-                      <td align="left">
-                        <span style={{ fontWeight: 'bold' }}>Fatura Tipi:</span>
-                      </td>
-                      <td align="left">SATIS</td>
-                    </tr>
-                    <tr style={{ height: 13 }}>
-                      <td align="left">
-                        <span style={{ fontWeight: 'bold' }}>Fatura No:</span>
-                      </td>
-                      <td align="left">MER2019000000331</td>
-                    </tr>
-                    <tr style={{ height: 13 }}>
-                      <td align="left">
-                        <span style={{ fontWeight: 'bold' }}>Fatura Tarihi:</span>
-                      </td>
-                      <td align="left">16-08-2019</td>
-                    </tr>
-                    <tr style={{ height: 13 }}>
-                      <td align="left">
-                        <span style={{ fontWeight: 'bold' }}>Düzenlenme Saati:</span>
-                      </td>
-                      <td align="left">11:20:36</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
             </tr>
             <tr></tr>
           </tbody>
         </table>
-        <table id="ettnTable">
+        <table id="ettnTable" style={{ marginLeft: 480 }}>
           <tbody>
             <tr style={{ height: 13 }}>
               <td align="left" valign="top">
@@ -372,4 +372,4 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
   }
 }
 
-export default FirstInvoiceHtml;
+export default SecondInvoiceHtml;

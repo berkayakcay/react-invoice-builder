@@ -155,16 +155,14 @@ hr {
     border: none;
 }
 
-p,
-ul,
-ol {
+.themes p ul ol {
     margin-top: 1.5em;
 }
 
-ul,
-ol {
-    margin-left: 3em;
+.themes ul ol {
+    margin-top: 3em;
 }
+
 
 blockquote {
     margin-left: 3em;
@@ -218,6 +216,7 @@ a:hover {
     font-size: 11px;
     float: right;
     border-color: #f1f1f1;
+    margin-bottom: 25px;
 }
 
 #ettnTable {

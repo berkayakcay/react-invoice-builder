@@ -11,7 +11,7 @@ interface IProps {
   companyInfo: CompanyInfoModel;
 }
 
-class FirstInvoiceHtml extends PureComponent<IProps> {
+class ThirdInvoiceHtml extends PureComponent<IProps> {
   render() {
     const bankInfoList = this.props.bankInfo.map(data => {
       return (
@@ -86,16 +86,17 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
                 </table>
                 <hr />
               </td>
-              <td style={{ width: '20%' }} align="center" valign="middle">
-                <br />
-                <br />
-                <img style={{ width: 91 }} alt="E-Fatura Logo" src={GIBLogo} />
-                <h1>
-                  <span style={{ fontWeight: 'bold' }}>e-Arşiv Fatura</span>
-                </h1>
+              <td align="center" style={{ textAlign: 'center', width: '20%' }} valign="bottom">
+                <img
+                  style={{ minWidth: 100, minHeight: 100, maxWidth: 100, maxHeight: 100, marginBottom: 110 }}
+                  src={this.props.signature}
+                />
               </td>
               <td style={{ textAlign: 'center', width: '40%', paddingTop: 20 }}>
-                <img style={{ minWidth: 150, minHeight: 150, maxWidth: 150, maxHeight: 150 }} src={this.props.logo} />
+                <img
+                  style={{ minWidth: 150, minHeight: 150, maxWidth: 150, maxHeight: 150, marginBottom: 50 }}
+                  src={this.props.logo}
+                />
               </td>
             </tr>
             <tr style={{ height: 118 }}>
@@ -137,11 +138,13 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
                 </table>
                 <br />
               </td>
-              <td align="center" style={{ textAlign: 'center', width: '20%' }} valign="bottom">
-                <img
-                  style={{ minWidth: 100, minHeight: 100, maxWidth: 100, maxHeight: 100, marginBottom: 30 }}
-                  src={this.props.signature}
-                />
+              <td style={{ width: '20%' }} align="center" valign="middle">
+                <br />
+                <br />
+                <img style={{ width: 91 }} alt="E-Fatura Logo" src={GIBLogo} />
+                <h1>
+                  <span style={{ fontWeight: 'bold' }}>e-Arşiv Fatura</span>
+                </h1>
               </td>
               <td align="right" style={{ textAlign: 'right', width: '40%' }} valign="bottom">
                 <table style={{ border: 1, height: 13 }} id="despatchTable">
@@ -241,7 +244,6 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
         <table id="budgetContainerTable" style={{ border: 0, width: 800 }}>
           <tbody>
             <tr id="budgetContainerTr">
-              <td id="budgetContainerDummyTd"></td>
               <td id="lineTableBudgetTd" style={{ border: '1px solid #CCC', width: 200 }} align="right">
                 <span style={{ fontWeight: 'bold' }}>Mal Hizmet Toplam Tutarı</span>
               </td>
@@ -252,9 +254,9 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
               >
                 92,59 TL
               </td>
+              <td id="budgetContainerDummyTd"></td>
             </tr>
             <tr id="budgetContainerTr">
-              <td id="budgetContainerDummyTd"></td>
               <td id="lineTableBudgetTd" align="right" style={{ width: 200, border: '1px solid #CCC' }}>
                 <span style={{ fontWeight: 'bold' }}>Toplam İskonto</span>
               </td>
@@ -265,9 +267,9 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
               >
                 0,00 TL
               </td>
+              <td id="budgetContainerDummyTd"></td>
             </tr>
             <tr id="budgetContainerTr">
-              <td id="budgetContainerDummyTd"></td>
               <td
                 id="lineTableBudgetTd"
                 style={{ width: 221, border: '1px solid #CCC', borderTop: 'none' }}
@@ -283,9 +285,9 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
                 {' '}
                 7,41 TL
               </td>
+              <td id="budgetContainerDummyTd"></td>
             </tr>
             <tr id="budgetContainerTr">
-              <td id="budgetContainerDummyTd"></td>
               <td
                 id="lineTableBudgetTd"
                 style={{ width: 200, border: '1px solid #CCC', borderTop: 'none' }}
@@ -300,9 +302,9 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
               >
                 100,00 TL
               </td>
+              <td id="budgetContainerDummyTd"></td>
             </tr>
             <tr id="budgetContainerTr">
-              <td id="budgetContainerDummyTd"></td>
               <td
                 id="lineTableBudgetTd"
                 style={{ width: 200, border: '1px solid #CCC', borderTop: 'none' }}
@@ -317,6 +319,7 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
               >
                 100,00 TL
               </td>
+              <td id="budgetContainerDummyTd"></td>
             </tr>
           </tbody>
         </table>
@@ -372,4 +375,4 @@ class FirstInvoiceHtml extends PureComponent<IProps> {
   }
 }
 
-export default FirstInvoiceHtml;
+export default ThirdInvoiceHtml;

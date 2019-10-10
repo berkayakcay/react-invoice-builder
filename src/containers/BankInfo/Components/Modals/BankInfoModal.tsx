@@ -1,5 +1,5 @@
 //TODO: mapStateToProps KONTROL EDİLECEK!
-import { Button, Col, Form, Icon, Input, Modal, Popconfirm, Row, Table } from 'antd';
+import { Avatar, Button, Col, Form, Icon, Input, Modal, Popconfirm, Row, Select, Table } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import 'antd/lib/timeline/style/index.css';
 import React, { Component } from 'react';
@@ -7,6 +7,18 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { BankInfoModel } from '../../../../common/models';
 import { deleteBankInfo, updateBankInfo } from '../../actions';
+import Arabia from '../../CountryLogo/arabia.png';
+import Canada from '../../CountryLogo/canada.png';
+import China from '../../CountryLogo/china.png';
+import England from '../../CountryLogo/england.png';
+import Euro from '../../CountryLogo/euro.png';
+import India from '../../CountryLogo/india.png';
+import Japan from '../../CountryLogo/japan.png';
+import Russia from '../../CountryLogo/russia.png';
+import Switzerland from '../../CountryLogo/switzerland.jpg';
+import Turkey from '../../CountryLogo/turkey.png';
+import Uae from '../../CountryLogo/uae.jpg';
+import UnitedStates from '../../CountryLogo/unitedStates.png';
 import { BankInfoStateType } from '../../types';
 
 interface IProps {
@@ -21,6 +33,8 @@ interface IPropsFromDispatch {
 }
 
 type AllProps = IProps & IPropsFromDispatch & FormComponentProps;
+
+const { Option } = Select;
 
 class BankInfoModal extends Component<AllProps> {
   addBankInfo = () => {
@@ -49,7 +63,7 @@ class BankInfoModal extends Component<AllProps> {
           <Form className="login-form">
             <Row gutter={16} type="flex">
               <Col span={8}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('bankName', {
                     rules: [{ required: true, message: 'Banka Adı Zorunlu Alandır!' }]
                   })(
@@ -58,7 +72,7 @@ class BankInfoModal extends Component<AllProps> {
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('branch', {
                     rules: [{ required: false }]
                   })(
@@ -67,7 +81,7 @@ class BankInfoModal extends Component<AllProps> {
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('branchCode', {
                     rules: [{ required: false }]
                   })(
@@ -78,7 +92,7 @@ class BankInfoModal extends Component<AllProps> {
             </Row>
             <Row gutter={16} type="flex">
               <Col span={8}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('accountCode', {
                     rules: [{ required: false }]
                   })(
@@ -90,19 +104,53 @@ class BankInfoModal extends Component<AllProps> {
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('accountType', {
                     rules: [{ required: false }]
                   })(
-                    <Input
-                      prefix={<Icon type="radius-setting" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                      placeholder="Hesap Türü"
-                    />
+                    <Select showSearch placeholder="Hesap Türü" optionFilterProp="children">
+                      <Option value="TL">
+                        <Avatar shape="square" size={20} src={Turkey} /> TL - Türk Lirası
+                      </Option>
+                      <Option value="USD">
+                        <Avatar shape="square" size={20} src={UnitedStates} /> USD - Amerikan Doları
+                      </Option>
+                      <Option value="EUR">
+                        <Avatar shape="square" size={20} src={Euro} /> EUR - Euro
+                      </Option>
+                      <Option value="GBP">
+                        <Avatar shape="square" size={20} src={England} /> GBP - İngiliz Sterlini
+                      </Option>
+                      <Option value="CHF">
+                        <Avatar shape="square" size={20} src={Switzerland} /> CHF - İsviçre Frangı
+                      </Option>
+                      <Option value="CAD">
+                        <Avatar shape="square" size={20} src={Canada} /> CAD - Kanada Doları
+                      </Option>
+                      <Option value="RUB">
+                        <Avatar shape="square" size={20} src={Russia} /> RUB - Rus Rublesi
+                      </Option>
+                      <Option value="JPY">
+                        <Avatar shape="square" size={20} src={Japan} /> JPY - 100 Japon Yeni
+                      </Option>
+                      <Option value="SAR">
+                        <Avatar shape="square" size={20} src={Arabia} /> SAR - S. Arabistan Riyali
+                      </Option>
+                      <Option value="INR">
+                        <Avatar shape="square" size={20} src={India} /> INR - Hindistan Rupisi
+                      </Option>
+                      <Option value="CNY">
+                        <Avatar shape="square" size={20} src={China} /> CNY - Çin Yuanı
+                      </Option>
+                      <Option value="AED">
+                        <Avatar shape="square" size={20} src={Uae} /> AED - B.A.E. Dirhemi
+                      </Option>
+                    </Select>
                   )}
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('iban', {
                     rules: [{ required: true, message: 'IBAN Girilmesi zorunludur!' }]
                   })(
@@ -113,7 +161,7 @@ class BankInfoModal extends Component<AllProps> {
             </Row>
             <Row gutter={16} type="flex">
               <Col span={24}>
-                <Form.Item>
+                <Form.Item hasFeedback>
                   {getFieldDecorator('accountName', {
                     rules: [{ required: false }]
                   })(

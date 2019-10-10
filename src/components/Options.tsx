@@ -3,14 +3,14 @@ import React from 'react';
 
 const { Option } = Select;
 
-export const selectBefore = (
+export const selectBeforeWepSite = (
   <Select defaultValue="Http://" style={{ width: 90 }}>
     <Option value="Http://">Http://</Option>
     <Option value="Https://">Https://</Option>
   </Select>
 );
 
-export const selectAfter = (
+export const selectAfterWepSite = (
   <Select defaultValue=".gov" style={{ width: 80 }}>
     <Option value=".gov">.gov</Option>
     <Option value=".com">.com</Option>

@@ -21,7 +21,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { countryOption } from '../../../../common/defaultOptions';
 import { CompanyInfoModel } from '../../../../common/models';
-import { selectAfter, selectBefore } from '../../../../components/Options';
+import { selectAfterWepSite, selectBeforeWepSite } from '../../../../components/Options';
 import { updateCompanyInfo } from '../../actions';
 import { CompanyInfoStateType } from '../../types';
 
@@ -336,8 +336,8 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        addonBefore={selectBefore}
-                        addonAfter={selectAfter}
+                        addonBefore={selectBeforeWepSite}
+                        addonAfter={selectAfterWepSite}
                         prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faGlobe} />}
                         placeholder="İnternet Sitesi"
                       />
