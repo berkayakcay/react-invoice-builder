@@ -111,6 +111,17 @@ class BankInfoModal extends Component<AllProps> {
                 </Form.Item>
               </Col>
             </Row>
+            <Row gutter={16} type="flex">
+              <Col span={24}>
+                <Form.Item>
+                  {getFieldDecorator('accountName', {
+                    rules: [{ required: false }]
+                  })(
+                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Hesap Adı" />
+                  )}
+                </Form.Item>
+              </Col>
+            </Row>
             <Form.Item>
               <Button type="primary" htmlType="submit" className="login-form-button" onClick={() => this.addBankInfo()}>
                 Ekle
@@ -121,7 +132,6 @@ class BankInfoModal extends Component<AllProps> {
             columns={[
               {
                 key: 'operasyon',
-                title: 'Operasyon',
                 render: (text, record: BankInfoModel) => (
                   <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.props.deleteBankInfo(record)}>
                     <Icon type="delete" title="Sil" style={{ color: '#ff2a00' }} /> <a>Sil</a>
@@ -151,12 +161,19 @@ class BankInfoModal extends Component<AllProps> {
               {
                 title: 'Hesap Türü',
                 dataIndex: 'accountType',
-                key: 'accountType'
+                key: 'accountType',
+                width: 30
               },
               {
                 title: 'Iban',
                 dataIndex: 'iban',
                 key: 'iban'
+              },
+              {
+                title: 'Hesap Adı',
+                dataIndex: 'accountName',
+                key: 'accountName',
+                width: 200
               }
             ]}
             pagination={false}

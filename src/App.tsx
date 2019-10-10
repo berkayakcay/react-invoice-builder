@@ -6,6 +6,7 @@ import './App.scss';
 import { showBankInfoModal } from './containers/BankInfo/actions';
 import { showCompanyInfoModal } from './containers/CompanyInfo/actions';
 import { showDocumentNotesModal } from './containers/DocumentNotes/actions';
+import HtmlContent from './containers/HtmlContent/HtmlContent';
 import { showHtmlPreviewModal } from './containers/HtmlPreview/actions';
 import { showLogoAndSignatureModal } from './containers/LogoAndSignature/actions';
 
@@ -61,7 +62,9 @@ class App extends React.Component<IProps> {
               </Button.Group>
             </div>
           </Layout.Header>
-          <Layout.Content style={{ margin: 12, padding: 12, background: '#fff' }}>.HTML CONTENT</Layout.Content>
+          <Layout.Content style={{ margin: 12, padding: 12, background: '#fff' }}>
+            <HtmlContent />
+          </Layout.Content>
         </Layout>
       </Layout>
     );

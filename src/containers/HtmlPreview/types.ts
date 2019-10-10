@@ -1,5 +1,9 @@
+import { ThemeModel } from '../../common/models';
+
 export const initialState: HtmlPreviewState = {
-  list: []
+  selected: {
+    Theme: 1
+  }
 };
 
 export interface HtmlPreviewStateType {
@@ -7,9 +11,10 @@ export interface HtmlPreviewStateType {
 }
 
 export interface HtmlPreviewState {
-  readonly list: any;
+  readonly selected: ThemeModel;
 }
 
 export enum HtmlPreviewActionTypes {
-  SHOW_HTMLPREVIEW_MODAL = 'SHOW_HTMLPREVIEW_MODAL'
+  SHOW_HTMLPREVIEW_MODAL = 'SHOW_HTMLPREVIEW_MODAL',
+  SELECTED_THEME = 'SELECTED_THEME'
 }

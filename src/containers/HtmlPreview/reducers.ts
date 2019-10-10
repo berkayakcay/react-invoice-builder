@@ -6,6 +6,12 @@ const reducer: Reducer<HtmlPreviewState> = (state = initialState, action) => {
     case HtmlPreviewActionTypes.SHOW_HTMLPREVIEW_MODAL: {
       return { ...state };
     }
+    case HtmlPreviewActionTypes.SELECTED_THEME: {
+      return {
+        ...state,
+        selected: { Theme: action.payload }
+      };
+    }
     default:
       return state;
   }

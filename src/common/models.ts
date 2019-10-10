@@ -52,4 +52,9 @@ export interface BankInfoModel {
   accountCode: string;
   accountType: string;
   iban: string;
+  accountName: string;
+}
+
+export interface ThemeModel {
+  Theme: number;
 }
