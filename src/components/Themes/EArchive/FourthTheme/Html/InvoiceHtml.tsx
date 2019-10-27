@@ -1,7 +1,7 @@
 import { Card } from 'antd';
 import React, { PureComponent } from 'react';
-import { BankInfoModel, CompanyInfoModel, ThemeModel } from '../../../../common/models';
-import { GIBLogo } from '../../../GIBLogo';
+import { BankInfoModel, CompanyInfoModel, DocumentNotesModel, ThemeModel } from '../../../../../common/models';
+import { GIBLogo } from '../../../../GIBLogo';
 
 interface IProps {
   selected: ThemeModel;
@@ -9,6 +9,7 @@ interface IProps {
   signature: any;
   bankInfo: Array<BankInfoModel>;
   companyInfo: CompanyInfoModel;
+  documentNotes: DocumentNotesModel;
 }
 
 class FourthInvoiceHtml extends PureComponent<IProps> {
@@ -26,8 +27,8 @@ class FourthInvoiceHtml extends PureComponent<IProps> {
         </tr>
       );
     });
-    console.log('object', this.props.bankInfo);
-    const companyInfo = this.props.companyInfo;
+
+    const { companyInfo, documentNotes } = this.props;
     return (
       <Card className="themes">
         <table style={{ borderColor: '#0001ff', border: 0, width: 800 }} cellPadding={0}>
@@ -351,6 +352,33 @@ class FourthInvoiceHtml extends PureComponent<IProps> {
                 <br />
               </td>
             </tr>
+            {documentNotes.firstNote && (
+              <tr>
+                <td id="notesTableTd">
+                  <b>*</b>
+                  {documentNotes.firstNote}
+                  <br />
+                </td>
+              </tr>
+            )}
+            {documentNotes.secondNote && (
+              <tr>
+                <td id="notesTableTd">
+                  <b>*</b>
+                  {documentNotes.secondNote}
+                  <br />
+                </td>
+              </tr>
+            )}
+            {documentNotes.thirdNote && (
+              <tr>
+                <td id="notesTableTd">
+                  <b>*</b>
+                  {documentNotes.thirdNote}
+                  <br />
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
         <div style={{ clear: 'both' }}></div>

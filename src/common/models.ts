@@ -58,3 +58,7 @@ export interface BankInfoModel {
 export interface ThemeModel {
   Theme: number;
 }
+
+export interface ProductModel {
+  Product: boolean;
+}
