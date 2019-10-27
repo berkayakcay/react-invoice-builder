@@ -7,11 +7,28 @@ templates << Templates folder
         default.xslt  << template xslt
         default.jpg   << template image
 |_ yellow << template
-    |_  yellow.html  << template html
-        yellow.xslt  << template xslt
-        yellow.jpg   << template image
+    |_  default.html  << template html
+        default.xslt  << template xslt
+        default.jpg   << template image
 ```
 
+**Template list**
+```
+[
+    {
+        "type": "TYPENAME",
+        "title": "TEMPLATE TITLE",
+        "description": "TEMPLATE DESC",
+        "path": "templates/First/"
+    },
+    {
+        "type": "TYPENAME",
+        "title": "TEMPLATE TITLE",
+        "description": "TEMPLATE DESC",
+        "path": "templates/Second/"
+    }
+]
+```
 
 
 ## Available Scripts
