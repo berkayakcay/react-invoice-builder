@@ -5,25 +5,23 @@ import {
   faDoorOpen,
   faEnvelope,
   faFax,
-  faGlobe,
   faGlobeEurope,
   faListOl,
   faMailBulk,
   faMapMarkerAlt,
   faPhoneVolume,
   faUserPlus
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Col, Form, Input, message, Modal, Row, Select } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { countryOption } from '../../../../common/defaultOptions';
-import { CompanyInfoModel } from '../../../../common/models';
-import { selectAfterWepSite, selectBeforeWepSite } from '../../../../components/Options';
-import { updateCompanyInfo } from '../../actions';
-import { CompanyInfoStateType } from '../../types';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Col, Form, Input, message, Modal, Row, Select } from "antd";
+import { FormComponentProps } from "antd/lib/form";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { countryOption } from "../../../../common/defaultOptions";
+import { CompanyInfoModel } from "../../../../common/models";
+import { updateCompanyInfo } from "../../actions";
+import { CompanyInfoStateType } from "../../types";
 
 interface IProps {
   open: boolean;
@@ -41,7 +39,7 @@ class CompanyInfoModal extends Component<AllProps> {
     this.props.form.validateFields((errors: any, values: CompanyInfoModel) => {
       if (errors === null) {
         this.props.updateCompanyInfo(values);
-        message.success('Kayıt Başarı İle Eklendi!', 2);
+        message.success("Kayıt Başarı İle Eklendi!", 2);
         this.props.close();
       }
     });
@@ -57,7 +55,12 @@ class CompanyInfoModal extends Component<AllProps> {
         visible={this.props.open}
         footer={[
           <>
-            <Button key="ok" type="primary" icon="check" onClick={() => this.onClickUpdateCompanyInfo()}>
+            <Button
+              key="ok"
+              type="primary"
+              icon="check"
+              onClick={() => this.onClickUpdateCompanyInfo()}
+            >
               KAYDET
             </Button>
           </>
@@ -67,16 +70,21 @@ class CompanyInfoModal extends Component<AllProps> {
           <Row>
             <Col span={12} style={{ paddingRight: 10 }}>
               <Form.Item hasFeedback>
-                {getFieldDecorator('name', {
+                {getFieldDecorator("name", {
                   rules: [
                     {
                       required: true,
-                      message: 'Burası Girilmesi Zorunlu Alandır!'
+                      message: "Burası Girilmesi Zorunlu Alandır!"
                     }
                   ]
                 })(
                   <Input
-                    prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faUserPlus} />}
+                    prefix={
+                      <FontAwesomeIcon
+                        style={{ color: "#ced4da" }}
+                        icon={faUserPlus}
+                      />
+                    }
                     placeholder="Firma Ünvan"
                   />
                 )}
@@ -84,18 +92,24 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col style={{ paddingRight: 5 }} span={12}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('registerNumber', {
+                    {getFieldDecorator("registerNumber", {
                       rules: [
                         {
                           min: 10,
                           max: 11,
                           required: true,
-                          message: 'TCKN / VKN Alanı En Az 10 En Çok 11 Haneli olmalıdır!'
+                          message:
+                            "TCKN / VKN Alanı En Az 10 En Çok 11 Haneli olmalıdır!"
                         }
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faListOl} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faListOl}
+                          />
+                        }
                         placeholder="Firma VKN"
                       />
                     )}
@@ -103,7 +117,7 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingLeft: 5 }} span={12}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('taxOffice', {
+                    {getFieldDecorator("taxOffice", {
                       rules: [
                         {
                           required: false
@@ -111,7 +125,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faBuilding} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faBuilding}
+                          />
+                        }
                         placeholder="Vergi Dairesi"
                       />
                     )}
@@ -121,7 +140,7 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col style={{ paddingRight: 5 }} span={12}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('tradeRegistryNumber', {
+                    {getFieldDecorator("tradeRegistryNumber", {
                       rules: [
                         {
                           required: false
@@ -129,7 +148,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faListOl} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faListOl}
+                          />
+                        }
                         placeholder="Ticaret Sicil No"
                       />
                     )}
@@ -137,7 +161,7 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingLeft: 5 }} span={12}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('mersisNumber', {
+                    {getFieldDecorator("mersisNumber", {
                       rules: [
                         {
                           required: false
@@ -145,7 +169,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faListOl} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faListOl}
+                          />
+                        }
                         placeholder="Mersis No"
                       />
                     )}
@@ -155,7 +184,7 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col style={{ paddingRight: 5 }} span={12}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('phone', {
+                    {getFieldDecorator("phone", {
                       rules: [
                         {
                           required: false
@@ -163,7 +192,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faPhoneVolume} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faPhoneVolume}
+                          />
+                        }
                         placeholder="Telefon"
                       />
                     )}
@@ -171,14 +205,22 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingLeft: 5 }} span={12}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('fax', {
+                    {getFieldDecorator("fax", {
                       rules: [
                         {
                           required: false
                         }
                       ]
                     })(
-                      <Input prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faFax} />} placeholder="Fax" />
+                      <Input
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faFax}
+                          />
+                        }
+                        placeholder="Fax"
+                      />
                     )}
                   </Form.Item>
                 </Col>
@@ -186,11 +228,16 @@ class CompanyInfoModal extends Component<AllProps> {
             </Col>
             <Col span={12} style={{ paddingLeft: 10 }}>
               <Form.Item hasFeedback>
-                {getFieldDecorator('address', {
+                {getFieldDecorator("address", {
                   rules: [{ required: false }]
                 })(
                   <Input
-                    prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faMapMarkerAlt} />}
+                    prefix={
+                      <FontAwesomeIcon
+                        style={{ color: "#ced4da" }}
+                        icon={faMapMarkerAlt}
+                      />
+                    }
                     placeholder="Adres"
                   />
                 )}
@@ -198,16 +245,21 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col style={{ paddingRight: 5 }} span={8}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('district', {
+                    {getFieldDecorator("district", {
                       rules: [
                         {
                           required: true,
-                          message: 'Burası Girilmesi Zorunlu Alandır!'
+                          message: "Burası Girilmesi Zorunlu Alandır!"
                         }
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faArchway} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faArchway}
+                          />
+                        }
                         placeholder="Mahalle/Semt/İlçe"
                       />
                     )}
@@ -215,16 +267,21 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingRight: 5, paddingLeft: 5 }} span={8}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('city', {
+                    {getFieldDecorator("city", {
                       rules: [
                         {
                           required: true,
-                          message: 'Burası Girilmesi Zorunlu Alandır!'
+                          message: "Burası Girilmesi Zorunlu Alandır!"
                         }
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faCity} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faCity}
+                          />
+                        }
                         placeholder="Şehir"
                       />
                     )}
@@ -232,18 +289,23 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingLeft: 5 }} span={8}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('country', {
+                    {getFieldDecorator("country", {
                       rules: [
                         {
                           required: true,
-                          message: 'Ülke Girilmesi Zorunludur!'
+                          message: "Ülke Girilmesi Zorunludur!"
                         }
                       ]
                     })(
                       <Select
-                        suffixIcon={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faGlobeEurope} />}
+                        suffixIcon={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faGlobeEurope}
+                          />
+                        }
                         placeholder="Ülke"
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                       >
                         {countryOption.map(option => (
                           <Select.Option key={option.key} value={option.value}>
@@ -258,7 +320,7 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col style={{ paddingRight: 5 }} span={8}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('postalCode', {
+                    {getFieldDecorator("postalCode", {
                       rules: [
                         {
                           required: false
@@ -266,7 +328,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faMailBulk} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faMailBulk}
+                          />
+                        }
                         placeholder="Posta Kodu"
                       />
                     )}
@@ -274,7 +341,7 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingLeft: 5, paddingRight: 5 }} span={8}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('buildingNumber', {
+                    {getFieldDecorator("buildingNumber", {
                       rules: [
                         {
                           required: false
@@ -282,7 +349,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faBuilding} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faBuilding}
+                          />
+                        }
                         placeholder="Bina No"
                       />
                     )}
@@ -290,7 +362,7 @@ class CompanyInfoModal extends Component<AllProps> {
                 </Col>
                 <Col style={{ paddingLeft: 5 }} span={8}>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('doorNumber', {
+                    {getFieldDecorator("doorNumber", {
                       rules: [
                         {
                           required: false
@@ -298,7 +370,12 @@ class CompanyInfoModal extends Component<AllProps> {
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faDoorOpen} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faDoorOpen}
+                          />
+                        }
                         placeholder="Kapı No"
                       />
                     )}
@@ -308,17 +385,22 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('mail', {
+                    {getFieldDecorator("mail", {
                       rules: [
                         {
                           required: false,
-                          type: 'email',
+                          type: "email",
                           message: "E-Mail adresi '@' İşareti içermelidir!"
                         }
                       ]
                     })(
                       <Input
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faEnvelope} />}
+                        prefix={
+                          <FontAwesomeIcon
+                            style={{ color: "#ced4da" }}
+                            icon={faEnvelope}
+                          />
+                        }
                         placeholder="Mail Adresi"
                       />
                     )}
@@ -328,20 +410,13 @@ class CompanyInfoModal extends Component<AllProps> {
               <Row>
                 <Col>
                   <Form.Item hasFeedback>
-                    {getFieldDecorator('webSite', {
+                    {getFieldDecorator("webSite", {
                       rules: [
                         {
                           required: false
                         }
                       ]
-                    })(
-                      <Input
-                        addonBefore={selectBeforeWepSite}
-                        addonAfter={selectAfterWepSite}
-                        prefix={<FontAwesomeIcon style={{ color: '#ced4da' }} icon={faGlobe} />}
-                        placeholder="İnternet Sitesi"
-                      />
-                    )}
+                    })(<Input placeholder="İnternet Sitesi" />)}
                   </Form.Item>
                 </Col>
               </Row>
@@ -360,7 +435,8 @@ const mapStateToProps = ({ companyInfo }: CompanyInfoStateType) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateCompanyInfo: (params: CompanyInfoModel) => dispatch(updateCompanyInfo(params))
+  updateCompanyInfo: (params: CompanyInfoModel) =>
+    dispatch(updateCompanyInfo(params))
 });
 
 export default connect(

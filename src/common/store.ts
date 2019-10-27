@@ -4,8 +4,7 @@ import { ModalData } from '../components/Modals/ModalRoot/types';
 import bankInfoReducer from '../containers/BankInfo/reducers';
 import companyInfoReducer from '../containers/CompanyInfo/reducers';
 import documentNotesReducer from '../containers/DocumentNotes/reducers';
-import htmlContentReducer from '../containers/HtmlContent/reducers';
-import htmlPreviewReducer from '../containers/HtmlPreview/reducers';
+import htmlPreviewReducer from '../containers/TemplateSelector/reducers';
 import logoAndSignatureReducer from '../containers/LogoAndSignature/reducers';
 
 export interface ApplicationState {
@@ -19,7 +18,6 @@ export const reducers: any = {
   documentNotes: documentNotesReducer,
   logoAndSignature: logoAndSignatureReducer,
   htmlPreview: htmlPreviewReducer,
-  htmlContent: htmlContentReducer
 };
 
 export interface ConnectedReduxProps<A extends Action = AnyAction> {

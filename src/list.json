@@ -1,0 +1,20 @@
+[
+    {
+        "type": "EARCHIVE",
+        "title": "TEMA 1",
+        "description": "Bu teme kırmızı sevenler için gelsin",
+        "path": "templates/EArchive/First/"
+    },
+    {
+        "type": "EARCHIVE",
+        "title": "TEMA 2",
+        "description": "Bu teme mavi sevenler için gelsin",
+        "path": "templates/EArchive/Second/"
+    },
+    {
+        "type": "EARCHIVE",
+        "title": "TEMA 3",
+        "description": "Bu teme pembe sevenler için gelsin",
+        "path": "templates/EArchive/Third/"
+    }
+]

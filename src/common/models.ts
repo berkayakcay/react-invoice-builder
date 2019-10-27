@@ -55,7 +55,7 @@ export interface BankInfoModel {
   accountName: string;
 }
 
-export interface ThemeModel {
+export interface TemplateModel {
   Theme: number;
 }
 

@@ -1,32 +1,35 @@
-import { Button, Icon, Layout, Menu, Typography } from 'antd';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import './App.scss';
-import { showBankInfoModal } from './containers/BankInfo/actions';
-import { showCompanyInfoModal } from './containers/CompanyInfo/actions';
-import { showDocumentNotesModal } from './containers/DocumentNotes/actions';
-import HtmlContent from './containers/HtmlContent/HtmlContent';
-import { showHtmlPreviewModal } from './containers/HtmlPreview/actions';
-import { showLogoAndSignatureModal } from './containers/LogoAndSignature/actions';
+import { Button, Icon, Layout, Menu, Typography } from "antd";
+import React from "react";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import "./App.scss";
+import { showBankInfoModal } from "./containers/BankInfo/actions";
+import { showCompanyInfoModal } from "./containers/CompanyInfo/actions";
+import { showDocumentNotesModal } from "./containers/DocumentNotes/actions";
+import HtmlContent from "./containers/TemplatePreview";
+import { showTemplateSelectorModal } from "./containers/TemplateSelector/actions";
+import { showLogoAndSignatureModal } from "./containers/LogoAndSignature/actions";
 
 interface IProps {
   showCompanyInfoModal: typeof showCompanyInfoModal;
   showBankInfoModal: typeof showBankInfoModal;
   showDocumentNotesModal: typeof showDocumentNotesModal;
   showLogoAndSignatureModal: typeof showLogoAndSignatureModal;
-  showHtmlPreviewModal: typeof showHtmlPreviewModal;
+  showHtmlPreviewModal: typeof showTemplateSelectorModal;
 }
 
 class App extends React.Component<IProps> {
   render() {
     return (
       <Layout>
-        <Layout.Sider style={{ background: '#fff' }} width={250}>
+        <Layout.Sider style={{ background: "#fff" }} width={250}>
           <Typography.Title level={4}></Typography.Title>
           <Menu>
             <Menu.Item key="0">#DOCUMENT.BUILDER</Menu.Item>
-            <Menu.Item key="1" onClick={() => this.props.showCompanyInfoModal()}>
+            <Menu.Item
+              key="1"
+              onClick={() => this.props.showCompanyInfoModal()}
+            >
               <Icon type="right" />
               Firma Bilgileri
             </Menu.Item>
@@ -35,23 +38,32 @@ class App extends React.Component<IProps> {
               <Icon type="right" />
               Banka Bilgileri
             </Menu.Item>
-            <Menu.Item key="3" onClick={() => this.props.showDocumentNotesModal()}>
+            <Menu.Item
+              key="3"
+              onClick={() => this.props.showDocumentNotesModal()}
+            >
               <Icon type="right" />
               Doküman Notları
             </Menu.Item>
-            <Menu.Item key="4" onClick={() => this.props.showLogoAndSignatureModal()}>
+            <Menu.Item
+              key="4"
+              onClick={() => this.props.showLogoAndSignatureModal()}
+            >
               <Icon type="right" />
               Logo ve İmza
             </Menu.Item>
-            <Menu.Item key="5" onClick={() => this.props.showHtmlPreviewModal()}>
+            <Menu.Item
+              key="5"
+              onClick={() => this.props.showHtmlPreviewModal()}
+            >
               <Icon type="right" />
               Tema Seçimi
             </Menu.Item>
           </Menu>
         </Layout.Sider>
         <Layout>
-          <Layout.Header style={{ margin: 12, background: '#fff' }}>
-            <div style={{ float: 'right' }}>
+          <Layout.Header style={{ margin: 12, background: "#fff" }}>
+            <div style={{ float: "right" }}>
               <Button.Group>
                 <Button type="danger" icon="cloud">
                   YENILE
@@ -62,8 +74,10 @@ class App extends React.Component<IProps> {
               </Button.Group>
             </div>
           </Layout.Header>
-          <Layout.Content style={{ margin: 12, padding: 12, background: '#fff' }}>
-            <HtmlContent />
+          <Layout.Content
+            style={{ margin: 12, padding: 12, background: "#fff" }}
+          >
+            <HtmlContent html="<b>Firma Adı : {{COMPANYNAME}}</b>" />
           </Layout.Content>
         </Layout>
       </Layout>
@@ -76,7 +90,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   showBankInfoModal: () => dispatch(showBankInfoModal()),
   showDocumentNotesModal: () => dispatch(showDocumentNotesModal()),
   showLogoAndSignatureModal: () => dispatch(showLogoAndSignatureModal()),
-  showHtmlPreviewModal: () => dispatch(showHtmlPreviewModal())
+  showHtmlPreviewModal: () => dispatch(showTemplateSelectorModal())
 });
 
 export default connect(
