@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
 interface IProps {
   html: string;
@@ -19,7 +19,7 @@ class HtmlContent extends PureComponent<AllProps> {
           height="100%"
           scrolling="yes"
           seamless
-          srcDoc={this.props.html.replace("{{COMPANYNAME}}", "TEST AŞ.")}
+          srcDoc={this.props.html}
         />
       </React.Fragment>
     );

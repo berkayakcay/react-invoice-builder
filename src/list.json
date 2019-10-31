@@ -1,5 +1,4 @@
-[
-    {
+[{
         "type": "EARCHIVE",
         "title": "TEMA 1",
         "description": "Bu teme kırmızı sevenler için gelsin",
@@ -16,5 +15,11 @@
         "title": "TEMA 3",
         "description": "Bu teme pembe sevenler için gelsin",
         "path": "templates/EArchive/Third/"
+    },
+    {
+        "type": "EARCHIVE",
+        "title": "TEMA 4",
+        "description": "Bu teme mor sevenler için gelsin",
+        "path": "templates/EArchive/Fourth/"
     }
 ]
