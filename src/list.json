@@ -21,5 +21,17 @@
         "title": "TEMA 4",
         "description": "Bu teme mor sevenler için gelsin",
         "path": "templates/EArchive/Fourth/"
+    },
+    {
+        "type": "EARCHIVE",
+        "title": "TEMA 5",
+        "description": "Bu teme eflatun sevenler için gelsin",
+        "path": "templates/EArchive/Fifth/"
+    },
+    {
+        "type": "EARCHIVE",
+        "title": "TEMA 6",
+        "description": "Bu teme bej sevenler için gelsin",
+        "path": "templates/EArchive/Sixth/"
     }
 ]

@@ -43,7 +43,6 @@ class TemplateSelectorModal extends Component<AllProps> {
   render() {
     const onSelected = (path: string) => {
       var htmlPath = path + 'default.html';
-      console.log('DOSYA OKUNACAK VE YAZILACAK : ' + htmlPath);
       var text = readTextFile(htmlPath);
       var replacedText = replateWithParameters(text);
 
