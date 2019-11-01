@@ -222,11 +222,10 @@
 
 				<title>e-Fatura</title>
 			</head>
-			<body
-				style="margin-left=0.6in; margin-right=0.6in; margin-top=0.79in; margin-bottom=0.79in;width:960px;">
+			<body>
 				<xsl:for-each select="$XML">
-					<table style="border-color:blue;width:960px;" border="0" cellspacing="0"
-						width="960" cellpadding="0">
+					<table style="border-color:blue;width:800px;" border="0" cellspacing="0"
+						width="800" cellpadding="0">
 						<tbody>
 							<tr valign="top">
 								<td width="40%" align="center">
@@ -811,7 +810,7 @@
 							</tr>
 							<tr align="left">
 
-								<table id="ettnTable" width="960">
+								<table id="ettnTable" width="800">
 									<tr>
 										<td align="left" width="50%" valign="bottom">
 
@@ -845,7 +844,7 @@
 							<xsl:text>&#160;</xsl:text>
 						</span>
 					</div>
-					<table border="1" id="lineTable" width="960">
+					<table border="1" id="lineTable" width="800">
 						<tbody>
 							<tr id="lineTableTr">
 								<td class="lineTableTd" align="center" width="20%">
@@ -895,7 +894,7 @@
 					<tr>
 						<td>
 
-							<table class="budgetContainerTable" width="620" style="width:620px;">
+							<table class="budgetContainerTable" width="460" style="width:460px;">
 								<tr class="budgetContainerTr">
 									<td>
 
@@ -1011,9 +1010,9 @@
 					</tr>
 				</table>
 
-				<table class="notesTable" width="960" align="left" height="50" cellpadding="2"
+				<table class="notesTable" width="800" align="left" height="50" cellpadding="2"
 					cellspacing="2"
-					style="margin-top:10px;margin-bottom:10px;width:960px;text-align:left;">
+					style="margin-top:10px;margin-bottom:10px;width:800px;text-align:left;">
 					<tr>
 						<td id="notesTableTd">
 

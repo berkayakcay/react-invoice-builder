@@ -2,36 +2,36 @@
         "type": "EARCHIVE",
         "title": "TEMA 1",
         "description": "Bu teme kırmızı sevenler için gelsin",
-        "path": "templates/EArchive/First/"
+        "path": "templates/EArchive/I/"
     },
     {
         "type": "EARCHIVE",
         "title": "TEMA 2",
         "description": "Bu teme mavi sevenler için gelsin",
-        "path": "templates/EArchive/Second/"
+        "path": "templates/EArchive/II/"
     },
     {
         "type": "EARCHIVE",
         "title": "TEMA 3",
         "description": "Bu teme pembe sevenler için gelsin",
-        "path": "templates/EArchive/Third/"
+        "path": "templates/EArchive/III/"
     },
     {
         "type": "EARCHIVE",
         "title": "TEMA 4",
         "description": "Bu teme mor sevenler için gelsin",
-        "path": "templates/EArchive/Fourth/"
+        "path": "templates/EArchive/IV/"
     },
     {
         "type": "EARCHIVE",
         "title": "TEMA 5",
         "description": "Bu teme eflatun sevenler için gelsin",
-        "path": "templates/EArchive/Fifth/"
+        "path": "templates/EArchive/V/"
     },
     {
         "type": "EARCHIVE",
         "title": "TEMA 6",
         "description": "Bu teme bej sevenler için gelsin",
-        "path": "templates/EArchive/Sixth/"
+        "path": "templates/EArchive/VI/"
     }
 ]

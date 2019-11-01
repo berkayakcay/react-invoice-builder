@@ -307,8 +307,7 @@
         </style>
         <title>e-Fatura</title>
       </head>
-      <body
-				style="margin-left=0.6in; margin-right=0.6in; margin-top=0.79in; margin-bottom=0.79in">
+      <body>
         <xsl:for-each select="$XML">
           <table style="border-color:blue; " border="0" cellspacing="0px" width="800"
 						cellpadding="0px">
