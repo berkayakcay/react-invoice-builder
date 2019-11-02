@@ -2,7 +2,7 @@ import { TemplateModel } from '../../common/models';
 
 export const initialState: TemplateSelectorState = {
   selected: {
-    Theme: ''
+    TemplateHtml: ''
   }
 };
 
@@ -16,5 +16,5 @@ export interface TemplateSelectorState {
 
 export enum TemplateSelectorActionTypes {
   SHOW_TEMPLATE_SELECTOR_MODAL = 'SHOW_TEMPLATE_SELECTOR_MODAL',
-  SELECTED_TEMPLATE = 'SELECTED_TEMPLATE'
+  SET_SELECTED_TEMPLATE = 'SET_SELECTED_TEMPLATE'
 }

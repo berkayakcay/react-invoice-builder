@@ -1,11 +1,11 @@
-import { Button, Col, Modal, Row } from 'antd';
-import 'antd/lib/timeline/style/index.css';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import list from '../../../../list.json';
-import { selectedTemplate } from '../../actions';
-import ThemeCard from '../Cards/ThemeCard';
+import { Button, Col, Modal, Row } from "antd";
+import "antd/lib/timeline/style/index.css";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import list from "../../../../list.json";
+import { setSelectedTemplate } from "../../actions";
+import ThemeCard from "../Cards/ThemeCard";
 
 interface IProps {
   open: boolean;
@@ -13,20 +13,20 @@ interface IProps {
 }
 
 interface IPropsFromDispatch {
-  selectedTemplate: typeof selectedTemplate;
+  setSelectedTemplate: typeof setSelectedTemplate;
 }
 
 type AllProps = IProps & IPropsFromDispatch;
 
 function readTextFile(path: string) {
-  var allText = '';
+  var allText = "";
   var rawFile = new XMLHttpRequest();
-  rawFile.open('GET', path, false);
+  rawFile.open("GET", path, false);
   rawFile.onreadystatechange = function() {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
         allText = rawFile.responseText;
-        console.log('allText', allText);
+        console.log("allText", allText);
       }
     }
   };
@@ -34,19 +34,14 @@ function readTextFile(path: string) {
   return allText;
 }
 
-function replateWithParameters(text: string) {
-  // REPLACE işlemleri gerçekleştilecek
-  return text.replace('{{COMPANTINFO.NAME}}', 'companyinfo.name');
-}
-
 class TemplateSelectorModal extends Component<AllProps> {
   render() {
     const onSelected = (path: string) => {
-      var htmlPath = path + 'default.html';
+      var htmlPath = path + "default.html";
       var text = readTextFile(htmlPath);
-      var replacedText = replateWithParameters(text);
+      var replacedText = text;
 
-      this.props.selectedTemplate(text);
+      this.props.setSelectedTemplate(text);
     };
 
     return (
@@ -58,7 +53,12 @@ class TemplateSelectorModal extends Component<AllProps> {
         width={800}
         visible={this.props.open}
         footer={[
-          <Button key="ok" type="primary" icon="check" onClick={() => this.props.close()}>
+          <Button
+            key="ok"
+            type="primary"
+            icon="check"
+            onClick={() => this.props.close()}
+          >
             TAMAM
           </Button>
         ]}
@@ -66,7 +66,9 @@ class TemplateSelectorModal extends Component<AllProps> {
         <div className="gutter-example">
           <Row gutter={16} style={{ marginBottom: 20 }}>
             <Col className="gutter-row">
-              <strong>Tema Seçimi Yaptıktan Sonra "Tamam" Butonuna Tıklayabilirsiniz.</strong>
+              <strong>
+                Tema Seçimi Yaptıktan Sonra "Tamam" Butonuna Tıklayabilirsiniz.
+              </strong>
             </Col>
           </Row>
 
@@ -76,7 +78,7 @@ class TemplateSelectorModal extends Component<AllProps> {
               <Col className="gutter-row">
                 <ThemeCard
                   type={x.type}
-                  image={x.path + 'default.jpg'}
+                  image={x.path + "default.jpg"}
                   title={x.title}
                   description={x.description}
                   onClick={() => onSelected(x.path)}
@@ -86,9 +88,10 @@ class TemplateSelectorModal extends Component<AllProps> {
           </Row>
 
           <Row gutter={16} style={{ marginTop: 20 }}>
-            <Col style={{ textAlign: 'center' }} className="gutter-row">
-              <strong style={{ color: '#de0000' }}>Not:</strong> Özel Tasarım Yaptırmak İçin (0216 688 51 00) Nolu
-              Telefonu Arayarak Satış Temsilcimiz İle Görüşebilirsiniz!
+            <Col style={{ textAlign: "center" }} className="gutter-row">
+              <strong style={{ color: "#de0000" }}>Not:</strong> Özel Tasarım
+              Yaptırmak İçin (0216 688 51 00) Nolu Telefonu Arayarak Satış
+              Temsilcimiz İle Görüşebilirsiniz!
             </Col>
           </Row>
         </div>
@@ -100,7 +103,7 @@ class TemplateSelectorModal extends Component<AllProps> {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  selectedTemplate: (params: string) => dispatch(selectedTemplate(params))
+  setSelectedTemplate: (params: string) => dispatch(setSelectedTemplate(params))
 });
 
 export default connect(

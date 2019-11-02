@@ -56,7 +56,7 @@ export interface BankInfoModel {
 }
 
 export interface TemplateModel {
-  Theme: string;
+  TemplateHtml: string;
 }
 
 export interface ProductModel {

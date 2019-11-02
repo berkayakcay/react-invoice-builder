@@ -3,4 +3,4 @@ import { TemplateSelectorActionTypes } from './types';
 
 export const showTemplateSelectorModal = () => action(TemplateSelectorActionTypes.SHOW_TEMPLATE_SELECTOR_MODAL);
 
-export const selectedTemplate = (payload: string) => action(TemplateSelectorActionTypes.SELECTED_TEMPLATE, payload);
+export const setSelectedTemplate = (payload: string) => action(TemplateSelectorActionTypes.SET_SELECTED_TEMPLATE, payload);
