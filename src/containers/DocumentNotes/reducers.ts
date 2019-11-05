@@ -9,7 +9,7 @@ const reducer: Reducer<NotesState> = (state = initialState, action) => {
     case DocumentNotesActionTypes.ADD_DOCUMENTNOTES: {
       return {
         ...state,
-        notes: action.payload
+        notes: [...state.notes, action.payload]
       };
     }
     default:

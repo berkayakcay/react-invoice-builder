@@ -198,34 +198,67 @@
 		#footer td {
 			padding: 1px;
 		}
+
+		#bankaHesap {
+			border-collapse: collapse;
+			border: 1px solid #ccc;
+			padding: 3px
+		}
+
+		#bankaHesap td,
+		#bankaHesap th {
+			text-align: left;
+			border: 1px solid #ccc;
+			padding: 3px
+		}
+
+		#bankaHesap tr:first-child th {
+			border-top: 0;
+		}
+
+		#bankaHesap tr:last-child td {
+			border-bottom: 0;
+		}
+
+		#bankaHesap tr td:first-child,
+		#bankaHesap tr th:first-child {
+			border-left: 0;
+		}
+
+		#bankaHesap tr td:last-child,
+		#bankaHesap tr th:last-child {
+			border-right: 0;
+		}
 	</style>
 </head>
 
 <body style="margin-left:15px">
 	<div id="a4">
-		<table border="0" cellspacing="0" cellpadding="0">
+		<table border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
 			<tr valign="top">
-				<td width="400" align="left" height="70"><br><b>
-						<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;NES BİLGİ VERİ
-							TEKNOLOJİLERİ VE SAKLAMA HİZMETLERİ A.Ş.</font>
+				<td width="400" align="left" height="100"><br><b>
+						<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;
+							{{COMPANYINFO.NAME}}
+						</font>
 					</b><br>
-					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Barbaros Mah. Ak Zambak Sok
-						Uphill Towers A Blok Kat:16 No:92 <br>&nbsp;&nbsp;&nbsp;&nbsp;Ataşhir/İSTANBUL</font><br>
-					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Tel: 0216 688 51 00</font><br>
-					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Vergi Dairesi: Kozyatağı
-						VKN: 2222222222</font><br>
-					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Tic. Sic. No: 3333333333 Mersis
+					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;
+						{{COMPANYINFO.ADDRESS}} <br>&nbsp;&nbsp;&nbsp;&nbsp;
+						{{COMPANYINFO.DISTRICH}}-{{COMPANYINFO.CITY}}
+						{{COMPANYINFO.COUNTRY}}</font><br>
+					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Tel:
+						{{COMPANYINFO.PHONE}} Fax: {{COMPANYINFO.FAX}}</font><br>
+					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Vergi Dairesi:
+						{{COMPANYINFO.TAXOFFICE}}
+						VKN: {{COMPANYINFO.REGISTERNUMBER}}</font><br>
+					<font color="blue" align="left" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;Tic. Sic. No:
+						{{COMPANYINFO.TRADEREGISTERNUMBER}} Mersis
 						No:
-						5555555555</font><br>
+						{{COMPANYINFO.MERSISNUMBER}}</font><br>
+
 				</td>
-				<td width="400" align="right" height="70"><img align="right" src="" border="0"></td>
-			</tr>
-		</table>
-		<table border="0" cellspacing="0" cellpadding="0">
-			<tr valign="top">
-				<td width="100%" font-size="8px" height="15"></td>
-				<td width="15%" align="left">
-					<table border="0" cellspacing="0" cellpadding="0" width="100%"></table>
+				<td width="400" align="right" height="100">
+					<img style="width: 100px;" align="right" src="{{LOGO}}" border="0">
+					<img style="width: 70px; margin-right: 50px;" align="right" src="{{IMZA}}" border="0">
 				</td>
 			</tr>
 		</table>
@@ -351,11 +384,28 @@
 		<table id="notesTable" width="800" align="left" height="100">
 			<tbody>
 				<tr align="left">
-					<td id="notesTableTd"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not: </b>YALNIZ BİNYÜZYİRMİDÖRT TL.
-						DOKSANSEKİZ KR.<br></td>
+					<td id="notesTableTd"><b>Not: </b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br></td>
 				</tr>
+				{{NOTES.DOCUMENTNOTES}}
 			</tbody>
 		</table><br>
+
+		<table id="bankaHesap" style="width:800px; margin-top:10px">
+			<thead>
+				<tr>
+					<th>Banka Adı</th>
+					<th>Şube</th>
+					<th style="width:30px">Şube Kodu</th>
+					<th>Hesap Türü</th>
+					<th>TL Hesap No</th>
+					<th>TL Hesap Iban</th>
+					<th>Hesap Adı</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{BANKINFO}}
+			</tbody>
+		</table>
 	</div>
 </body>
 

@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { TemplateSelectorActionTypes, TemplateSelectorState, initialState } from './types';
+import { initialState, TemplateSelectorActionTypes, TemplateSelectorState } from './types';
 
 const reducer: Reducer<TemplateSelectorState> = (state = initialState, action) => {
   switch (action.type) {

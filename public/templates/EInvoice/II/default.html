@@ -57,13 +57,7 @@ span.span_satir_miktar span{ display:inline !important; }
 .row_banka_cap4{ display: inline-block; width:350px;   }
 .row_banka{ margin-bottom:5px;   }
 .row_banka_sep{ display: inline-block; width:10px; }
-.fatura_not_container_w_box{ 
-	border:1px solid #2c4e73; padding:8px; border-radius:6px; margin-top:4px;
-	overflow: visible;
-    overflow-wrap: break-word; 
-    word-wrap: break-word;
-    max-width: 780px;
-}
+
 .efatura_text{ text-align: center; color:#bbbbbb; font-size:12px; }
 div.irsaliye_item_container{ margin-top:14px; margin-bottom:10px; display: block; visibility: visible; }
 span.alt_irsaliye_item{ padding:4px; margin-right:3px; border:1px solid #dddddd; background:#eeeeee;  margin-top:10px; display: inline-block; }
@@ -100,6 +94,62 @@ tr.earsiv_iade_odd{ background:#eeeeee; }
    background: #2c4e73;
    color:#ffffff;
 }
+
+.fatura_not_container_w_box{ 
+	border:1px solid #2c4e73; padding:5px; border-radius:6px; margin-top:4px;
+	overflow: visible;
+    overflow-wrap: break-word; 
+    word-wrap: break-word;
+    max-width: 800px;
+}
+
+		#bankaHesap td,
+		#bankaHesap th {
+			text-align: left;
+			padding: 3px
+		}
+
+		#bankaHesap tr:first-child th {
+			border-top: 0;
+		}
+
+		#bankaHesap tr:last-child td {
+			border-bottom: 0;
+		}
+
+		#bankaHesap tr td:first-child,
+		#bankaHesap tr th:first-child {
+			border-left: 0;
+		}
+
+		#bankaHesap tr td:last-child,
+		#bankaHesap tr th:last-child {
+			border-right: 0;
+		}
+
+		#bankaHesap td,
+		#bankaHesap th {
+			text-align: left;
+			padding: 3px
+		}
+
+		#bankaHesap tr:first-child th {
+			border-top: 0;
+		}
+
+		#bankaHesap tr:last-child td {
+			border-bottom: 0;
+		}
+
+		#bankaHesap tr td:first-child,
+		#bankaHesap tr th:first-child {
+			border-left: 0;
+		}
+
+		#bankaHesap tr td:last-child,
+		#bankaHesap tr th:last-child {
+			border-right: 0;
+		}
 
 tr.tr_baslik td:last-child, tr.satir td:last-child {    border-right:0px none; } 
 .kolon_baslik span{
@@ -140,14 +190,14 @@ tr.even{
                 <tr>
                     <td colspan="3">
                         <div>
-                            <img src="" style="width: 100px; height:100px;" class="logo" border="1">
+                            <img src="{{LOGO}}" style="width: 100px; height:100px;" class="logo" border="1">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="firma_adi">NES BİLGİ VERİ TEKNOLOJİLERİ VE SAKLAMA HİZMETLERİ A.Ş.</div>
-                        <div class="firma_adresi">Barbaros Mah. Ak Zambak Sok Uphill Towers A Blok Kat:16 No:92   34746 <br/>Ataşehir / İstanbul</div>
+                        <div class="firma_adi">{{COMPANYINFO.NAME}}</div>
+                        <div class="firma_adresi">{{COMPANYINFO.ADDRESS}}   34746 <br/>{{COMPANYINFO.DISTRICH}} / {{COMPANYINFO.CITY}} / {{COMPANYINFO.COUNTRY}}</div>
                         <div class="cerceve_ust">
                             <div class="pad6px">
                                 <span class="cerceve_box corner_tl"></span>
@@ -182,6 +232,11 @@ tr.even{
                             </div>
                             <div class="efatura_text">E-FATURA</div>
                         </div>
+                        <div>
+                            <div class="gib_logo_container">
+                                <img style="width: 100px; height: 100px; margin-top: 10px;" src="{{IMZA}}" alt="İMZA"  border="0">
+                            </div>
+                        </div>
                     </td>
                     <td>
                         <div class="cerceve">
@@ -190,40 +245,42 @@ tr.even{
                                     <div>
                                         <span class="pair_key">Vergi No</span>
                                         <span class="pair_seperator">:</span>
-                                        <span class="pair_value">2222222222</span>
+                                        <span class="pair_value">{{COMPANYINFO.REGISTERNUMBER}}</span>
                                     </div>
                                     <div>
                                         <span class="pair_key">Vergi Dairesi</span>
                                         <span class="pair_seperator">:</span>
-                                        <span class="pair_value">Ataşehir</span>
+                                        <span class="pair_value">{{COMPANYINFO.TAXOFFICE}}</span>
                                     </div>
                                     <div>
                                         <span class="pair_key">Ticaret Sicil No</span>
                                         <span class="pair_seperator">:</span>
-                                        <span class="pair_value">4444444444</span>
+                                        <span class="pair_value">{{COMPANYINFO.TRADEREGISTERNUMBER}}</span>
                                     </div>
                                     <div>
                                         <span class="pair_key">Mersis No</span>
                                         <span class="pair_seperator">:</span>
-                                        <span class="pair_value">3333333333</span>
+                                        <span class="pair_value">{{COMPANYINFO.MERSISNUMBER}}</span>
                                     </div>
                                 </div>
-                                <div class="firma_tel"><div>
+                                <div class="firma_tel">
+                                    <div>
                                     <span class="pair_key">Tel</span>
                                     <span class="pair_seperator">:</span>
-                                    <span class="pair_value">+ 90 216 688 51 00</span>
+                                    <span class="pair_value">{{COMPANYINFO.PHONE}}</span>
                                 </div>
-                                <div>
-                                    <span class="pair_key">E-Posta</span>
+                                </div>
+                                <div class="firma_tel">
+                                    <div>
+                                    <span class="pair_key">Tel</span>
                                     <span class="pair_seperator">:</span>
-                                    <span class="pair_value">
-                                        <a href="mailto:destek@nesbilgi.com.tr">destek@nesbilgi.com.tr</a>
-                                    </span>
+                                    <span class="pair_value">{{COMPANYINFO.FAX}}</span>
                                 </div>
+                            </div>
                                 <div>
                                     <span class="pair_key">İnternet Sitesi</span><span class="pair_seperator">:</span>
                                     <span class="pair_value">
-                                        <a href="http://www.nesbilgi.com.tr">www.nesbilgi.com.tr</a>
+                                        <a href="http://www.nesbilgi.com.tr">{{COMPANYINFO.WEBSITE}}</a>
                                     </span>
                                 </div>
                             </div>
@@ -394,11 +451,31 @@ tr.even{
         </tr>
     </tbody>
 </table>
-<div class="fatura_not_container_w_box"> İş  bu  faturadaki mal  alıcıya iş yerinde teslim edildiğinden 213 sayılı V.U.K.nun 230/5. maddesi gereğince sevk irsaliyesi düzenlenmemiştir.
-                                    <br>  Fiş Düzenlenme Saati =  12:24:19<br></div>
-                                    <div class="fatura_not_container_w_box">
-                                        <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Genel Açıklamalar</b><br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>##PaymentUrl##http://google.com<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>Kargo Takip Kodu : dgfdhdshh<br>
-                                    </div>
-                                </div>
-                            </body>
-                            </html>
+<table class="fatura_not_container_w_box" width="800" style="margin-bottom: 10px;" align="left">
+    <tbody>
+        <tr align="left">
+            <td id="notesTableTd"><b>Not: </b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br></td>
+        </tr>
+        {{NOTES.DOCUMENTNOTES}}
+    </tbody>
+</table><br/>
+
+<table id="bankaHesap" class="fatura_not_container_w_box" style="width:800px;">
+    <thead>
+        <tr>
+            <th>Banka Adı</th>
+            <th>Şube</th>
+            <th style="width:60px">Şube Kodu</th>
+            <th>Hesap Türü</th>
+            <th>TL Hesap No</th>
+            <th>TL Hesap Iban</th>
+            <th>Hesap Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{BANKINFO}}
+    </tbody>
+</table>
+</div>
+</body>
+</html>

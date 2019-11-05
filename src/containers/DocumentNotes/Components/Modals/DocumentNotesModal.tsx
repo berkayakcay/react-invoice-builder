@@ -9,7 +9,7 @@ import { addDocumentNotes } from '../../actions';
 import { NotesStateType } from '../../types';
 
 interface IProps {
-  notes: DocumentNotesModel;
+  notes: Array<DocumentNotesModel>;
   open: boolean;
   close: () => void;
 }
@@ -55,13 +55,11 @@ class DocumentNotesModal extends Component<AllProps> {
         <Form>
           <Form.Item hasFeedback label="1.Not Alanı">
             {getFieldDecorator('firstNote', {
-              initialValue: this.props.notes.firstNote,
               rules: [{ required: false }]
             })(<TextArea placeholder="İlk Notunuzu Buraya Yazabilirsiniz" style={{ height: 50 }} />)}
           </Form.Item>
           <Form.Item hasFeedback label="2.Not Alanı">
             {getFieldDecorator('secondNote', {
-              initialValue: this.props.notes.secondNote,
               rules: [{ required: false }]
             })(
               <TextArea placeholder="İkinci Notunuzu Buraya Yazabilirsiniz" className="custom" style={{ height: 50 }} />
@@ -69,7 +67,6 @@ class DocumentNotesModal extends Component<AllProps> {
           </Form.Item>
           <Form.Item hasFeedback label="3.Not Alanı">
             {getFieldDecorator('thirdNote', {
-              initialValue: this.props.notes.thirdNote,
               rules: [{ required: false }]
             })(
               <TextArea placeholder="Üçüncü Notunuzu Buraya Yazabilirsiniz" className="custom" style={{ height: 50 }} />

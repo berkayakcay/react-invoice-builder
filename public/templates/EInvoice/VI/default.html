@@ -184,6 +184,37 @@
 			border-collapse: collapse;
 			background-color: #FFF;
 		}
+
+		#bankaHesap {
+			border-collapse: collapse;
+			border: 1px solid #ccc;
+			padding: 3px
+		}
+
+		#bankaHesap td,
+		#bankaHesap th {
+			text-align: left;
+			border: 1px solid #ccc;
+			padding: 3px
+		}
+
+		#bankaHesap tr:first-child th {
+			border-top: 0;
+		}
+
+		#bankaHesap tr:last-child td {
+			border-bottom: 0;
+		}
+
+		#bankaHesap tr td:first-child,
+		#bankaHesap tr th:first-child {
+			border-left: 0;
+		}
+
+		#bankaHesap tr td:last-child,
+		#bankaHesap tr th:last-child {
+			border-right: 0;
+		}
 	</style>
 	<title>e-Fatura</title>
 </head>
@@ -192,30 +223,40 @@
 	<table style="border-color:blue;width:800px;" border="0" cellspacing="0" width="800" cellpadding="0">
 		<tbody>
 			<tr valign="top">
-				<td width="40%" align="center"><img style="width:100px;height:100px;" align="middle" src="">
+				<td width="40%" align="center">
+					<img style="width:130px;height:130px;" align="middle" src="{{LOGO}}">
 					<table align="center" border="0" width="100%">
 						<tbody>
 							<tr align="center" valign="top">
-								<td><br><strong>NES BİLGİ VERİ TEKNOLOJİLERİ VE SAKLAMA HİZMETLERİ A.Ş.</strong><br>
+								<td>
+									<br><strong>{{COMPANYINFO.NAME}}</strong><br>
 								</td>
 							</tr>
 							<tr align="center" valign="top">
-								<td>Barbaros Mah. Ak Zambak Sok Uphill Towers A Blok Kat:16
-									No:9&nbsp;&nbsp;&nbsp;34500&nbsp;Ataşehir&nbsp;/&nbsp;İSTANBUL<br></td>
+								<td>{{COMPANYINFO.ADDRESS}}&nbsp;&nbsp;&nbsp;34500&nbsp;{{COMPANYINFO.DISTRICH}}-{{COMPANYINFO.CITY}}
+									/ {{COMPANYINFO.COUNTRY}}<br></td>
 							</tr>
 							<tr align="center" valign="top">
-								<td>+90 216 688 51 00&nbsp;</td>
+								<td>Tel: {{COMPANYINFO.PHONE}} Fax: {{COMPANYINFO.FAX}}</td>
 							</tr>
 							<tr align="center" valign="top">
-								<td>Vergi Dairesi: Kozyatağı</td>
+								<td>Vergi Dairesi: {{COMPANYINFO.TAXOFFICE}}</td>
 							</tr>
 							<tr align="center" valign="top">
 								<td><span>Vergi Numarası:
-										2222222222
+										{{COMPANYINFO.REGISTERNUMBER}}
 									</span></td>
 							</tr>
 							<tr align="center" valign="top">
-								<td>Web Sitesi: www.nesbilgi.com.tr</td>
+								<td>
+									<span>
+										Mersis No: {{COMPANYINFO.MERSISNUMBER}} - Ticaet Sicil No:
+										{{COMPANYINFO.TRADEREGISTERNUMBER}}
+									</span>
+								</td>
+							</tr>
+							<tr align="center" valign="top">
+								<td>Web Sitesi: {{COMPANYINFO.WEBSITE}}</td>
 							</tr>
 							<tr align="center" valign="top">
 								<td></td>
@@ -223,7 +264,9 @@
 						</tbody>
 					</table>
 				</td>
-				<td width="20%"></td>
+				<td width="20%" align="center">
+					<img style="width:75px;height:75px; margin-top: 130px;" align="center" src="{{IMZA}}">
+				</td>
 				<td width="40%" align="center" valign="middle" rowspan="2">
 					<table width="100%" id="despatchTable" border="1">
 						<tr align="left">
@@ -376,19 +419,29 @@
 	</table>
 	<table class="notesTable" width="800" align="left" height="50" cellpadding="2" cellspacing="2"
 		style="margin-top:10px;margin-bottom:10px;width:800px;text-align:left;">
-		<tr>
-			<td id="notesTableTd">
-				<table style="width:100%;text-align:left;float:left;" width="100%" align="left" cellpadding="2"
-					cellspacing="2"></table>
-				<div class="clear"></div>
-				<table style="width:100%;text-align:left;float:left;" width="100%" align="left" cellpadding="2"
-					cellspacing="2"></table>
-				<div class="clear"></div>
-				<div style="width:100%;text-align:left;float:left;"> Yalnız ONİKİBİNALTIYÜZKIRKDOKUZ TL ALTMIŞYEDİ
-					Kr<br></div>
-				<div class="clear"></div>
-			</td>
-		</tr>
+		<tbody>
+			<tr align="left">
+				<td id="notesTableTd"><b>Not: </b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br></td>
+			</tr>
+			{{NOTES.DOCUMENTNOTES}}
+		</tbody>
+	</table>
+
+	<table id="bankaHesap" style="width:800px; margin-top:10px">
+		<thead>
+			<tr>
+				<th>Banka Adı</th>
+				<th>Şube</th>
+				<th style="width:30px">Şube Kodu</th>
+				<th>Hesap Türü</th>
+				<th>TL Hesap No</th>
+				<th>TL Hesap Iban</th>
+				<th>Hesap Adı</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{BANKINFO}}
+		</tbody>
 	</table>
 </body>
 

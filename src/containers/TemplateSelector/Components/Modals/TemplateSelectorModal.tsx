@@ -1,11 +1,11 @@
-import { Button, Col, Modal, Row } from "antd";
-import "antd/lib/timeline/style/index.css";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import list from "../../../../list.json";
-import { setSelectedTemplate } from "../../actions";
-import ThemeCard from "../Cards/ThemeCard";
+import { Button, Col, List, Modal, Row } from 'antd';
+import 'antd/lib/timeline/style/index.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import list from '../../../../list.json';
+import { setSelectedTemplate } from '../../actions';
+import ThemeCard from '../Cards/ThemeCard';
 
 interface IProps {
   open: boolean;
@@ -19,14 +19,14 @@ interface IPropsFromDispatch {
 type AllProps = IProps & IPropsFromDispatch;
 
 function readTextFile(path: string) {
-  var allText = "";
+  var allText = '';
   var rawFile = new XMLHttpRequest();
-  rawFile.open("GET", path, false);
+  rawFile.open('GET', path, false);
   rawFile.onreadystatechange = function() {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
         allText = rawFile.responseText;
-        console.log("allText", allText);
+        console.log('allText', allText);
       }
     }
   };
@@ -37,9 +37,10 @@ function readTextFile(path: string) {
 class TemplateSelectorModal extends Component<AllProps> {
   render() {
     const onSelected = (path: string) => {
-      var htmlPath = path + "default.html";
+      var htmlPath = path + 'default.html';
       var text = readTextFile(htmlPath);
       var replacedText = text;
+      console.log('replacedText', replacedText);
 
       this.props.setSelectedTemplate(text);
     };
@@ -50,15 +51,10 @@ class TemplateSelectorModal extends Component<AllProps> {
         onCancel={() => {
           this.props.close();
         }}
-        width={800}
+        width={700}
         visible={this.props.open}
         footer={[
-          <Button
-            key="ok"
-            type="primary"
-            icon="check"
-            onClick={() => this.props.close()}
-          >
+          <Button key="ok" type="primary" icon="check" onClick={() => this.props.close()}>
             TAMAM
           </Button>
         ]}
@@ -66,32 +62,34 @@ class TemplateSelectorModal extends Component<AllProps> {
         <div className="gutter-example">
           <Row gutter={16} style={{ marginBottom: 20 }}>
             <Col className="gutter-row">
-              <strong>
-                Tema Seçimi Yaptıktan Sonra "Tamam" Butonuna Tıklayabilirsiniz.
-              </strong>
+              <strong>Tema Seçimi Yaptıktan Sonra "Tamam" Butonuna Tıklayabilirsiniz.</strong>
             </Col>
           </Row>
 
           {/* TODO Tema'lar 2x yada 3x satırlar şeklinde listelenecek */}
+
           <Row gutter={16} style={{ marginBottom: 20 }}>
-            {list.map((x, index) => (
-              <Col className="gutter-row">
-                <ThemeCard
-                  type={x.type}
-                  image={x.path + "default.jpg"}
-                  title={x.title}
-                  description={x.description}
-                  onClick={() => onSelected(x.path)}
-                />
-              </Col>
-            ))}
+            <List
+              grid={{ gutter: 16, column: 2 }}
+              dataSource={list}
+              renderItem={item => (
+                <List.Item>
+                  <ThemeCard
+                    type={item.type}
+                    image={item.path + 'default.jpg'}
+                    title={item.title}
+                    description={item.description}
+                    onClick={() => onSelected(item.path)}
+                  />
+                </List.Item>
+              )}
+            />
           </Row>
 
           <Row gutter={16} style={{ marginTop: 20 }}>
-            <Col style={{ textAlign: "center" }} className="gutter-row">
-              <strong style={{ color: "#de0000" }}>Not:</strong> Özel Tasarım
-              Yaptırmak İçin (0216 688 51 00) Nolu Telefonu Arayarak Satış
-              Temsilcimiz İle Görüşebilirsiniz!
+            <Col style={{ textAlign: 'center' }} className="gutter-row">
+              <strong style={{ color: '#de0000' }}>Not:</strong> Özel Tasarım Yaptırmak İçin (0216 688 51 00) Nolu
+              Telefonu Arayarak Satış Temsilcimiz İle Görüşebilirsiniz!
             </Col>
           </Row>
         </div>

@@ -1,37 +1,37 @@
 [{
-        "type": "EARCHIVE",
+        "type": "EINVOICE",
         "title": "TEMA 1",
         "description": "Bu teme kırmızı sevenler için gelsin",
-        "path": "templates/EArchive/I/"
+        "path": "templates/EInvoice/I/"
     },
     {
-        "type": "EARCHIVE",
+        "type": "EINVOICE",
         "title": "TEMA 2",
         "description": "Bu teme mavi sevenler için gelsin",
-        "path": "templates/EArchive/II/"
+        "path": "templates/EInvoice/II/"
     },
     {
-        "type": "EARCHIVE",
+        "type": "EINVOICE",
         "title": "TEMA 3",
         "description": "Bu teme pembe sevenler için gelsin",
-        "path": "templates/EArchive/III/"
+        "path": "templates/EInvoice/III/"
     },
     {
-        "type": "EARCHIVE",
+        "type": "EINVOICE",
         "title": "TEMA 4",
         "description": "Bu teme mor sevenler için gelsin",
-        "path": "templates/EArchive/IV/"
+        "path": "templates/EInvoice/IV/"
     },
     {
-        "type": "EARCHIVE",
+        "type": "EINVOICE",
         "title": "TEMA 5",
         "description": "Bu teme eflatun sevenler için gelsin",
-        "path": "templates/EArchive/V/"
+        "path": "templates/EInvoice/V/"
     },
     {
-        "type": "EARCHIVE",
+        "type": "EINVOICE",
         "title": "TEMA 6",
         "description": "Bu teme bej sevenler için gelsin",
-        "path": "templates/EArchive/VI/"
+        "path": "templates/EInvoice/VI/"
     }
 ]

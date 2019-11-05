@@ -319,19 +319,25 @@
                 <td align="left">{{COMPANYINFO.NAME}}<br></td>
               </tr>
               <tr align="left">
-                <td align="left">{{COMPANYINFO.ADDRESS}}<br> {{COMPANYINFO.CITY}} {{COMPANYINFO.COUNTRY}}  </td>
+                <td align="left">{{COMPANYINFO.ADDRESS}}<br> {{COMPANYINFO.CITY}} {{COMPANYINFO.COUNTRY}} </td>
               </tr>
               <tr align="left">
-                <td align="left">Tel: 02166666666 Fax: 02162222222&nbsp;</td>
+                <td align="left">Tel: {{COMPANYINFO.PHONE}} Fax: {{COMPANYINFO.FAX}}</td>
               </tr>
               <tr align="left">
-                <td>Web Sitesi: www.ornek.com</td>
+                <td>Mersis No: {{COMPANYINFO.MERSISNUMBER}}</td>
               </tr>
               <tr align="left">
-                <td align="left">Vergi Dairesi: BEYKOZ&nbsp; </td>
+                <td>Ticaet Sicil No: {{COMPANYINFO.TRADEREGISTERNUMBER}}</td>
               </tr>
               <tr align="left">
-                <td>VKN: 2222222222</td>
+                <td align="left">Vergi Dairesi: {{COMPANYINFO.TAXOFFICE}}</td>
+              </tr>
+              <tr align="left">
+                <td>VKN: {{COMPANYINFO.REGISTERNUMBER}}</td>
+              </tr>
+              <tr align="left">
+                <td>Web Sitesi: {{COMPANYINFO.WEBSITE}}</td>
               </tr>
             </tbody>
           </table>
