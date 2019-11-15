@@ -26,7 +26,6 @@ function readTextFile(path: string) {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
         allText = rawFile.responseText;
-        console.log('allText', allText);
       }
     }
   };
@@ -36,13 +35,18 @@ function readTextFile(path: string) {
 
 class TemplateSelectorModal extends Component<AllProps> {
   render() {
-    const onSelected = (path: string) => {
+    const onSelected = (path: string, xslt: string) => {
       var htmlPath = path + 'default.html';
       var text = readTextFile(htmlPath);
       var replacedText = text;
       console.log('replacedText', replacedText);
 
-      this.props.setSelectedTemplate(text);
+      var xsltPath = xslt + 'default.xslt';
+      var textXslt = readTextFile(xsltPath);
+      var replacedXslt = textXslt;
+      console.log('replacedXslt', replacedXslt);
+
+      this.props.setSelectedTemplate(text, textXslt);
     };
 
     return (
@@ -66,8 +70,6 @@ class TemplateSelectorModal extends Component<AllProps> {
             </Col>
           </Row>
 
-          {/* TODO Tema'lar 2x yada 3x satırlar şeklinde listelenecek */}
-
           <Row gutter={16} style={{ marginBottom: 20 }}>
             <List
               grid={{ gutter: 16, column: 2 }}
@@ -79,7 +81,7 @@ class TemplateSelectorModal extends Component<AllProps> {
                     image={item.path + 'default.jpg'}
                     title={item.title}
                     description={item.description}
-                    onClick={() => onSelected(item.path)}
+                    onClick={() => onSelected(item.path, item.xslt)}
                   />
                 </List.Item>
               )}
@@ -101,10 +103,7 @@ class TemplateSelectorModal extends Component<AllProps> {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setSelectedTemplate: (params: string) => dispatch(setSelectedTemplate(params))
+  setSelectedTemplate: (params: string, xslt: string) => dispatch(setSelectedTemplate(params, xslt))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TemplateSelectorModal);
+export default connect(mapStateToProps, mapDispatchToProps)(TemplateSelectorModal);

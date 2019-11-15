@@ -7,9 +7,10 @@ const reducer: Reducer<TemplateSelectorState> = (state = initialState, action) =
       return { ...state };
     }
     case TemplateSelectorActionTypes.SET_SELECTED_TEMPLATE: {
+      console.log('action', action);
       return {
         ...state,
-        selected: { TemplateHtml: action.payload }
+        selected: { TemplateHtml: action.payload, TemplateXslt: action.meta }
       };
     }
     default:

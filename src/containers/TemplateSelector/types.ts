@@ -2,7 +2,8 @@ import { TemplateModel } from '../../common/models';
 
 export const initialState: TemplateSelectorState = {
   selected: {
-    TemplateHtml: ''
+    TemplateHtml: '',
+    TemplateXslt: ''
   }
 };
 
