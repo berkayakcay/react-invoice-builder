@@ -596,7 +596,40 @@
 					}
 					tr.even{
 					    background: #f5f5f5;
-					}</style>
+					}
+
+		#bankaHesap {
+			border-collapse: collapse;
+			border: 1px solid #ccc;
+			padding: 3px
+		}
+
+		#bankaHesap td,
+		#bankaHesap th {
+			text-align: left;
+			border: 1px solid #ccc;
+			padding: 3px
+		}
+
+		#bankaHesap tr:first-child th {
+			border-top: 0;
+		}
+
+		#bankaHesap tr:last-child td {
+			border-bottom: 0;
+		}
+
+		#bankaHesap tr td:first-child,
+		#bankaHesap tr th:first-child {
+			border-left: 0;
+		}
+
+		#bankaHesap tr td:last-child,
+		#bankaHesap tr th:last-child {
+			border-right: 0;
+		}
+
+					</style>
 			</head>
 			<body>
 
@@ -606,9 +639,7 @@
 							<tr>
 								<td colspan="3">
 									<div>
-										<img
-											src="data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/4QOZaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzQyOERCNDBCNENGMTFFOEFCNzJDNUVBNTA3MEZBQzkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzQyOERCM0ZCNENGMTFFOEFCNzJDNUVBNTA3MEZBQzkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiBXaW5kb3dzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InV1aWQ6ZmFmNWJkZDUtYmEzZC0xMWRhLWFkMzEtZDMzZDc1MTgyZjFiIiBzdFJlZjpkb2N1bWVudElEPSIyMUIyNjFBNkY0MThFOUM0NTVGOTA4MjAzNkVFQzg5OSIvPiA8ZGM6Y3JlYXRvcj4gPHJkZjpTZXE+IDxyZGY6bGk+RVJERU0gQkFTPC9yZGY6bGk+IDwvcmRmOlNlcT4gPC9kYzpj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"
-											class="logo" border="1"/>
+										{{LOGO}}
 									</div>
 
 								</td>
@@ -703,6 +734,11 @@
 										</div>
 										<div class="efatura_text">E-FATURA</div>
 									</div>
+									<div>
+                                        <div class="signature_logo_container" style="margin-top: 10px;">
+                                            {{IMZA}}
+                                        </div>
+                                    </div>
 								</td>
 								<td>
 									<div class="cerceve">
@@ -984,90 +1020,7 @@ belki lazım olur
 
 					</xsl:call-template>
 
-
-					<table border="1" id="cerceve" borderspacing="0" cellpadding="0" class="cerceve">
-						<thead>
-							<tr>
-								<th scope="col" class="satir_mal kolon_baslik" style="width: 250px;"
-									>BANKA ADI</th>
-								<th scope="col" class="satir_mal kolon_baslik" style="width: 80px;"
-									>ŞUBE KODU</th>
-								<th scope="col" class="satir_mal kolon_baslik" style="width: 150px;"
-									>ŞUBE ADI</th>
-								<th scope="col" class="satir_mal kolon_baslik" style="width: 80px;"
-									>DÖVİZ TÜRÜ</th>
-								<th scope="col" class="satir_mal kolon_baslik" style="width: 150px;"
-									>HESAP NO</th>
-								<th scope="col" class="satir_mal kolon_baslik" style="width: 400px;"
-									>IBAN NO</th>
-
-							</tr>
-						</thead>
-						<tbody>
-							<tr height="20">
-								<td id="fatura_not_container_w_box" width="250" align="left">
-									<b>AL BARAKA TÜRK</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>111</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>ATAŞEHİR ŞUBESİ</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>TL</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="150" align="center">
-									<b>111111-1</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="400" align="center">
-									<b>TR11 1111 1111 1111 1111 1111 11</b>
-								</td>
-							</tr>
-
-							<tr height="20">
-								<td id="fatura_not_container_w_box" width="250" align="left">
-									<b>KUVEYT TÜRK</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>111</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>ATAŞEHİR ŞUBESİ</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>EURO</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="150" align="center">
-									<b>111111-1</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="400" align="center">
-									<b>TR11 1111 1111 1111 1111 1111 11</b>
-								</td>
-							</tr>
-
-							<tr height="20">
-								<td id="fatura_not_container_w_box" width="250" align="left">
-									<b>GARANTİ BANKASI</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>111</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>ATAŞEHİR ŞUBESİ</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="80" align="center">
-									<b>USD</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="150" align="center">
-									<b>111111-1</b>
-								</td>
-								<td id="fatura_not_container_w_box" width="400" align="center">
-									<b>TR11 1111 1111 1111 1111 1111 11</b>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+                    {{BANKINFO}}
 
 				</div>
 			</body>

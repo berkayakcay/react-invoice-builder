@@ -24,6 +24,22 @@ class HtmlContent extends React.Component<AllProps> {
     replaceXslt: ''
   };
 
+  imgConverterToBase64 = urlImg => {
+    var img = new Image();
+    img.src = urlImg;
+    img.crossOrigin = 'Anonymous';
+
+    var canvas = document.createElement('canvas'),
+      ctx = canvas.getContext('2d')!;
+
+    canvas.height = img.naturalHeight;
+    canvas.width = img.naturalWidth;
+    ctx.drawImage(img, 0, 0);
+
+    var b64 = canvas.toDataURL(urlImg).replace(/^data:image.+;base64,/, '');
+    return b64;
+  };
+
   componentWillReceiveProps() {
     this.replaceWithParameters(this.props.html, this.props.xslt);
   }
@@ -51,47 +67,89 @@ class HtmlContent extends React.Component<AllProps> {
       this.props.state.companyInfo.info.tradeRegistryNumber
     );
 
-    text = text.replace(
-      /{{BANKINFO}}/gim,
-      this.props.state.bankInfo.list.map(x => {
-        return (
-          '<tr><td>' +
-          x.bankName +
-          '</td><td>' +
-          x.branch +
-          '</td><td>' +
-          x.branchCode +
-          '</td><td>' +
-          x.accountCode +
-          '</td><td>' +
-          x.accountType +
-          '</td><td>' +
-          x.iban +
-          '</td><td>' +
-          x.accountName +
+    if (this.props.state.bankInfo.list.length > 0) {
+      text = text.replace(
+        /{{BANKINFO}}/gim,
+        "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap Türü</th><th>TL Hesap No</th><th>TL Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
+          this.props.state.bankInfo.list.map(x => {
+            return (
+              '<tr><td>' +
+              x.bankName +
+              '</td><td>' +
+              x.branch +
+              '</td><td>' +
+              x.branchCode +
+              '</td><td>' +
+              x.accountCode +
+              '</td><td>' +
+              x.accountType +
+              '</td><td>' +
+              x.iban +
+              '</td><td>' +
+              x.accountName +
+              '</td></tr>'
+            );
+          }) +
+          '</tbody></table>'
+      );
+    } else {
+      text = text.replace(/{{BANKINFO}}/gim, '');
+    }
+
+    if (this.props.state.documentNotes.notes.firstNote !== '') {
+      text = text.replace(
+        /{{NOTES.FIRST}}/gim,
+        '<tr align="left"><td id="notesTableTd"><b>Not: </b>' +
+          this.props.state.documentNotes.notes.firstNote +
           '</td></tr>'
-        );
-      })
-    );
+      );
+    } else {
+      text = text.replace(/{{NOTES.FIRST}}/gim, '');
+    }
 
-    text = text.replace(
-      /{{NOTES.DOCUMENTNOTES}}/gim,
-      this.props.state.documentNotes.notes.map(x => {
-        return (
-          '<div><tr align="left"><td id="notesTableTd"><b>Not: </b>' +
-          x.firstNote +
-          '</td></tr><tr align="left"><td id="notesTableTd"><b>Not: </b>' +
-          x.secondNote +
-          '</td></tr><tr align="left"><td id="notesTableTd"><b>Not: </b>' +
-          x.thirdNote +
-          '</td></tr></div>'
-        );
-      })
-    );
+    if (this.props.state.documentNotes.notes.secondNote !== '') {
+      text = text.replace(
+        /{{NOTES.SECOND}}/gim,
+        '<tr align="left"><td id="notesTableTd"><b>Not: </b>' +
+          this.props.state.documentNotes.notes.secondNote +
+          '</td></tr>'
+      );
+    } else {
+      text = text.replace(/{{NOTES.SECOND}}/gim, '');
+    }
 
-    text = text.replace(/{{LOGO}}/gim, this.props.state.logoAndSignature.logoCroppedImage);
+    if (this.props.state.documentNotes.notes.thirdNote !== '') {
+      text = text.replace(
+        /{{NOTES.THIRD}}/gim,
+        '<tr align="left"><td id="notesTableTd"><b>Not: </b>' +
+          this.props.state.documentNotes.notes.thirdNote +
+          '</td></tr>'
+      );
+    } else {
+      text = text.replace(/{{NOTES.THIRD}}/gim, '');
+    }
 
-    text = text.replace(/{{IMZA}}/gim, this.props.state.logoAndSignature.signatureCroppedImage);
+    if (this.props.state.logoAndSignature.logoCroppedImage !== null) {
+      text = text.replace(
+        /{{LOGO}}/gim,
+        '<img style="width: 150px; height: 150px;" src="data:image/png;base64,' +
+          this.imgConverterToBase64(this.props.state.logoAndSignature.logoCroppedImage) +
+          '" />'
+      );
+    } else {
+      text = text.replace(/{{LOGO}}/gim, '');
+    }
+
+    if (this.props.state.logoAndSignature.signatureCroppedImage !== null) {
+      text = text.replace(
+        /{{IMZA}}/gim,
+        '<img style="width: 100px; height: 100px;" src="data:image/png;base64,' +
+          this.imgConverterToBase64(this.props.state.logoAndSignature.signatureCroppedImage) +
+          '" />'
+      );
+    } else {
+      text = text.replace(/{{IMZA}}/gim, '');
+    }
 
     //XSLT
 
@@ -111,60 +169,95 @@ class HtmlContent extends React.Component<AllProps> {
       this.props.state.companyInfo.info.tradeRegistryNumber
     );
 
-    xsltText = xsltText.replace(
-      /{{BANKINFO}}/gim,
-      this.props.state.bankInfo.list.map(x => {
-        return (
-          '<tr><td>' +
-          x.bankName +
-          '</td><td>' +
-          x.branch +
-          '</td><td>' +
-          x.branchCode +
-          '</td><td>' +
-          x.accountCode +
-          '</td><td>' +
-          x.accountType +
-          '</td><td>' +
-          x.iban +
-          '</td><td>' +
-          x.accountName +
-          '</td></tr>'
-        );
-      })
-    );
+    if (this.props.state.bankInfo.list.length > 0) {
+      xsltText = xsltText.replace(
+        /{{BANKINFO}}/gim,
+        "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap Türü</th><th>TL Hesap No</th><th>TL Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
+          this.props.state.bankInfo.list.map(x => {
+            return (
+              '<tr><td>' +
+              x.bankName +
+              '</td><td>' +
+              x.branch +
+              '</td><td>' +
+              x.branchCode +
+              '</td><td>' +
+              x.accountCode +
+              '</td><td>' +
+              x.accountType +
+              '</td><td>' +
+              x.iban +
+              '</td><td>' +
+              x.accountName +
+              '</td></tr>'
+            );
+          }) +
+          '</tbody></table>'
+      );
+    } else {
+      xsltText = xsltText.replace(/{{BANKINFO}}/gim, '');
+    }
 
-    xsltText = xsltText.replace(
-      /{{NOTES.DOCUMENTNOTES}}/gim,
-      this.props.state.documentNotes.notes.map(x => {
-        return (
-          '<div><tr align="left"><td id="notesTableTd"><b>Not: </b>' +
-          x.firstNote +
-          '</td></tr><tr align="left"><td id="notesTableTd"><b>Not: </b>' +
-          x.secondNote +
-          '</td></tr><tr align="left"><td id="notesTableTd"><b>Not: </b>' +
-          x.thirdNote +
-          '</td></tr></div>'
-        );
-      })
-    );
+    if (this.props.state.documentNotes.notes.firstNote !== '') {
+      xsltText = xsltText.replace(
+        /{{NOTES.FIRST}}/gim,
+        '<tr align="left"><td id="notesTableTd"><b>Not: </b>' +
+          this.props.state.documentNotes.notes.firstNote +
+          '</td></tr>'
+      );
+    } else {
+      xsltText = xsltText.replace(/{{NOTES.FIRST}}/gim, '');
+    }
+
+    if (this.props.state.documentNotes.notes.secondNote !== '') {
+      xsltText = xsltText.replace(
+        /{{NOTES.SECOND}}/gim,
+        '<tr align="left"><td id="notesTableTd"><b>Not: </b>' +
+          this.props.state.documentNotes.notes.secondNote +
+          '</td></tr>'
+      );
+    } else {
+      xsltText = xsltText.replace(/{{NOTES.SECOND}}/gim, '');
+    }
+
+    if (this.props.state.documentNotes.notes.thirdNote !== '') {
+      xsltText = xsltText.replace(
+        /{{NOTES.THIRD}}/gim,
+        '<tr align="left"><td id="notesTableTd"><b>Not: </b>' +
+          this.props.state.documentNotes.notes.thirdNote +
+          '</td></tr>'
+      );
+    } else {
+      xsltText = xsltText.replace(/{{NOTES.THIRD}}/gim, '');
+    }
 
     //{{LOGO VE İMZA BASE64 DE CONVERT EDİLECEK}}
-    xsltText = xsltText.replace(/{{LOGO}}/gim, this.props.state.logoAndSignature.logoCroppedImage);
+    if (this.props.state.logoAndSignature.logoCroppedImage !== null) {
+      xsltText = xsltText.replace(
+        /{{LOGO}}/gim,
+        '<img style="width: 150px; height: 150px;" src="data:image/png;base64,' +
+          this.imgConverterToBase64(this.props.state.logoAndSignature.logoCroppedImage) +
+          '" />'
+      );
+    } else {
+      xsltText = xsltText.replace(/{{LOGO}}/gim, '');
+    }
 
-    xsltText = xsltText.replace(/{{IMZA}}/gim, this.props.state.logoAndSignature.signatureCroppedImage);
+    if (this.props.state.logoAndSignature.signatureCroppedImage !== null) {
+      xsltText = xsltText.replace(
+        /{{IMZA}}/gim,
+        '<img style="width: 100px; height: 100px;" src="data:image/png;base64,' +
+          this.imgConverterToBase64(this.props.state.logoAndSignature.signatureCroppedImage) +
+          '" />'
+      );
+    } else {
+      xsltText = xsltText.replace(/{{IMZA}}/gim, '');
+    }
 
     this.setState({ isLoading: false, replacedHtml: text, replaceXslt: xsltText });
   };
 
   render() {
-    console.log('this.state.replacedHtml', this.state.replacedHtml);
-    console.log('this.state.replaceXslt', this.state.replaceXslt);
-
-    console.log(
-      'this.props.state.logoAndSignature.logoCroppedImage',
-      this.props.state.logoAndSignature.logoCroppedImage
-    );
     return this.state.replacedHtml === '' ? (
       <Alert message="Uyarı!" description="Lütfen Soldaki Menü'den Tema Seçimi Yapınız.." type="error" closable />
     ) : (

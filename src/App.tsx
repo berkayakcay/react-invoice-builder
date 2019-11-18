@@ -28,7 +28,7 @@ class App extends React.Component<IProps> {
         <Layout.Sider style={{ background: '#fff' }} width={250}>
           <Typography.Title level={4}></Typography.Title>
           <Menu>
-            <Menu.Item key="0">#DOCUMENT.BUILDER</Menu.Item>
+            <Menu.Item key="0">NES Bilgi Fatura Tasarımı</Menu.Item>
             <Menu.Item key="1" onClick={() => this.props.showCompanyInfoModal()}>
               <Icon type="right" />
               Firma Bilgileri

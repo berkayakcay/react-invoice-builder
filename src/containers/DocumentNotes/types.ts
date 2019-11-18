@@ -1,7 +1,11 @@
 import { DocumentNotesModel } from '../../common/models';
 
 export const initialState: NotesState = {
-  notes: []
+  notes: {
+    firstNote: '',
+    secondNote: '',
+    thirdNote: ''
+  }
 };
 
 export interface NotesStateType {
@@ -9,7 +13,7 @@ export interface NotesStateType {
 }
 
 export interface NotesState {
-  readonly notes: Array<DocumentNotesModel>;
+  readonly notes: DocumentNotesModel;
 }
 
 export enum DocumentNotesActionTypes {

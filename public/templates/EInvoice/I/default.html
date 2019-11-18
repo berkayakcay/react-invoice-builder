@@ -458,7 +458,7 @@
 					<h1 align="center"><span style="font-weight:bold; ">e-Fatura</span></h1>
 				</td>
 				<td width="40%" style="text-align:center; vertical-align:middle">
-					<img style="width: 150px; height: 150px;" src="{{LOGO}}" alt="LOGO" />
+					{{LOGO}}
 				</td>
 			</tr>
 			<tr style="height:118px; " valign="top">
@@ -500,7 +500,7 @@
 					<div class="hr" style="margin-top:5px;"></div>
 				</td>
 				<td width="20%" align="center">
-					<img style="width: 100px; height: 100px;" src="{{IMZA}}" alt="İMZA" />
+					{{IMZA}}
 				</td>
 				<td width="40%" align="center" valign="bottom" colspan="2">
 					<table id="despatchTable">
@@ -606,27 +606,14 @@
 			<tr align="left">
 				<td id="notesTableTd"><b>Not: </b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br></td>
 			</tr>
-			{{NOTES.DOCUMENTNOTES}}
+			{{NOTES.FIRST}}
+			{{NOTES.SECOND}}
+			{{NOTES.THIRD}}
 		</tbody>
 	</table>
 	<div class="hr" style="clear:both; width:800px;"></div>
 
-	<table id="bankaHesap" style="width:800px; margin-top:10px">
-		<thead>
-			<tr>
-				<th>Banka Adı</th>
-				<th>Şube</th>
-				<th style="width:30px">Şube Kodu</th>
-				<th>Hesap Türü</th>
-				<th>TL Hesap No</th>
-				<th>TL Hesap Iban</th>
-				<th>Hesap Adı</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{BANKINFO}}
-		</tbody>
-	</table>
+	{{BANKINFO}}
 </body>
 
 </html>

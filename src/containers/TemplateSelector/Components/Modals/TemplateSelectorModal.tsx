@@ -39,12 +39,10 @@ class TemplateSelectorModal extends Component<AllProps> {
       var htmlPath = path + 'default.html';
       var text = readTextFile(htmlPath);
       var replacedText = text;
-      console.log('replacedText', replacedText);
 
       var xsltPath = xslt + 'default.xslt';
       var textXslt = readTextFile(xsltPath);
       var replacedXslt = textXslt;
-      console.log('replacedXslt', replacedXslt);
 
       this.props.setSelectedTemplate(text, textXslt);
     };

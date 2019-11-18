@@ -531,7 +531,7 @@ padding: 1px 0px 1px 3px
 								</td>
 								<td width="40%" style="text-align:center; vertical-align:middle">
 									<!--Firma Logo-->
-									<img style="width: 150px; height: 150px;" src="{{LOGO}}" alt="LOGO" />
+									{{LOGO}}
 								</td>
 							</tr>
 							<tr style="height:118px; " valign="top">
@@ -617,7 +617,7 @@ padding: 1px 0px 1px 3px
 										<div class="hr" style="margin-top:5px;"></div>
 								</td>
 								<td width="20%">
-								<img style="width: 100px; height: 100px;" src="{{IMZA}}" alt="İMZA" />
+								{{IMZA}}
 								</td>
 								<td width="40%" align="center" valign="bottom" colspan="2">
 									<table id="despatchTable">
@@ -1346,7 +1346,6 @@ padding: 1px 0px 1px 3px
 										<b>Not: </b>
 										<xsl:value-of select="."/>	
 										<br/>
-										{{NOTES.DOCUMENTNOTES}}
 										<br/>
 									</xsl:for-each>									
 									<xsl:if test="//n1:Invoice/cac:PaymentMeans/cbc:InstructionNote">
@@ -1373,26 +1372,14 @@ padding: 1px 0px 1px 3px
 									</xsl:if>
 								</td>
 							</tr>
+							{{NOTES.FIRST}}
+			                {{NOTES.SECOND}}
+			                {{NOTES.THIRD}}
 						</tbody>
 					</table>
 				<div class="hr" style="clear:both; width:800px;"></div>	
 				
-	            <table id="bankaHesap" style="width:800px; margin-top:10px">
-		            <thead>
-		   	            <tr>
-				            <th>Banka Adı</th>
-				            <th>Şube</th>
-				            <th style="width:30px">Şube Kodu</th>
-				            <th>Hesap Türü</th>
-				            <th>TL Hesap No</th>
-				            <th>TL Hesap Iban</th>
-				            <th>Hesap Adı</th>
-			            </tr>
-		            </thead>
-		            <tbody>
-			            {{BANKINFO}}
-		            </tbody>
-	            </table>
+               {{BANKINFO}}
 				
 				
 				</body>
