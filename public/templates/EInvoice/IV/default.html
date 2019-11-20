@@ -43,7 +43,7 @@
       <tbody>
          <tr>
             <td style="width: 205px; text-align: center;">
-               <img width="150" style="width: 150px;" alt="" src="{{LOGO}}">
+               {{LOGO}}
             </td>
             <td style="width: 222.58px; text-align: center;">
                <span style="font-size: 10px;">
@@ -139,7 +139,7 @@
                </table>
             </td>
             <td style="width: 222.58px;">
-               <img width="100" style="width: 100px;" src="{{IMZA}}" alt="İmza" />
+               {{IMZA}}
             </td>
             <td style="width: 219.41px;">
                <table style="width: 200px; border-collapse: collapse; margin-top: 10px; margin-left: 10px;">
@@ -772,26 +772,18 @@
          <tr align="left">
             <td id="notesTableTd"><b>Not: </b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br></td>
          </tr>
-         {{NOTES.DOCUMENTNOTES}}
+         <span style="font-size: 10px;">
+            {{NOTES.FIRST}}
+            {{NOTES.SECOND}}
+            {{NOTES.THIRD}}
+         </span>
       </tbody>
    </table>
 
-   <table id="bankaHesap" style="width:800px; margin-top:10px">
-      <thead>
-         <tr>
-            <th>Banka Adı</th>
-            <th>Şube</th>
-            <th style="width:30px">Şube Kodu</th>
-            <th>Hesap Türü</th>
-            <th>TL Hesap No</th>
-            <th>TL Hesap Iban</th>
-            <th>Hesap Adı</th>
-         </tr>
-      </thead>
-      <tbody>
-         {{BANKINFO}}
-      </tbody>
-   </table>
+   <span style="font-size: 10px;">
+      {{BANKINFO}}
+   </span>
+
 </body>
 
 </html>

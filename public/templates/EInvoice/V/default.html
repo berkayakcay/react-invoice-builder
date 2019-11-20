@@ -256,9 +256,11 @@
 						{{COMPANYINFO.MERSISNUMBER}}</font><br>
 
 				</td>
-				<td width="400" align="right" height="100">
-					<img style="width: 100px;" align="right" src="{{LOGO}}" border="0">
-					<img style="width: 70px; margin-right: 50px;" align="right" src="{{IMZA}}" border="0">
+				<td width="100" align="left" height="100">
+					{{IMZA}}
+				</td>
+				<td width="300" align="right" height="100">
+					{{LOGO}}
 				</td>
 			</tr>
 		</table>
@@ -381,31 +383,18 @@
 				<td id="lineTableBudgetTd" style="width:82px; " align="right">1.124,98 TRY</td>
 			</tr>
 		</table>
-		<table id="notesTable" width="800" align="left" height="100">
+		<table border="1" id="notesTable" width="800" align="left" height="100" style="margin-bottom: 10px;">
 			<tbody>
 				<tr align="left">
 					<td id="notesTableTd"><b>Not: </b>YALNIZ : YÜZOTUZÜç TL ONBEŞ Kr.<br></td>
 				</tr>
-				{{NOTES.DOCUMENTNOTES}}
+				{{NOTES.FIRST}}
+				{{NOTES.SECOND}}
+				{{NOTES.THIRD}}
 			</tbody>
 		</table><br>
 
-		<table id="bankaHesap" style="width:800px; margin-top:10px">
-			<thead>
-				<tr>
-					<th>Banka Adı</th>
-					<th>Şube</th>
-					<th style="width:30px">Şube Kodu</th>
-					<th>Hesap Türü</th>
-					<th>TL Hesap No</th>
-					<th>TL Hesap Iban</th>
-					<th>Hesap Adı</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{BANKINFO}}
-			</tbody>
-		</table>
+		{{BANKINFO}}
 	</div>
 </body>
 

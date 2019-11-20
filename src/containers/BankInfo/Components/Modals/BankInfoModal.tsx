@@ -181,7 +181,8 @@ class BankInfoModal extends Component<AllProps> {
                 key: 'operasyon',
                 render: (text, record: BankInfoModel) => (
                   <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.props.deleteBankInfo(record)}>
-                    <Icon type="delete" title="Sil" style={{ color: '#ff2a00' }} /> <span>Sil</span>
+                    <Icon type="delete" title="Sil" style={{ color: '#ff2a00', cursor: 'pointer' }} />{' '}
+                    <span style={{ cursor: 'pointer' }}>Sil</span>
                   </Popconfirm>
                 )
               },

@@ -204,7 +204,38 @@
 					td
 					{
 					    padding: 1px;
-					}</style>
+					}
+					#bankaHesap {
+					border-collapse: collapse;
+					border: 1px solid #ccc;
+					padding: 3px
+					}
+
+					#bankaHesap td,
+					#bankaHesap th {
+						text-align: left;
+						border: 1px solid #ccc;
+						padding: 3px
+					}
+
+					#bankaHesap tr:first-child th {
+						border-top: 0;
+					}
+
+					#bankaHesap tr:last-child td {
+						border-bottom: 0;
+					}
+
+					#bankaHesap tr td:first-child,
+					#bankaHesap tr th:first-child {
+						border-left: 0;
+					}
+
+					#bankaHesap tr td:last-child,
+					#bankaHesap tr th:last-child {
+						border-right: 0;
+					}
+					</style>
 			</head>
 			<body style="margin-left:15px">
 				<div id="a4">
@@ -212,32 +243,149 @@
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr valign="top">
 								<td width="400" align="left" height="70">
-									<br/>
-									<b>
-										<font color="blue" align="left" valign="top"
-											>&#160;&#160;&#160;&#160;NES BİLGİ VERİ TEKNOLOJİLERİ VE
-											SAKLAMA HİZMETLERİ A.Ş.</font>
-									</b>
-									<br/>
-									<font color="blue" align="left" valign="top"
-										>&#160;&#160;&#160;&#160;Barbaros Mah. Ak Zambak Sok Uphill
-										Towers A Blok Kat:16 No:92
-										<br/>&#160;&#160;&#160;&#160;Ataşhir/İSTANBUL</font>
-									<br/>
-									<font color="blue" align="left" valign="top"
-										>&#160;&#160;&#160;&#160;Tel: 0216 688 51 00</font>
-									<br/>
-									<font color="blue" align="left" valign="top"
-										>&#160;&#160;&#160;&#160;Vergi Dairesi: Kozyatağı VKN:
-										2222222222</font>
-									<br/>
-									<font color="blue" align="left" valign="top"
-										>&#160;&#160;&#160;&#160;Tic. Sic. No: 3333333333 Mersis No:
-										5555555555</font>
-									<br/>
+                                    <table align="center" border="0" width="100%">
+										<tbody>
+											<tr align="left">
+												<xsl:for-each select="n1:Invoice/cac:AccountingSupplierParty/cac:Party">
+													<td align="left">
+													<xsl:if test="cac:PartyName">
+													<xsl:value-of select="cac:PartyName/cbc:Name"/>
+													<br/>
+													</xsl:if>
+													<xsl:for-each select="cac:Person">
+														<xsl:for-each select="cbc:Title">
+														<xsl:apply-templates/>
+														<xsl:text>&#160;</xsl:text>
+														</xsl:for-each>
+														<xsl:for-each select="cbc:FirstName">
+														<xsl:apply-templates/>
+														<xsl:text>&#160;</xsl:text>
+														</xsl:for-each>
+														<xsl:for-each select="cbc:MiddleName">
+														<xsl:apply-templates/>
+														<xsl:text>&#160;</xsl:text>
+														</xsl:for-each>
+														<xsl:for-each select="cbc:FamilyName">
+														<xsl:apply-templates/>
+														<xsl:text>&#160;</xsl:text>
+														</xsl:for-each>
+														<xsl:for-each select="cbc:NameSuffix">
+														<xsl:apply-templates/>
+														</xsl:for-each>
+													</xsl:for-each>
+													</td>
+												</xsl:for-each>
+											</tr>
+											<tr align="left">
+												<xsl:for-each select="n1:Invoice/cac:AccountingSupplierParty/cac:Party">
+												<td align="left">
+												<xsl:for-each select="cac:PostalAddress">
+													<xsl:for-each select="cbc:StreetName">
+													<xsl:apply-templates/>
+													<xsl:text>&#160;</xsl:text>
+													</xsl:for-each>
+													<xsl:for-each select="cbc:BuildingName">
+													<xsl:apply-templates/>
+													</xsl:for-each>
+													<xsl:if test="cbc:BuildingNumber">
+													<xsl:text> No:</xsl:text>
+													<xsl:for-each select="cbc:BuildingNumber">
+													<xsl:apply-templates/>
+													</xsl:for-each>
+													<xsl:text>&#160;</xsl:text>
+													</xsl:if>
+													<br/>
+													<xsl:for-each select="cbc:PostalZone">
+													<xsl:apply-templates/>
+													<xsl:text>&#160;</xsl:text>
+													</xsl:for-each>
+													<xsl:for-each select="cbc:CitySubdivisionName">
+													<xsl:apply-templates/>
+													</xsl:for-each>
+													<xsl:text>/ </xsl:text>
+													<xsl:for-each select="cbc:CityName">
+													<xsl:apply-templates/>
+													<xsl:text>&#160;</xsl:text>
+													</xsl:for-each>
+												</xsl:for-each>
+												</td>
+												</xsl:for-each>
+											</tr>
+											<xsl:if
+												test="//n1:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone or //n1:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telefax">
+												<tr align="left">
+													<xsl:for-each select="n1:Invoice/cac:AccountingSupplierParty/cac:Party">														
+														<td align="left">
+														<xsl:for-each select="cac:Contact">
+														<xsl:if test="cbc:Telephone">
+														<xsl:text>Tel: </xsl:text>
+														<xsl:for-each select="cbc:Telephone">
+														<xsl:apply-templates/>
+														</xsl:for-each>
+														</xsl:if>
+														<xsl:if test="cbc:Telefax">
+														<xsl:text> Fax: </xsl:text>
+														<xsl:for-each select="cbc:Telefax">
+														<xsl:apply-templates/>
+														</xsl:for-each>
+														</xsl:if>
+														<xsl:text>&#160;</xsl:text>
+														</xsl:for-each>
+														</td>
+													</xsl:for-each>
+												</tr>
+											</xsl:if>
+											<xsl:for-each
+												select="//n1:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:WebsiteURI">
+												<tr align="left">
+												<td>
+												<xsl:text>Web Sitesi: </xsl:text>
+												<xsl:value-of select="."/>
+												</td>
+												</tr>
+											</xsl:for-each>
+											<xsl:for-each
+												select="//n1:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail">
+												<tr align="left">
+												<td>
+												<xsl:text>E-Posta: </xsl:text>
+												<xsl:value-of select="."/>
+												</td>
+												</tr>
+											</xsl:for-each>
+											<tr align="left">
+												<xsl:for-each select="n1:Invoice/cac:AccountingSupplierParty/cac:Party">																											
+													<td align="left">
+													<xsl:text>Vergi Dairesi: </xsl:text>
+													<xsl:for-each select="cac:PartyTaxScheme">
+													<xsl:for-each select="cac:TaxScheme">
+													<xsl:for-each select="cbc:Name">
+													<xsl:apply-templates/>
+													</xsl:for-each>
+													</xsl:for-each>
+													<xsl:text>&#160; </xsl:text>
+													</xsl:for-each>
+													</td>
+												</xsl:for-each>
+											</tr>
+											<xsl:for-each
+												select="//n1:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification">
+												<tr align="left">
+												<td>
+												<xsl:value-of select="cbc:ID/@schemeID"/>
+												<xsl:text>: </xsl:text>
+												<xsl:value-of select="cbc:ID"/>
+												</td>
+												</tr>
+											</xsl:for-each>
+										</tbody>
+									</table>
 								</td>
-								<td width="400" align="right" height="70">
-									<img align="right" src="" border="0"/>
+								<td width="100" align="left" height="100">
+									{{IMZA}}
+								</td>
+								<td width="300" align="right" height="100">
+									{{LOGO}}
 								</td>
 							</tr>
 						</table>
@@ -792,26 +940,25 @@
 							</td>
 						</tr>
 					</table>
-					<table id="notesTable" width="800" align="left" height="100">
+					<table border="1" id="notesTable" width="800" align="left" height="100" style="margin-bottom: 10px;">
 						<tbody>
 							<tr align="left">
 								<td id="notesTableTd">
 									<xsl:if test="//n1:Invoice/cbc:Note">
-										<b>&#160;&#160;&#160;&#160;&#160; Not: </b>
+										<b>Not: </b>
 										<xsl:value-of select="//n1:Invoice/cbc:Note"/>
 										<br/>
 									</xsl:if>
-
-
-
 								</td>
 							</tr>
+							{{NOTES.FIRST}}
+							{{NOTES.SECOND}}
+							{{NOTES.THIRD}}
 						</tbody>
 					</table>
 					<br/>
-
+					{{BANKINFO}}
 				</div>
-
 			</body>
 
 		</html>

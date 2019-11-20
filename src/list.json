@@ -10,34 +10,34 @@
         "title": "TEMA 2",
         "description": "Bu teme mavi sevenler için gelsin",
         "path": "templates/EInvoice/II/",
-        "xslt": "templates/EInvoice/I/"
+        "xslt": "templates/EInvoice/II/"
     },
     {
         "type": "EINVOICE",
         "title": "TEMA 3",
         "description": "Bu teme pembe sevenler için gelsin",
         "path": "templates/EInvoice/III/",
-        "xslt": "templates/EInvoice/I/"
+        "xslt": "templates/EInvoice/III/"
     },
     {
         "type": "EINVOICE",
         "title": "TEMA 4",
         "description": "Bu teme mor sevenler için gelsin",
         "path": "templates/EInvoice/IV/",
-        "xslt": "templates/EInvoice/I/"
+        "xslt": "templates/EInvoice/IV/"
     },
     {
         "type": "EINVOICE",
         "title": "TEMA 5",
         "description": "Bu teme eflatun sevenler için gelsin",
         "path": "templates/EInvoice/V/",
-        "xslt": "templates/EInvoice/I/"
+        "xslt": "templates/EInvoice/V/"
     },
     {
         "type": "EINVOICE",
         "title": "TEMA 6",
         "description": "Bu teme bej sevenler için gelsin",
         "path": "templates/EInvoice/VI/",
-        "xslt": "templates/EInvoice/I/"
+        "xslt": "templates/EInvoice/VI/"
     }
 ]

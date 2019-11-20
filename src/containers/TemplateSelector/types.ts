@@ -1,9 +1,11 @@
 import { TemplateModel } from '../../common/models';
 
 export const initialState: TemplateSelectorState = {
-  selected: {
-    TemplateHtml: '',
-    TemplateXslt: ''
+  selectedHtml: {
+    Template: ''
+  },
+  selectedXslt: {
+    Template: ''
   }
 };
 
@@ -12,10 +14,12 @@ export interface TemplateSelectorStateType {
 }
 
 export interface TemplateSelectorState {
-  readonly selected: TemplateModel;
+  readonly selectedHtml: TemplateModel;
+  readonly selectedXslt: TemplateModel;
 }
 
 export enum TemplateSelectorActionTypes {
   SHOW_TEMPLATE_SELECTOR_MODAL = 'SHOW_TEMPLATE_SELECTOR_MODAL',
-  SET_SELECTED_TEMPLATE = 'SET_SELECTED_TEMPLATE'
+  SET_SELECTED_HTML = 'SET_SELECTED_HTML',
+  SET_SELECTED_XSLT = 'SET_SELECTED_XSLT'
 }

@@ -6,10 +6,16 @@ const reducer: Reducer<TemplateSelectorState> = (state = initialState, action) =
     case TemplateSelectorActionTypes.SHOW_TEMPLATE_SELECTOR_MODAL: {
       return { ...state };
     }
-    case TemplateSelectorActionTypes.SET_SELECTED_TEMPLATE: {
+    case TemplateSelectorActionTypes.SET_SELECTED_HTML: {
       return {
         ...state,
-        selected: { TemplateHtml: action.payload, TemplateXslt: action.meta }
+        selectedHtml: { Template: action.payload }
+      };
+    }
+    case TemplateSelectorActionTypes.SET_SELECTED_XSLT: {
+      return {
+        ...state,
+        selectedXslt: { Template: action.payload }
       };
     }
     default:

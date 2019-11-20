@@ -467,7 +467,7 @@
 					    overflow: visible;
 					    overflow-wrap: break-word;
 					    word-wrap: break-word;
-					    max-width: 780px;
+					    max-width: 800px;
 					}
 					.efatura_text{
 					    text-align: center;
@@ -2391,30 +2391,22 @@ belki lazım olur
 		<xsl:param name="tip"/>
 		<!-- açıklama not eklersen  -->
 
-
-		<xsl:if test="not(//n1:Invoice/cac:DespatchDocumentReference)">
-			<div class="fatura_not_container_w_box"> İş bu faturadaki mal alıcıya iş yerinde teslim
-				edildiğinden 213 sayılı V.U.K.nun 230/5. maddesi gereğince sevk irsaliyesi
-				düzenlenmemiştir. <br/>
-				<xsl:text>  Fiş Düzenlenme Saati =  </xsl:text>
-				<xsl:value-of select="//n1:Invoice/cbc:IssueTime"/>
-				<br/>
-			</div>
-		</xsl:if>
-
 		<xsl:choose>
 			<xsl:when test="$tip and $tip = '0'">
-				<div class="fatura_not_container_w_box">
-					<xsl:if test="//n1:Invoice/cbc:Note">
-						<b>&#160;&#160;&#160;&#160;&#160; Genel Açıklamalar</b>
-						<br/>
-						<xsl:for-each select="//n1:Invoice/cbc:Note">
-							<b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</b>
-							<xsl:value-of select="."/>
-							<br/>
-						</xsl:for-each>
-					</xsl:if>
-				</div>
+			    <table class="fatura_not_container_w_box" width="800" style="margin-bottom: 10px;" align="left">
+                    <tbody>
+						<xsl:if test="//n1:Invoice/cbc:Note">
+						    <xsl:for-each select="//n1:Invoice/cbc:Note">
+							    <tr align="left">
+                                    <td id="notesTableTd"><b>Not: </b><xsl:value-of select="."/></td>
+                                </tr>
+						    </xsl:for-each>
+					    </xsl:if>
+						        {{NOTES.FIRST}}
+                                {{NOTES.SECOND}}
+                                {{NOTES.THIRD}}
+                    </tbody>
+                </table>
 			</xsl:when>
 
 

@@ -41,7 +41,8 @@ class HtmlContent extends React.Component<AllProps> {
   };
 
   componentWillReceiveProps() {
-    this.replaceWithParameters(this.props.html, this.props.xslt);
+    this.replaceWithParametersHtml(this.props.html);
+    this.replaceWithParametersXslt(this.props.xslt);
   }
 
   componentWillMount() {
@@ -50,7 +51,7 @@ class HtmlContent extends React.Component<AllProps> {
     }, 500);
   }
 
-  replaceWithParameters = (text: string, xsltText: string) => {
+  replaceWithParametersHtml = (text: string) => {
     text = text.replace(/{{COMPANYINFO.NAME}}/gim, this.props.state.companyInfo.info.name);
     text = text.replace(/{{COMPANYINFO.ADDRESS}}/gim, this.props.state.companyInfo.info.address);
     text = text.replace(/{{COMPANYINFO.DISTRICH}}/gim, this.props.state.companyInfo.info.district);
@@ -70,7 +71,7 @@ class HtmlContent extends React.Component<AllProps> {
     if (this.props.state.bankInfo.list.length > 0) {
       text = text.replace(
         /{{BANKINFO}}/gim,
-        "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap Türü</th><th>TL Hesap No</th><th>TL Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
+        "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap No</th><th>Hesap Türü</th><th>Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
           this.props.state.bankInfo.list.map(x => {
             return (
               '<tr><td>' +
@@ -150,9 +151,10 @@ class HtmlContent extends React.Component<AllProps> {
     } else {
       text = text.replace(/{{IMZA}}/gim, '');
     }
+    this.setState({ isLoading: false, replacedHtml: text });
+  };
 
-    //XSLT
-
+  replaceWithParametersXslt = (xsltText: string) => {
     xsltText = xsltText.replace(/{{COMPANYINFO.NAME}}/gim, this.props.state.companyInfo.info.name);
     xsltText = xsltText.replace(/{{COMPANYINFO.ADDRESS}}/gim, this.props.state.companyInfo.info.address);
     xsltText = xsltText.replace(/{{COMPANYINFO.DISTRICH}}/gim, this.props.state.companyInfo.info.district);
@@ -172,7 +174,7 @@ class HtmlContent extends React.Component<AllProps> {
     if (this.props.state.bankInfo.list.length > 0) {
       xsltText = xsltText.replace(
         /{{BANKINFO}}/gim,
-        "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap Türü</th><th>TL Hesap No</th><th>TL Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
+        "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap No</th><th>Hesap Türü</th><th>Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
           this.props.state.bankInfo.list.map(x => {
             return (
               '<tr><td>' +
@@ -254,7 +256,7 @@ class HtmlContent extends React.Component<AllProps> {
       xsltText = xsltText.replace(/{{IMZA}}/gim, '');
     }
 
-    this.setState({ isLoading: false, replacedHtml: text, replaceXslt: xsltText });
+    this.setState({ replaceXslt: xsltText });
   };
 
   render() {
@@ -283,8 +285,7 @@ class HtmlContent extends React.Component<AllProps> {
 }
 
 const mapStateToProps = state => ({
-  state: state,
-  xsltTemp: state.htmlPreview.selected.TemplateXslt
+  state: state
 });
 
 export default connect(mapStateToProps)(HtmlContent);

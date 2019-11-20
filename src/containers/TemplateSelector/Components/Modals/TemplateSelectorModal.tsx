@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import list from '../../../../list.json';
-import { setSelectedTemplate } from '../../actions';
+import { setSelectedHtml, setSelectedXslt } from '../../actions';
 import ThemeCard from '../Cards/ThemeCard';
 
 interface IProps {
@@ -13,7 +13,8 @@ interface IProps {
 }
 
 interface IPropsFromDispatch {
-  setSelectedTemplate: typeof setSelectedTemplate;
+  setSelectedHtml: typeof setSelectedHtml;
+  setSelectedXslt: typeof setSelectedXslt;
 }
 
 type AllProps = IProps & IPropsFromDispatch;
@@ -38,13 +39,12 @@ class TemplateSelectorModal extends Component<AllProps> {
     const onSelected = (path: string, xslt: string) => {
       var htmlPath = path + 'default.html';
       var text = readTextFile(htmlPath);
-      var replacedText = text;
 
       var xsltPath = xslt + 'default.xslt';
       var textXslt = readTextFile(xsltPath);
-      var replacedXslt = textXslt;
 
-      this.props.setSelectedTemplate(text, textXslt);
+      this.props.setSelectedHtml(text);
+      this.props.setSelectedXslt(textXslt);
     };
 
     return (
@@ -101,7 +101,8 @@ class TemplateSelectorModal extends Component<AllProps> {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setSelectedTemplate: (params: string, xslt: string) => dispatch(setSelectedTemplate(params, xslt))
+  setSelectedHtml: (params: string) => dispatch(setSelectedHtml(params)),
+  setSelectedXslt: (params: string) => dispatch(setSelectedXslt(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TemplateSelectorModal);

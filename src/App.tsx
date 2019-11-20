@@ -17,8 +17,8 @@ interface IProps {
   showDocumentNotesModal: typeof showDocumentNotesModal;
   showLogoAndSignatureModal: typeof showLogoAndSignatureModal;
   showHtmlPreviewModal: typeof showTemplateSelectorModal;
-  Theme: string;
-  ThemeXslt: string;
+  selectedHtml: string;
+  selectedXslt: string;
 }
 
 class App extends React.Component<IProps> {
@@ -66,7 +66,7 @@ class App extends React.Component<IProps> {
             </div>
           </Layout.Header>
           <Layout.Content style={{ margin: 12, padding: 12, background: '#fff' }}>
-            <HtmlContent html={this.props.Theme} xslt={this.props.ThemeXslt} />
+            <HtmlContent html={this.props.selectedHtml} xslt={this.props.selectedXslt} />
           </Layout.Content>
         </Layout>
       </Layout>
@@ -75,8 +75,8 @@ class App extends React.Component<IProps> {
 }
 
 const mapStateToProps = ({ htmlPreview }: TemplateSelectorStateType) => ({
-  Theme: htmlPreview.selected.TemplateHtml,
-  ThemeXslt: htmlPreview.selected.TemplateXslt
+  selectedHtml: htmlPreview.selectedHtml.Template,
+  selectedXslt: htmlPreview.selectedXslt.Template
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
