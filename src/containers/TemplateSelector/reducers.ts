@@ -12,10 +12,16 @@ const reducer: Reducer<TemplateSelectorState> = (state = initialState, action) =
         selectedHtml: { Template: action.payload }
       };
     }
-    case TemplateSelectorActionTypes.SET_SELECTED_XSLT: {
+    case TemplateSelectorActionTypes.SET_SELECTED_XSLT_EINVOICE: {
       return {
         ...state,
-        selectedXslt: { Template: action.payload }
+        selectedEInvoiceXslt: { Template: action.payload }
+      };
+    }
+    case TemplateSelectorActionTypes.SET_SELECTED_XSLT_EARCHIVE: {
+      return {
+        ...state,
+        selectedEArchiveXslt: { Template: action.payload }
       };
     }
     default:

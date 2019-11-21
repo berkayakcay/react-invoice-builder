@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import list from '../../../../list.json';
-import { setSelectedHtml, setSelectedXslt } from '../../actions';
+import { setSelectedHtml, setSelectedXsltEarchive, setSelectedXsltEinvoice } from '../../actions';
 import ThemeCard from '../Cards/ThemeCard';
 
 interface IProps {
@@ -14,7 +14,8 @@ interface IProps {
 
 interface IPropsFromDispatch {
   setSelectedHtml: typeof setSelectedHtml;
-  setSelectedXslt: typeof setSelectedXslt;
+  setSelectedXsltEinvoice: typeof setSelectedXsltEinvoice;
+  setSelectedXsltEarchive: typeof setSelectedXsltEarchive;
 }
 
 type AllProps = IProps & IPropsFromDispatch;
@@ -36,15 +37,19 @@ function readTextFile(path: string) {
 
 class TemplateSelectorModal extends Component<AllProps> {
   render() {
-    const onSelected = (path: string, xslt: string) => {
+    const onSelected = (path: string) => {
       var htmlPath = path + 'default.html';
       var text = readTextFile(htmlPath);
 
-      var xsltPath = xslt + 'default.xslt';
-      var textXslt = readTextFile(xsltPath);
+      var xsltEinvoicePath = path + 'einvoice.xslt';
+      var textXsltEinvoice = readTextFile(xsltEinvoicePath);
+
+      var xsltEarchivePath = path + 'earchive.xslt';
+      var textXsltEarchive = readTextFile(xsltEarchivePath);
 
       this.props.setSelectedHtml(text);
-      this.props.setSelectedXslt(textXslt);
+      this.props.setSelectedXsltEinvoice(textXsltEinvoice);
+      this.props.setSelectedXsltEarchive(textXsltEarchive);
     };
 
     return (
@@ -79,7 +84,7 @@ class TemplateSelectorModal extends Component<AllProps> {
                     image={item.path + 'default.jpg'}
                     title={item.title}
                     description={item.description}
-                    onClick={() => onSelected(item.path, item.xslt)}
+                    onClick={() => onSelected(item.path)}
                   />
                 </List.Item>
               )}
@@ -102,7 +107,8 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setSelectedHtml: (params: string) => dispatch(setSelectedHtml(params)),
-  setSelectedXslt: (params: string) => dispatch(setSelectedXslt(params))
+  setSelectedXsltEinvoice: (params: string) => dispatch(setSelectedXsltEinvoice(params)),
+  setSelectedXsltEarchive: (params: string) => dispatch(setSelectedXsltEarchive(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TemplateSelectorModal);

@@ -1,43 +1,37 @@
 [{
-        "type": "EINVOICE",
-        "title": "TEMA 1",
+        "type": "I",
+        "title": "TEMA I",
         "description": "Bu teme kırmızı sevenler için gelsin",
-        "path": "templates/EInvoice/I/",
-        "xslt": "templates/EInvoice/I/"
+        "path": "templates/I/"
     },
     {
-        "type": "EINVOICE",
-        "title": "TEMA 2",
+        "type": "II",
+        "title": "TEMA II",
         "description": "Bu teme mavi sevenler için gelsin",
-        "path": "templates/EInvoice/II/",
-        "xslt": "templates/EInvoice/II/"
+        "path": "templates/II/"
     },
     {
-        "type": "EINVOICE",
-        "title": "TEMA 3",
+        "type": "III",
+        "title": "TEMA III",
         "description": "Bu teme pembe sevenler için gelsin",
-        "path": "templates/EInvoice/III/",
-        "xslt": "templates/EInvoice/III/"
+        "path": "templates/III/"
     },
     {
-        "type": "EINVOICE",
-        "title": "TEMA 4",
+        "type": "IV",
+        "title": "TEMA IV",
         "description": "Bu teme mor sevenler için gelsin",
-        "path": "templates/EInvoice/IV/",
-        "xslt": "templates/EInvoice/IV/"
+        "path": "templates/IV/"
     },
     {
-        "type": "EINVOICE",
-        "title": "TEMA 5",
+        "type": "V",
+        "title": "TEMA V",
         "description": "Bu teme eflatun sevenler için gelsin",
-        "path": "templates/EInvoice/V/",
-        "xslt": "templates/EInvoice/V/"
+        "path": "templates/V/"
     },
     {
-        "type": "EINVOICE",
-        "title": "TEMA 6",
+        "type": "VI",
+        "title": "TEMA VI",
         "description": "Bu teme bej sevenler için gelsin",
-        "path": "templates/EInvoice/VI/",
-        "xslt": "templates/EInvoice/VI/"
+        "path": "templates/VI/"
     }
 ]
