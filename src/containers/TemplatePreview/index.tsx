@@ -1,7 +1,7 @@
 import { Alert, Button, Skeleton } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
-import ReplaceWithParameter from './Components/replaceWithParameter';
+import ReplaceWithParameter from './Components/ReplaceWithParameter';
 import Download from './DownloadTemplate/Download';
 
 interface IProps {
@@ -29,9 +29,9 @@ class HtmlContent extends React.Component<AllProps> {
   };
 
   componentWillReceiveProps() {
-    const html = ReplaceWithParameter({ xsltText: this.props.html, state: this.props.state });
-    const eInvoice = ReplaceWithParameter({ xsltText: this.props.xsltEinvoice, state: this.props.state });
-    const eArchive = ReplaceWithParameter({ xsltText: this.props.xsltEarchive, state: this.props.state });
+    const html = ReplaceWithParameter({ text: this.props.html, state: this.props.state });
+    const eInvoice = ReplaceWithParameter({ text: this.props.xsltEinvoice, state: this.props.state });
+    const eArchive = ReplaceWithParameter({ text: this.props.xsltEarchive, state: this.props.state });
     this.setState({
       replacedHtml: html,
       replaceXsltEinvoice: eInvoice,
@@ -58,7 +58,7 @@ class HtmlContent extends React.Component<AllProps> {
                   <Button type="primary">E-Fatura İndir</Button>
                 </Download>
               </td>
-              <td style={{ marginLeft: 15 }}>
+              <td>
                 <Download file="earchive.xslt" content={this.state.replaceXsltEarchive}>
                   <Button type="primary">E-Arşiv İndir</Button>
                 </Download>
