@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class Download extends React.Component {
+export default class DownloadTemplate extends React.Component {
   downloadFile(fileName, fileContent) {
     function fake_click(obj) {
       let ev = document.createEvent('MouseEvents');
@@ -44,7 +44,7 @@ export default class Download extends React.Component {
   }
 }
 
-Download.propTypes = {
+DownloadTemplate.propTypes = {
   file: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired
 };

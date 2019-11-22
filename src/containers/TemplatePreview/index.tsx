@@ -1,8 +1,8 @@
 import { Alert, Button, Skeleton } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
+import DownloadTemplate from './Components/Download';
 import ReplaceWithParameter from './Components/ReplaceWithParameter';
-import Download from './DownloadTemplate/Download';
 
 interface IProps {
   html: string;
@@ -50,18 +50,18 @@ class HtmlContent extends React.Component<AllProps> {
       <Alert message="Uyarı!" description="Lütfen Soldaki Menü'den Tema Seçimi Yapınız.." type="error" closable />
     ) : (
       <Skeleton avatar loading={this.state.isLoading} paragraph={{ rows: 40 }}>
-        <table>
+        <table style={{ marginBottom: 15 }}>
           <tbody>
             <tr>
               <td>
-                <Download file="einvoice.xslt" content={this.state.replaceXsltEinvoice}>
+                <DownloadTemplate file="einvoice.xslt" content={this.state.replaceXsltEinvoice}>
                   <Button type="primary">E-Fatura İndir</Button>
-                </Download>
+                </DownloadTemplate>
               </td>
               <td>
-                <Download file="earchive.xslt" content={this.state.replaceXsltEarchive}>
+                <DownloadTemplate file="earchive.xslt" content={this.state.replaceXsltEarchive}>
                   <Button type="primary">E-Arşiv İndir</Button>
-                </Download>
+                </DownloadTemplate>
               </td>
             </tr>
           </tbody>
