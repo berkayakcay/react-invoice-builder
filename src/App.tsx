@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import './App.scss';
+import { TemplateModel } from './common/models';
 import { showBankInfoModal } from './containers/BankInfo/actions';
 import { showCompanyInfoModal } from './containers/CompanyInfo/actions';
 import { showDocumentNotesModal } from './containers/DocumentNotes/actions';
@@ -17,9 +18,7 @@ interface IProps {
   showDocumentNotesModal: typeof showDocumentNotesModal;
   showLogoAndSignatureModal: typeof showLogoAndSignatureModal;
   showHtmlPreviewModal: typeof showTemplateSelectorModal;
-  selectedHtml: string;
-  selectedXsltEinvoice: string;
-  selectedXsltEarchive: string;
+  selected: TemplateModel;
 }
 
 class App extends React.Component<IProps> {
@@ -67,11 +66,7 @@ class App extends React.Component<IProps> {
             </div>
           </Layout.Header>
           <Layout.Content style={{ margin: 12, padding: 12, background: '#fff' }}>
-            <HtmlContent
-              html={this.props.selectedHtml}
-              xsltEinvoice={this.props.selectedXsltEinvoice}
-              xsltEarchive={this.props.selectedXsltEarchive}
-            />
+            <HtmlContent template={this.props.selected} />
           </Layout.Content>
         </Layout>
       </Layout>
@@ -80,9 +75,7 @@ class App extends React.Component<IProps> {
 }
 
 const mapStateToProps = ({ htmlPreview }: TemplateSelectorStateType) => ({
-  selectedHtml: htmlPreview.selectedHtml.Template,
-  selectedXsltEinvoice: htmlPreview.selectedEInvoiceXslt.Template,
-  selectedXsltEarchive: htmlPreview.selectedEArchiveXslt.Template
+  selected: htmlPreview.selected
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

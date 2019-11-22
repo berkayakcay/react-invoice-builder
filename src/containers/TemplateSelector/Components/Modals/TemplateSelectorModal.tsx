@@ -3,8 +3,9 @@ import 'antd/lib/timeline/style/index.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { TemplateModel } from '../../../../common/models.js';
 import list from '../../../../list.json';
-import { setSelectedHtml, setSelectedXsltEarchive, setSelectedXsltEinvoice } from '../../actions';
+import { setSelectedTemplate } from '../../actions';
 import ThemeCard from '../Cards/ThemeCard';
 
 interface IProps {
@@ -13,9 +14,7 @@ interface IProps {
 }
 
 interface IPropsFromDispatch {
-  setSelectedHtml: typeof setSelectedHtml;
-  setSelectedXsltEinvoice: typeof setSelectedXsltEinvoice;
-  setSelectedXsltEarchive: typeof setSelectedXsltEarchive;
+  setSelectedTemplate: typeof setSelectedTemplate;
 }
 
 type AllProps = IProps & IPropsFromDispatch;
@@ -39,7 +38,7 @@ class TemplateSelectorModal extends Component<AllProps> {
   render() {
     const onSelected = (path: string) => {
       var htmlPath = path + 'default.html';
-      var text = readTextFile(htmlPath);
+      var textHtml = readTextFile(htmlPath);
 
       var xsltEinvoicePath = path + 'einvoice.xslt';
       var textXsltEinvoice = readTextFile(xsltEinvoicePath);
@@ -47,9 +46,11 @@ class TemplateSelectorModal extends Component<AllProps> {
       var xsltEarchivePath = path + 'earchive.xslt';
       var textXsltEarchive = readTextFile(xsltEarchivePath);
 
-      this.props.setSelectedHtml(text);
-      this.props.setSelectedXsltEinvoice(textXsltEinvoice);
-      this.props.setSelectedXsltEarchive(textXsltEarchive);
+      this.props.setSelectedTemplate({
+        HtmlTemplate: textHtml,
+        EinvoiceTemplate: textXsltEinvoice,
+        EarchiveTemplate: textXsltEarchive
+      });
     };
 
     return (
@@ -106,9 +107,7 @@ class TemplateSelectorModal extends Component<AllProps> {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setSelectedHtml: (params: string) => dispatch(setSelectedHtml(params)),
-  setSelectedXsltEinvoice: (params: string) => dispatch(setSelectedXsltEinvoice(params)),
-  setSelectedXsltEarchive: (params: string) => dispatch(setSelectedXsltEarchive(params))
+  setSelectedTemplate: (params: TemplateModel) => dispatch(setSelectedTemplate(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TemplateSelectorModal);

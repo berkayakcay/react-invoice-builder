@@ -1,14 +1,10 @@
 import { TemplateModel } from '../../common/models';
 
 export const initialState: TemplateSelectorState = {
-  selectedHtml: {
-    Template: ''
-  },
-  selectedEInvoiceXslt: {
-    Template: ''
-  },
-  selectedEArchiveXslt: {
-    Template: ''
+  selected: {
+    HtmlTemplate: '',
+    EinvoiceTemplate: '',
+    EarchiveTemplate: ''
   }
 };
 
@@ -17,14 +13,10 @@ export interface TemplateSelectorStateType {
 }
 
 export interface TemplateSelectorState {
-  readonly selectedHtml: TemplateModel;
-  readonly selectedEInvoiceXslt: TemplateModel;
-  readonly selectedEArchiveXslt: TemplateModel;
+  readonly selected: TemplateModel;
 }
 
 export enum TemplateSelectorActionTypes {
   SHOW_TEMPLATE_SELECTOR_MODAL = 'SHOW_TEMPLATE_SELECTOR_MODAL',
-  SET_SELECTED_HTML = 'SET_SELECTED_HTML',
-  SET_SELECTED_XSLT_EINVOICE = 'SET_SELECTED_XSLT_EINVOICE',
-  SET_SELECTED_XSLT_EARCHIVE = 'SET_SELECTED_XSLT_EARCHIVE'
+  SET_SELECTED_TEMPLATE = 'SET_SELECTED_TEMPLATE'
 }

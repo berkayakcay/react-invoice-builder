@@ -1,21 +1,18 @@
 import { Alert, Button, Skeleton } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
+import { TemplateModel } from '../../common/models';
 import DownloadTemplate from './Components/Download';
 import ReplaceWithParameter from './Components/ReplaceWithParameter';
 
 interface IProps {
-  html: string;
-  xsltEinvoice: string;
-  xsltEarchive: string;
+  template: TemplateModel;
   state: any;
 }
 
 interface IState {
   isLoading: boolean;
-  replacedHtml: string;
-  replaceXsltEinvoice: string;
-  replaceXsltEarchive: string;
+  replaced: TemplateModel;
 }
 
 type AllProps = IProps;
@@ -23,20 +20,18 @@ type AllProps = IProps;
 class HtmlContent extends React.Component<AllProps> {
   state: IState = {
     isLoading: true,
-    replacedHtml: '',
-    replaceXsltEinvoice: '',
-    replaceXsltEarchive: ''
+    replaced: {
+      HtmlTemplate: '',
+      EinvoiceTemplate: '',
+      EarchiveTemplate: ''
+    }
   };
 
   componentWillReceiveProps() {
-    const html = ReplaceWithParameter({ text: this.props.html, state: this.props.state });
-    const eInvoice = ReplaceWithParameter({ text: this.props.xsltEinvoice, state: this.props.state });
-    const eArchive = ReplaceWithParameter({ text: this.props.xsltEarchive, state: this.props.state });
-    this.setState({
-      replacedHtml: html,
-      replaceXsltEinvoice: eInvoice,
-      replaceXsltEarchive: eArchive
-    });
+    const html = ReplaceWithParameter({ text: this.props.template.HtmlTemplate, state: this.props.state });
+    const eInvoice = ReplaceWithParameter({ text: this.props.template.EinvoiceTemplate, state: this.props.state });
+    const eArchive = ReplaceWithParameter({ text: this.props.template.EarchiveTemplate, state: this.props.state });
+    this.setState({ replaced: { HtmlTemplate: html, EinvoiceTemplate: eInvoice, EarchiveTemplate: eArchive } });
   }
 
   componentWillMount() {
@@ -46,7 +41,7 @@ class HtmlContent extends React.Component<AllProps> {
   }
 
   render() {
-    return this.state.replacedHtml === '' ? (
+    return this.state.replaced.HtmlTemplate === '' ? (
       <Alert message="Uyarı!" description="Lütfen Soldaki Menü'den Tema Seçimi Yapınız.." type="error" closable />
     ) : (
       <Skeleton avatar loading={this.state.isLoading} paragraph={{ rows: 40 }}>
@@ -54,12 +49,12 @@ class HtmlContent extends React.Component<AllProps> {
           <tbody>
             <tr>
               <td>
-                <DownloadTemplate file="einvoice.xslt" content={this.state.replaceXsltEinvoice}>
+                <DownloadTemplate file="einvoice.xslt" content={this.state.replaced.EinvoiceTemplate}>
                   <Button type="primary">E-Fatura İndir</Button>
                 </DownloadTemplate>
               </td>
               <td>
-                <DownloadTemplate file="earchive.xslt" content={this.state.replaceXsltEarchive}>
+                <DownloadTemplate file="earchive.xslt" content={this.state.replaced.EarchiveTemplate}>
                   <Button type="primary">E-Arşiv İndir</Button>
                 </DownloadTemplate>
               </td>
@@ -74,7 +69,7 @@ class HtmlContent extends React.Component<AllProps> {
           height="100%"
           scrolling="yes"
           seamless
-          srcDoc={this.state.replacedHtml}
+          srcDoc={this.state.replaced.HtmlTemplate}
         />
       </Skeleton>
     );
