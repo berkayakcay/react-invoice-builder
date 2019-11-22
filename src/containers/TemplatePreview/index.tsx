@@ -1,13 +1,13 @@
 import { Alert, Button, Skeleton } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
-import { TemplateModel } from '../../common/models';
+import { CommonModel, TemplateModel } from '../../common/models';
 import DownloadTemplate from './Components/Download';
 import ReplaceWithParameter from './Components/ReplaceWithParameter';
 
 interface IProps {
   template: TemplateModel;
-  state: any;
+  state: CommonModel;
 }
 
 interface IState {

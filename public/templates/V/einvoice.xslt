@@ -382,7 +382,7 @@
 									</table>
 								</td>
 								<td width="100" align="left" height="100">
-									{{IMZA}}
+									
 								</td>
 								<td width="300" align="right" height="100">
 									{{LOGO}}

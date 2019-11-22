@@ -736,7 +736,7 @@
 									</div>
 									<div>
                                         <div class="signature_logo_container" style="margin-top: 10px;">
-                                            {{IMZA}}
+                                            
                                         </div>
                                     </div>
 								</td>

@@ -617,7 +617,7 @@ padding: 1px 0px 1px 3px
 										<div class="hr" style="margin-top:5px;"></div>
 								</td>
 								<td width="20%">
-								{{IMZA}}
+								
 								</td>
 								<td width="40%" align="center" valign="bottom" colspan="2">
 									<table id="despatchTable">

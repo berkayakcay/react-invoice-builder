@@ -64,3 +64,21 @@ export interface TemplateModel {
 export interface ProductModel {
   Product: boolean;
 }
+
+export interface LogoAndSinatureModel {
+  logoCroppedImage: string;
+  signatureCroppedImage: string;
+}
+
+export interface CommonModel {
+  companyInfo: StateModel;
+  bankInfo: StateModel;
+  documentNotes: StateModel;
+  logoAndSignature: LogoAndSinatureModel;
+}
+
+export interface StateModel {
+  info: CompanyInfoModel;
+  list: Array<BankInfoModel>;
+  notes: DocumentNotesModel;
+}

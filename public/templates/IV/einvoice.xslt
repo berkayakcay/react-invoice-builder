@@ -321,7 +321,7 @@
         </table>
        </td>
        <td style="width: 222.58px;"  align="center">
-          {{IMZA}}
+          
        </td>
        <td style="width: 219.41px;">
         <table style="width: 200px; border-collapse: collapse;">

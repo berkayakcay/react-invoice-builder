@@ -405,7 +405,7 @@
 									</table>
 
 								</td>
-								<td width="20%" valign="bottom" align="center">{{IMZA}}</td>
+								<td width="20%" valign="bottom" align="center"></td>
 								<td width="40%" align="center" valign="middle" rowspan="2">
 
 									<!-- header - sağ üst köşe -->

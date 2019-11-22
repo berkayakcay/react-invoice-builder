@@ -1,8 +1,9 @@
+import { CommonModel } from '../../../common/models';
 import ImgConverterToBase64 from './ImgConverterToBase64';
 
 interface IProps {
   text: string;
-  state: any;
+  state: CommonModel;
 }
 
 const ReplaceWithParameter = (props: IProps) => {
