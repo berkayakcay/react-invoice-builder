@@ -1,4 +1,4 @@
-import { CommonModel } from '../../../common/models';
+import { BankInfoModel, CommonModel } from '../../../common/models';
 import ImgConverterToBase64 from './ImgConverterToBase64';
 
 interface IProps {
@@ -24,29 +24,30 @@ const ReplaceWithParameter = (props: IProps) => {
   );
 
   if (props.state.bankInfo.list.length > 0) {
+    const body = props.state.bankInfo.list.reduce((content: string, item: BankInfoModel) => {
+      return (content +=
+        '<tr><td>' +
+        item.bankName +
+        '</td><td>' +
+        item.branch +
+        '</td><td>' +
+        item.branchCode +
+        '</td><td>' +
+        item.accountCode +
+        '</td><td>' +
+        item.accountType +
+        '</td><td>' +
+        item.iban +
+        '</td><td>' +
+        item.accountName +
+        '</td></tr>');
+    }, '');
+
+    console.log('content', body);
+
     props.text = props.text.replace(
       /{{BANKINFO}}/gim,
-      "<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap No</th><th>Hesap Türü</th><th>Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>" +
-        props.state.bankInfo.list.map(x => {
-          return (
-            '<tr><td>' +
-            x.bankName +
-            '</td><td>' +
-            x.branch +
-            '</td><td>' +
-            x.branchCode +
-            '</td><td>' +
-            x.accountCode +
-            '</td><td>' +
-            x.accountType +
-            '</td><td>' +
-            x.iban +
-            '</td><td>' +
-            x.accountName +
-            '</td></tr>'
-          );
-        }) +
-        '</tbody></table>'
+      `<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap No</th><th>Hesap Türü</th><th>Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>${body}</tbody></table>`
     );
   } else {
     props.text = props.text.replace(/{{BANKINFO}}/gim, '');

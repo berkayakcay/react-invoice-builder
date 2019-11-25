@@ -596,222 +596,87 @@
 
 									<table id="customerPartyTable" align="center" border="0">
 										<tbody>
-											<tr>
-												<td>
-
-												<table align="center" border="0">
-												<tbody>
-
-												<tr align="center" valign="top">
-												<td>
-												<xsl:if
-												test="n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeID = 'TCKN'">
-												<xsl:for-each
-												select="n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Person">
-												<xsl:if test="cbc:FirstName != ''">
-												<xsl:value-of select="cbc:FirstName"
-												/>&#160;</xsl:if>
-												<xsl:if test="cbc:FamilyName != ''">
-												<xsl:value-of select="cbc:FamilyName"
-												/>&#160;</xsl:if>
-												</xsl:for-each>
-												</xsl:if>
-
-												<xsl:if
-												test="n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID/@schemeID != 'TCKN'">
-												<xsl:value-of
-												select="n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name"
-												/>
-												</xsl:if>
-												</td>
-												</tr>
-
-												<tr align="center" valign="top">
-												<td>
-												<xsl:if
-												test="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName) != ''">
-												<span>
-												<xsl:value-of
-												select="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName)"
-												/>
-												</span>
-												</xsl:if>
-												<xsl:if
-												test="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:BuildingName) != ''">
-												<span>
-												<xsl:text>&#160;</xsl:text>
-												<xsl:value-of
-												select="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:BuildingName)"
-												/>
-												</span>
-												</xsl:if>
-												<xsl:if
-												test="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:BuildingNumber) != ''">
-												<span>
-												<xsl:text>&#160;</xsl:text>
-												<xsl:text>NO:&#160;</xsl:text>
-												<xsl:value-of
-												select="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:BuildingNumber)"
-												/>
-												</span>
-												<br/>
-												</xsl:if>
-												</td>
-												</tr>
-
-
-												<tr align="center" valign="top">
-												<td>
-												<xsl:if
-												test="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone) != ''">
-												<xsl:text>&#160;</xsl:text>
-												<span>
-												<xsl:value-of
-												select="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone)"
-												/>
-												</span>
-												<xsl:text>&#160;</xsl:text>
-												</xsl:if>
-												<xsl:if
-												test="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CitySubdivisionName) != ''">
-												<span>
-												<xsl:value-of
-												select="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CitySubdivisionName)"
-												/>
-												</span>
-												<xsl:text>&#160;/&#160;</xsl:text>
-												</xsl:if>
-												<xsl:if
-												test="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName) != ''">
-												<span>
-												<xsl:value-of
-												select="normalize-space(//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName)"
-												/>
-												</span>
-												<br/>
-												</xsl:if>
-												</td>
-												</tr>
-
-												<xsl:for-each
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:Name">
-												<tr align="center" valign="top">
-												<td>
-
-												<xsl:text>Vergi Dairesi: </xsl:text>
-
-												<xsl:value-of select="."/>
-												</td>
-												</tr>
-												</xsl:for-each>
-
-
-												<xsl:for-each
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
-												<xsl:if
-												test="normalize-space(./cbc:ID/@schemeID) = 'VKN'">
-												<tr align="center" valign="top">
-												<td>
-
-												<xsl:text>Vergi Numaras&#305;: </xsl:text>
-
-												<xsl:value-of select="."/>
-												</td>
-												</tr>
-												</xsl:if>
-												</xsl:for-each>
-
-												<xsl:for-each
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
-												<xsl:if
-												test="normalize-space(./cbc:ID/@schemeID) = 'TCKN'">
-												<tr align="center" valign="top">
-												<td>
-
-												<xsl:text>TCKN: </xsl:text>
-
-												<xsl:value-of select="."/>
-												</td>
-												</tr>
-												</xsl:if>
-												</xsl:for-each>
-
-
-												<xsl:for-each
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:WebsiteURI">
-												<xsl:if test="normalize-space(.) != ''">
-												<tr align="center" valign="top">
-												<td>
-
-												<xsl:text>Web Sitesi:&#160;</xsl:text>
-
-												<xsl:value-of select="normalize-space(.)"/>
-												</td>
-												</tr>
-												</xsl:if>
-												</xsl:for-each>
-
-												<xsl:for-each
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail">
-												<xsl:if test="normalize-space(.) != ''">
-												<tr align="center" valign="top">
-												<td>
-
-												<xsl:text>E-Posta: </xsl:text>
-
-												<xsl:value-of select="normalize-space(.)"/>
-												</td>
-												</tr>
-												</xsl:if>
-												</xsl:for-each>
-
-												<xsl:if
-												test="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone or //n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telefax">
-												<tr align="center" valign="top">
-												<td>
-												<xsl:if
-												test="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone">
-												<xsl:value-of
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone"/>
-												<xsl:text>&#160;</xsl:text>
-												</xsl:if>
-												<xsl:if
-												test="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telefax">
-												<xsl:value-of
-												select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telefax"
-												/>
-												</xsl:if>
-												</td>
-												</tr>
-												</xsl:if>
-
-												<tr align="center" valign="top">
-												<td>
-
-												<xsl:for-each select="//n1:Invoice/cbc:Note">
-
-												<xsl:choose>
-												<xsl:when test="substring(., 0, 5) = 'UPL:'">
-
-												<xsl:choose>
-												<xsl:when test="substring(., 0, 8) = 'UPL:CI:'"> </xsl:when>
-												<xsl:when test="substring(., 0, 8) = 'UPL:SI:'"> </xsl:when>
-												<xsl:otherwise>
-												<xsl:value-of select="substring(., 5)"/>
-												<br/>
-												</xsl:otherwise>
-												</xsl:choose>
-
-												</xsl:when>
-												</xsl:choose>
-
-												</xsl:for-each>
-												</td>
-												</tr>
-
-												</tbody>
-												</table>
-
+											<tr style="height:118px;" align="center" valign="top">
+												<td width="40%" align="right" valign="bottom">
+													<div class="hr" style="margin-top:10px;margin-bottom:5px"></div>
+													
+													<table align="center" border="0">
+														<tbody>
+															<tr>
+																<xsl:for-each select="n1:Invoice/cac:AccountingCustomerParty/cac:Party">
+																	<td style="width:469px; " align="left">
+																		<span style="font-weight:bold; ">
+																			<xsl:text>SAYIN</xsl:text>
+																		</span>
+																	</td>
+																</xsl:for-each>													
+															</tr>
+															<tr align="center" valign="top">
+																<xsl:choose>
+																	<xsl:when test="n1:Invoice/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='PARTYTYPE' and text()='TAXFREE']">
+																		<xsl:for-each select="n1:Invoice/cac:BuyerCustomerParty/cac:Party">
+																			<xsl:call-template name="Party_Title">
+																				<xsl:with-param name="PartyType">TAXFREE</xsl:with-param>
+																			</xsl:call-template>
+																		</xsl:for-each>															
+																	</xsl:when>
+																	<xsl:when test="n1:Invoice/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='PARTYTYPE' and text()='EXPORT']">
+																		<xsl:for-each select="n1:Invoice/cac:BuyerCustomerParty/cac:Party">
+																			<xsl:call-template name="Party_Title">
+																				<xsl:with-param name="PartyType">EXPORT</xsl:with-param>
+																			</xsl:call-template>
+																		</xsl:for-each>															
+																	</xsl:when>
+																	<xsl:otherwise>
+																		<xsl:for-each select="n1:Invoice/cac:AccountingCustomerParty/cac:Party">
+																			<xsl:call-template name="Party_Title">
+																				<xsl:with-param name="PartyType">OTHER</xsl:with-param>
+																			</xsl:call-template>
+																		</xsl:for-each>															
+																	</xsl:otherwise>
+																</xsl:choose>													
+															</tr>
+															<xsl:choose>
+																<xsl:when test="n1:Invoice/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='PARTYTYPE' and text()='TAXFREE']">
+																	<xsl:for-each select="n1:Invoice/cac:BuyerCustomerParty/cac:Party">
+																		<tr  align="center" valign="top">
+																			<xsl:call-template name="Party_Adress">
+																				<xsl:with-param name="PartyType">TAXFREE</xsl:with-param>
+																			</xsl:call-template>
+																		</tr>
+																		<xsl:call-template name="Party_Other">
+																			<xsl:with-param name="PartyType">TAXFREE</xsl:with-param>
+																		</xsl:call-template>
+																	</xsl:for-each>															
+																</xsl:when>
+																<xsl:when test="n1:Invoice/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='PARTYTYPE' and text()='EXPORT']">
+																	<xsl:for-each select="n1:Invoice/cac:BuyerCustomerParty/cac:Party">
+																		<tr  align="center" valign="top">
+																			<xsl:call-template name="Party_Adress">
+																				<xsl:with-param name="PartyType">EXPORT</xsl:with-param>
+																			</xsl:call-template>
+																		</tr>
+																		<xsl:call-template name="Party_Other">
+																			<xsl:with-param name="PartyType">EXPORT</xsl:with-param>
+																		</xsl:call-template>
+																	</xsl:for-each>															
+																</xsl:when>
+																<xsl:otherwise>
+																	<xsl:for-each select="n1:Invoice/cac:AccountingCustomerParty/cac:Party">
+																		<tr  align="center" valign="top">
+																			<xsl:call-template name="Party_Adress">
+																				<xsl:with-param name="PartyType">OTHER</xsl:with-param>																	
+																			</xsl:call-template>
+																		</tr>
+																		<xsl:call-template name="Party_Other">
+																			<xsl:with-param name="PartyType">OTHER</xsl:with-param>
+																		</xsl:call-template>
+																	</xsl:for-each>
+																</xsl:otherwise>
+															</xsl:choose>																										
+														</tbody>
+													</table>
+													<div class="hr" style="margin-top:5px;"></div>
 												</td>
 											</tr>
 										</tbody>
@@ -828,7 +693,7 @@
 										<img style="width:91px;" align="middle" alt="E-Fatura Logo"
 											src="data:image/jpeg;base64,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"/>
 										<h1 align="center">
-											<span style="font-weight:bold;">e-Arşiv</span>
+											<span style="font-weight:bold;">e-Arşiv Fatura</span>
 										</h1>
 									</center>
 								</td>
@@ -1144,7 +1009,7 @@
 					<div id="elektronikOrtamDogrula" style="width:800px" >
 						<div style="width:auto; margin-bottom:10px; margin-top:3px">
 							Bu faturayı elektronik olarak görmek ve doğrulamak için <a target="_blank" style="font-weight:bold" href="http://e-fatura.link">
-								<u>e-fatura.link</u>
+								<u>e-Arşiv Fatura.link</u>
 							</a> adresini ziyaret ediniz.
 						</div>
 					</div>

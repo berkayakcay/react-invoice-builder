@@ -33,11 +33,5 @@
         "title": "TEMA VI",
         "description": "Bu teme bej sevenler için gelsin",
         "path": "templates/VI/"
-    },
-    {
-        "type": "VII",
-        "title": "TEMA VII",
-        "description": "Bu teme bej sevenler için gelsin",
-        "path": "templates/VII/"
     }
 ]
