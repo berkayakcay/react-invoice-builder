@@ -75,6 +75,16 @@ export interface CommonModel {
   bankInfo: StateModel;
   documentNotes: StateModel;
   logoAndSignature: LogoAndSinatureModel;
+  htmlPreview: HtmlPreviewModel;
+}
+
+export interface HtmlPreviewModel {
+  selected: TemplateModel;
+  selectedProduct: ProductSetModel;
+}
+
+export interface ProductSetModel {
+  Product: string;
 }
 
 export interface StateModel {

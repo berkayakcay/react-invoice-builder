@@ -2,36 +2,24 @@
         "type": "I",
         "title": "TEMA I",
         "description": "Bu teme kırmızı sevenler için gelsin",
-        "path": "templates/Invoice/I/"
+        "path": "templates/Esmm/I/"
     },
     {
         "type": "II",
         "title": "TEMA II",
         "description": "Bu teme mavi sevenler için gelsin",
-        "path": "templates/Invoice/II/"
+        "path": "templates/Esmm/II/"
     },
     {
         "type": "III",
         "title": "TEMA III",
         "description": "Bu teme pembe sevenler için gelsin",
-        "path": "templates/Invoice/III/"
+        "path": "templates/Esmm/III/"
     },
     {
         "type": "IV",
         "title": "TEMA IV",
         "description": "Bu teme mor sevenler için gelsin",
-        "path": "templates/Invoice/IV/"
-    },
-    {
-        "type": "V",
-        "title": "TEMA V",
-        "description": "Bu teme eflatun sevenler için gelsin",
-        "path": "templates/Invoice/V/"
-    },
-    {
-        "type": "VI",
-        "title": "TEMA VI",
-        "description": "Bu teme bej sevenler için gelsin",
-        "path": "templates/Invoice/VI/"
+        "path": "templates/Esmm/IV/"
     }
 ]

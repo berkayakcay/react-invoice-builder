@@ -1,6 +1,7 @@
 import { Alert, Button, Skeleton } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Extention, Product } from '../../common/enums';
 import { CommonModel, TemplateModel } from '../../common/models';
 import DownloadTemplate from './Components/Download';
 import ReplaceWithParameter from './Components/ReplaceWithParameter';
@@ -40,26 +41,45 @@ class HtmlContent extends React.Component<AllProps> {
     }, 500);
   }
 
+  SelectedProduct({ state }) {
+    switch (state) {
+      case Product.EINVOICE:
+        return (
+          <tr>
+            <td>
+              <DownloadTemplate file={Product.EINVOICE + Extention.XSLT} content={this.state.replaced.EinvoiceTemplate}>
+                <Button type="primary">E-Fatura İndir</Button>
+              </DownloadTemplate>
+            </td>
+            <td>
+              <DownloadTemplate file={Product.EARCHIVE + Extention.XSLT} content={this.state.replaced.EarchiveTemplate}>
+                <Button type="primary">E-Arşiv İndir</Button>
+              </DownloadTemplate>
+            </td>
+          </tr>
+        );
+      case Product.ESMM:
+        return (
+          <tr>
+            <td>
+              <DownloadTemplate file={Product.ESMM + Extention.XSLT} content={this.state.replaced.EarchiveTemplate}>
+                <Button type="primary">E-SMM İndir</Button>
+              </DownloadTemplate>
+            </td>
+          </tr>
+        );
+      default:
+        return null;
+    }
+  }
+
   render() {
     return this.state.replaced.HtmlTemplate === '' ? (
       <Alert message="Uyarı!" description="Lütfen Soldaki Menü'den Tema Seçimi Yapınız.." type="error" closable />
     ) : (
       <Skeleton avatar loading={this.state.isLoading} paragraph={{ rows: 40 }}>
         <table style={{ marginBottom: 15 }}>
-          <tbody>
-            <tr>
-              <td>
-                <DownloadTemplate file="einvoice.xslt" content={this.state.replaced.EinvoiceTemplate}>
-                  <Button type="primary">E-Fatura İndir</Button>
-                </DownloadTemplate>
-              </td>
-              <td>
-                <DownloadTemplate file="earchive.xslt" content={this.state.replaced.EarchiveTemplate}>
-                  <Button type="primary">E-Arşiv İndir</Button>
-                </DownloadTemplate>
-              </td>
-            </tr>
-          </tbody>
+          <tbody>{this.SelectedProduct({ state: this.props.state.htmlPreview.selectedProduct.Product })}</tbody>
         </table>
         <iframe
           title={Date.now.toString()}
