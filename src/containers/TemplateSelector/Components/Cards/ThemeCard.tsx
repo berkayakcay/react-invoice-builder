@@ -1,13 +1,13 @@
-import { Card } from "antd";
-import Meta from "antd/lib/card/Meta";
-import React, { PureComponent } from "react";
+import { Card } from 'antd';
+import Meta from 'antd/lib/card/Meta';
+import React, { PureComponent } from 'react';
 
 interface IProps {
   onClick: Function | any;
   type: string;
   image: string;
   title: string;
-  description: string;
+  description?: string;
 }
 
 export default class ThemeCard extends PureComponent<IProps> {

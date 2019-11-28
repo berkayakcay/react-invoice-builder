@@ -2,16 +2,23 @@ import { Button, Col, Modal, Row } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import LogoFile from './Logo';
-import Signature from './Signature';
+import { LogoModel } from '../../../../common/models';
+import { showCroppedLogo } from '../../actions';
+import { LogoAndSignatureStateType } from '../../types';
+import LogoCropper from './Crop/LogoCropper';
 import './styles.scss';
 
 interface IProps {
   open: boolean;
   close: () => void;
+  croped: LogoModel;
 }
 
-type AllProps = IProps;
+interface IPropsFromDispatch {
+  showCroppedLogo: typeof showCroppedLogo;
+}
+
+type AllProps = IProps & IPropsFromDispatch;
 
 class LogoAndSignatureModal extends Component<AllProps> {
   render() {
@@ -19,7 +26,7 @@ class LogoAndSignatureModal extends Component<AllProps> {
       <Modal
         title="Logo Ve İmza"
         onCancel={() => this.props.close()}
-        width={500}
+        width={600}
         visible={this.props.open}
         footer={[
           <>
@@ -32,7 +39,7 @@ class LogoAndSignatureModal extends Component<AllProps> {
           </>
         ]}
       >
-        <Row>
+        {/* <Row>
           <Col>
             <LogoFile />
           </Col>
@@ -42,17 +49,26 @@ class LogoAndSignatureModal extends Component<AllProps> {
           <Col>
             <Signature />
           </Col>
+        </Row> */}
+        <Row>
+          <Col>
+            <LogoCropper
+              croppedImage={this.props.croped.logoSrc}
+              onDestroy={value => this.props.showCroppedLogo(value)}
+            />
+          </Col>
         </Row>
       </Modal>
     );
   }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({ logoAndSignature }: LogoAndSignatureStateType) => ({
+  croped: logoAndSignature
+});
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({});
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  showCroppedLogo: (params: object | any) => dispatch(showCroppedLogo(params))
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LogoAndSignatureModal);
+export default connect(mapStateToProps, mapDispatchToProps)(LogoAndSignatureModal);

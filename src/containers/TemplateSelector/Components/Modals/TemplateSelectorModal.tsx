@@ -117,7 +117,6 @@ class TemplateSelectorModal extends Component<AllProps> {
                         type={item.type}
                         image={item.path + 'default.jpg'}
                         title={item.title}
-                        description={item.description}
                         onClick={() => onSelected(item.path)}
                       />
                     </List.Item>
@@ -158,7 +157,6 @@ class TemplateSelectorModal extends Component<AllProps> {
                         type={item.type}
                         image={item.path + 'default.jpg'}
                         title={item.title}
-                        description={item.description}
                         onClick={() => onSelectedEsmm(item.path)}
                       />
                     </List.Item>

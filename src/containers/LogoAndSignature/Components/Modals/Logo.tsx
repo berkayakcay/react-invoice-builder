@@ -1,3 +1,12 @@
+import React, { PureComponent } from 'react';
+
+export default class Logo extends PureComponent {
+  render() {
+    return <div></div>;
+  }
+}
+
+/*
 import { faCropAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Card, Col, Empty, Icon, message, Modal, Row, Slider } from 'antd';
@@ -184,3 +193,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Logo);
+
+*/
