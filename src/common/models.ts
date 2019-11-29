@@ -28,12 +28,8 @@ export interface DocumentNotesModel {
 }
 
 export interface LogoModel {
-  logoSrc: string;
-  logoCrop: object | any;
-  logoZoom: number;
-  logoAspect: number;
-  logoCroppedAreaPixels: any;
-  logoCroppedImage: any;
+  logoBase64: string;
+  signatureBase64: string;
 }
 
 export interface SignatureModel {
@@ -74,7 +70,7 @@ export interface CommonModel {
   companyInfo: StateModel;
   bankInfo: StateModel;
   documentNotes: StateModel;
-  logoAndSignature: LogoAndSinatureModel;
+  logoAndSignature: LogoModel;
   htmlPreview: HtmlPreviewModel;
 }
 

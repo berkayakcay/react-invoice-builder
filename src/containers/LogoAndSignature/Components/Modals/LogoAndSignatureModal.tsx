@@ -1,11 +1,14 @@
-import { Button, Col, Modal, Row } from 'antd';
+import { faImages, faSignature } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Col, Modal, Row, Tabs } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { LogoModel } from '../../../../common/models';
-import { showCroppedLogo } from '../../actions';
+import { logoOnCrop } from '../../actions';
 import { LogoAndSignatureStateType } from '../../types';
 import LogoCropper from './Crop/LogoCropper';
+import SignatureCropper from './Crop/SıgnatureCropper';
 import './styles.scss';
 
 interface IProps {
@@ -15,11 +18,12 @@ interface IProps {
 }
 
 interface IPropsFromDispatch {
-  showCroppedLogo: typeof showCroppedLogo;
+  logoOnCrop: typeof logoOnCrop;
 }
 
 type AllProps = IProps & IPropsFromDispatch;
 
+const { TabPane } = Tabs;
 class LogoAndSignatureModal extends Component<AllProps> {
   render() {
     return (
@@ -30,7 +34,7 @@ class LogoAndSignatureModal extends Component<AllProps> {
         visible={this.props.open}
         footer={[
           <>
-            <Button key="kaydet" type="primary" icon="check" onClick={() => this.props.close()}>
+            <Button key="kaydet" type="primary" icon="check">
               KAYDET
             </Button>
             <Button key="kapat" type="danger" icon="close" onClick={() => this.props.close()}>
@@ -39,25 +43,36 @@ class LogoAndSignatureModal extends Component<AllProps> {
           </>
         ]}
       >
-        {/* <Row>
-          <Col>
-            <LogoFile />
-          </Col>
-        </Row>
-        <hr style={{ marginTop: 20, marginBottom: 20 }} />
-        <Row>
-          <Col>
-            <Signature />
-          </Col>
-        </Row> */}
-        <Row>
-          <Col>
-            <LogoCropper
-              croppedImage={this.props.croped.logoSrc}
-              onDestroy={value => this.props.showCroppedLogo(value)}
-            />
-          </Col>
-        </Row>
+        <Tabs defaultActiveKey="1">
+          <TabPane
+            tab={
+              <span>
+                <FontAwesomeIcon style={{ color: '#ced4da' }} icon={faImages} /> Logo
+              </span>
+            }
+            key="1"
+          >
+            <Row>
+              <Col>
+                <LogoCropper croppedImage={this.props.croped.logoBase64} />
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane
+            tab={
+              <span>
+                <FontAwesomeIcon style={{ color: '#ced4da' }} icon={faSignature} /> İmza
+              </span>
+            }
+            key="2"
+          >
+            <Row>
+              <Col>
+                <SignatureCropper croppedImage={this.props.croped.signatureBase64} />
+              </Col>
+            </Row>
+          </TabPane>
+        </Tabs>
       </Modal>
     );
   }
@@ -67,8 +82,6 @@ const mapStateToProps = ({ logoAndSignature }: LogoAndSignatureStateType) => ({
   croped: logoAndSignature
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  showCroppedLogo: (params: object | any) => dispatch(showCroppedLogo(params))
-});
+const mapDispatchToProps = (dispatch: Dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogoAndSignatureModal);

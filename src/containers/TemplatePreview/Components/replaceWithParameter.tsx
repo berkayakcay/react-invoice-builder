@@ -1,5 +1,4 @@
 import { BankInfoModel, CommonModel } from '../../../common/models';
-import ImgConverterToBase64 from './ImgConverterToBase64';
 
 interface IProps {
   text: string;
@@ -80,23 +79,19 @@ const ReplaceWithParameter = (props: IProps) => {
     props.text = props.text.replace(/{{NOTES.THIRD}}/gim, '');
   }
 
-  if (props.state.logoAndSignature.logoCroppedImage !== null) {
+  if (props.state.logoAndSignature.logoBase64 !== undefined) {
     props.text = props.text.replace(
       /{{LOGO}}/gim,
-      '<img style="width: 150px; height: 150px;" src="data:image/png;base64,' +
-        ImgConverterToBase64(props.state.logoAndSignature.logoCroppedImage) +
-        '" />'
+      '<img style="width: 150px; height: 150px;" src="' + props.state.logoAndSignature.logoBase64 + '" />'
     );
   } else {
     props.text = props.text.replace(/{{LOGO}}/gim, '');
   }
 
-  if (props.state.logoAndSignature.signatureCroppedImage !== null) {
+  if (props.state.logoAndSignature.signatureBase64 !== undefined) {
     props.text = props.text.replace(
       /{{IMZA}}/gim,
-      '<img style="width: 100px; height: 100px;" src="data:image/png;base64,' +
-        ImgConverterToBase64(props.state.logoAndSignature.signatureCroppedImage) +
-        '" />'
+      '<img style="width: 100px; height: 100px;" src="' + props.state.logoAndSignature.signatureBase64 + '" />'
     );
   } else {
     props.text = props.text.replace(/{{IMZA}}/gim, '');

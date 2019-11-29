@@ -42,7 +42,7 @@ function readTextFile(path: string) {
 const { TabPane } = Tabs;
 class TemplateSelectorModal extends Component<AllProps> {
   render() {
-    const onSelected = (path: string) => {
+    const onSelectedInvoice = (path: string) => {
       var htmlPath = path + 'default.html';
       var textHtml = readTextFile(htmlPath);
 
@@ -117,7 +117,7 @@ class TemplateSelectorModal extends Component<AllProps> {
                         type={item.type}
                         image={item.path + 'default.jpg'}
                         title={item.title}
-                        onClick={() => onSelected(item.path)}
+                        onClick={() => onSelectedInvoice(item.path)}
                       />
                     </List.Item>
                   )}

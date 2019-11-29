@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import ReactCropper from 'react-cropper';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { logoOnCrop } from '../../../actions';
+import { signatureOnCrop } from '../../../actions';
 import './index.scss';
 
 type State = {
@@ -20,12 +20,12 @@ type Props = {
 };
 
 interface IPropsFromDispatch {
-  logoOnCrop: typeof logoOnCrop;
+  signatureOnCrop: typeof signatureOnCrop;
 }
 
 type AllProps = Props & IPropsFromDispatch;
 
-class LogoCropper extends Component<AllProps> {
+class SignatureCropper extends Component<AllProps> {
   state: State = {
     src: undefined,
     rotateTo: 0,
@@ -54,7 +54,7 @@ class LogoCropper extends Component<AllProps> {
     });
 
     if (this.cropper.current !== null) {
-      this.props.logoOnCrop(this.cropper.current!.getCroppedCanvas().toDataURL());
+      this.props.signatureOnCrop(this.cropper.current!.getCroppedCanvas().toDataURL());
     }
   };
 
@@ -109,7 +109,7 @@ class LogoCropper extends Component<AllProps> {
 
             {this.state.cropResult !== undefined && (
               <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                <h2>Kırpılmış olan logo</h2>
+                <h2>Kırpılmış olan İmza</h2>
 
                 <img width="450" src={this.state.cropResult} />
               </div>
@@ -124,7 +124,7 @@ class LogoCropper extends Component<AllProps> {
 
             <Alert
               style={{ marginBottom: '10px' }}
-              message="Mouse sürükle bırak yöntemi ile logo kapsayacak şekilde seçim yapabilirsiniz."
+              message="Mouse sürükle bırak yöntemi ile imza'yı kapsayacak şekilde seçim yapabilirsiniz."
               type="info"
               showIcon
             />
@@ -137,14 +137,14 @@ class LogoCropper extends Component<AllProps> {
 
             <Alert
               style={{ marginBottom: '10px' }}
-              message="Mavi kutunun resmi tam olarak kapladığından emin olunuz. Kenarlarda boşluk kalması evrak üzerinde logonun daha uzak görünmesine sebep olacaktır."
+              message="Mavi kutunun resmi tam olarak kapladığından emin olunuz. Kenarlarda boşluk kalması evrak üzerinde imzanın daha uzak görünmesine sebep olacaktır."
               type="warning"
               showIcon
             />
 
             <Alert
               style={{ marginBottom: '10px' }}
-              message="Lütfen beyaz renkli bir logo yüklemeyiniz. "
+              message="Lütfen beyaz renkli bir imza yüklemeyiniz. "
               type="error"
               showIcon
             />
@@ -155,15 +155,15 @@ class LogoCropper extends Component<AllProps> {
           <React.Fragment>
             <Alert
               style={{ marginBottom: '10px' }}
-              message="Logo seçiniz"
-              description="Fatura ve makbuz tasarımlarınızda görünmesini istediğiniz logoyu seçebilirsiniz."
+              message="İmza seçiniz"
+              description="Fatura ve makbuz tasarımlarınızda görünmesini istediğiniz imza'yı seçebilirsiniz."
               type="info"
               showIcon
             />
 
             <Alert
               style={{ marginBottom: '10px' }}
-              message="Logo zorunlu olmadığı için dilerseniz bu adımı atlayabilirsiniz"
+              message="E-Arşiv ve Serbest Meslek Makbuzları için imza eklenmesi zorunludur!"
               type="warning"
               showIcon
             />
@@ -179,7 +179,6 @@ class LogoCropper extends Component<AllProps> {
             reader.readAsDataURL(info.fileList.filter(x => x.uid === info.file.uid)[0].originFileObj!);
           }}
           showUploadList={false}
-          defaultFileList={this.state.src}
         >
           <Button type="primary" style={{ width: '100%' }}>
             <Icon type="upload" /> Dosya Seç
@@ -193,7 +192,7 @@ class LogoCropper extends Component<AllProps> {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  logoOnCrop: (params: string) => dispatch(logoOnCrop(params))
+  signatureOnCrop: (params: string) => dispatch(signatureOnCrop(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogoCropper);
+export default connect(mapStateToProps, mapDispatchToProps)(SignatureCropper);
