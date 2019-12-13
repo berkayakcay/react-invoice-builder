@@ -30,7 +30,7 @@ function readTextFile(path: string) {
   rawFile.open('GET', path, false);
   rawFile.onreadystatechange = function() {
     if (rawFile.readyState === 4) {
-      if (rawFile.status === 200 || rawFile.status == 0) {
+      if (rawFile.status === 200 || rawFile.status === 0) {
         allText = rawFile.responseText;
       }
     }

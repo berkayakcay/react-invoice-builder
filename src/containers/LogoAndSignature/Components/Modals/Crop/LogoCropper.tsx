@@ -29,7 +29,7 @@ class LogoCropper extends Component<AllProps> {
   state: State = {
     src: undefined,
     rotateTo: 0,
-    cropResult: undefined,
+    cropResult: '',
     refresh: false
   };
 
@@ -107,11 +107,11 @@ class LogoCropper extends Component<AllProps> {
               </div>
             </div>
 
-            {this.state.cropResult !== undefined && (
+            {this.state.cropResult !== '' && (
               <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                 <h2>Kırpılmış olan logo</h2>
 
-                <img width="200" src={this.state.cropResult} />
+                <img width="200" src={this.state.cropResult} alt="Logo" />
               </div>
             )}
 
