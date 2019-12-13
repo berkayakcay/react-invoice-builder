@@ -31,14 +31,27 @@ class HtmlContent extends React.Component<AllProps> {
   componentWillReceiveProps() {
     const html = ReplaceWithParameter({ text: this.props.template.HtmlTemplate, state: this.props.state });
     const eInvoice = ReplaceWithParameter({ text: this.props.template.EinvoiceTemplate, state: this.props.state });
-    const eArchive = ReplaceWithParameter({ text: this.props.template.EarchiveTemplate, state: this.props.state });
-    this.setState({ replaced: { HtmlTemplate: html, EinvoiceTemplate: eInvoice, EarchiveTemplate: eArchive } });
+    const eArchiveOrEsmm = ReplaceWithParameter({
+      text: this.props.template.EarchiveTemplate,
+      state: this.props.state
+    });
+    this.setState({ replaced: { HtmlTemplate: html, EinvoiceTemplate: eInvoice, EarchiveTemplate: eArchiveOrEsmm } });
+    console.log('componentWillReceiveProps');
   }
 
-  componentWillMount() {
+  componentDidMount() {
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 500);
+    }, 5000);
+    console.log('componentDidMount');
+  }
+
+  componentWillUpdate() {
+    console.log('componentWillUpdate');
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
   }
 
   SelectedProduct({ state }) {
@@ -48,7 +61,7 @@ class HtmlContent extends React.Component<AllProps> {
           <>
             {this.props.state.logoAndSignature.signatureBase64 === undefined && (
               <tr>
-                <td colSpan={2} style={{ paddingBottom: 10 }}>
+                <td colSpan={3} style={{ paddingBottom: 10 }}>
                   <Alert
                     message="Uyarı"
                     description="E-Faturalarda İmza Bulunmaz Görsel Örnektir. E-Arşiv İndirebilmeniz için imza yüklemek zorunludur!"
@@ -67,7 +80,7 @@ class HtmlContent extends React.Component<AllProps> {
                   <Button type="primary">E-Fatura İndir</Button>
                 </DownloadTemplate>
               </td>
-              <td>
+              <td style={{ width: 110 }}>
                 <DownloadTemplate
                   file={Product.EARCHIVE + Extention.XSLT}
                   content={this.state.replaced.EarchiveTemplate}
@@ -80,6 +93,7 @@ class HtmlContent extends React.Component<AllProps> {
                   </Button>
                 </DownloadTemplate>
               </td>
+              <td></td>
             </tr>
           </>
         );
@@ -99,7 +113,7 @@ class HtmlContent extends React.Component<AllProps> {
               </tr>
             )}
             <tr>
-              <td>
+              <td style={{ width: 100 }}>
                 <DownloadTemplate file={Product.ESMM + Extention.XSLT} content={this.state.replaced.EarchiveTemplate}>
                   <Button
                     disabled={this.props.state.logoAndSignature.signatureBase64 === undefined ? true : false}
@@ -109,6 +123,7 @@ class HtmlContent extends React.Component<AllProps> {
                   </Button>
                 </DownloadTemplate>
               </td>
+              <td></td>
             </tr>
           </>
         );
@@ -121,7 +136,7 @@ class HtmlContent extends React.Component<AllProps> {
     return this.state.replaced.HtmlTemplate === '' ? (
       <Alert message="Uyarı!" description="Lütfen Soldaki Menü'den Tema Seçimi Yapınız.." type="warning" />
     ) : (
-      <Skeleton avatar loading={this.state.isLoading} paragraph={{ rows: 40 }}>
+      <Skeleton active loading={this.state.replaced.HtmlTemplate ? false : true} paragraph={{ rows: 40 }}>
         <table style={{ marginBottom: 15, width: 800 }}>
           <tbody>{this.SelectedProduct({ state: this.props.state.htmlPreview.selectedProduct.Product })}</tbody>
         </table>

@@ -29,6 +29,7 @@ interface IProps {
 interface IPropsFromDispatch {
   updateBankInfo: typeof updateBankInfo;
   deleteBankInfo: typeof deleteBankInfo;
+  data: BankInfoModel;
 }
 
 type AllProps = IProps & IPropsFromDispatch & FormComponentProps;
@@ -46,6 +47,56 @@ class BankInfoModal extends Component<AllProps> {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+
+    const dataList = [
+      {
+        key: 'operasyon',
+        render: (text, record: BankInfoModel) => (
+          <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.props.deleteBankInfo(record)}>
+            <Icon type="delete" title="Sil" style={{ color: '#ff2a00', cursor: 'pointer' }} />{' '}
+            <span style={{ cursor: 'pointer' }}>Sil</span>
+          </Popconfirm>
+        )
+      },
+      {
+        key: 'bankName',
+        title: 'Banka Adı',
+        dataIndex: 'bankName'
+      },
+      {
+        title: 'Şube',
+        dataIndex: 'branch',
+        key: 'branch'
+      },
+      {
+        title: 'Şube Kodu',
+        dataIndex: 'branchCode',
+        key: 'branchCode'
+      },
+      {
+        title: 'Hesap No',
+        dataIndex: 'accountCode',
+        key: 'accountCode'
+      },
+      {
+        title: 'Hesap Türü',
+        dataIndex: 'accountType',
+        key: 'accountType',
+        width: 30
+      },
+      {
+        title: 'Iban',
+        dataIndex: 'iban',
+        key: 'iban'
+      },
+      {
+        title: 'Hesap Adı',
+        dataIndex: 'accountName',
+        key: 'accountName',
+        width: 200
+      }
+    ];
+
     return (
       <Modal
         title="Banka Bilgileri"
@@ -73,7 +124,7 @@ class BankInfoModal extends Component<AllProps> {
               <Col span={8}>
                 <Form.Item hasFeedback>
                   {getFieldDecorator('branch', {
-                    rules: [{ required: true, message: 'Banka Adı Zorunlu Alandır!' }]
+                    rules: [{ required: false }]
                   })(
                     <Input prefix={<Icon type="branches" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Şube" />
                   )}
@@ -82,7 +133,7 @@ class BankInfoModal extends Component<AllProps> {
               <Col span={8}>
                 <Form.Item hasFeedback>
                   {getFieldDecorator('branchCode', {
-                    rules: [{ required: true, message: 'Banka Adı Zorunlu Alandır!' }]
+                    rules: [{ required: false }]
                   })(
                     <Input prefix={<Icon type="code" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Şube Kodu" />
                   )}
@@ -93,7 +144,7 @@ class BankInfoModal extends Component<AllProps> {
               <Col span={8}>
                 <Form.Item hasFeedback>
                   {getFieldDecorator('accountCode', {
-                    rules: [{ required: true, message: 'Banka Adı Zorunlu Alandır!' }]
+                    rules: [{ required: false }]
                   })(
                     <Input
                       prefix={<Icon type="account-book" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -105,7 +156,7 @@ class BankInfoModal extends Component<AllProps> {
               <Col span={8}>
                 <Form.Item hasFeedback>
                   {getFieldDecorator('accountType', {
-                    rules: [{ required: true, message: 'Banka Adı Zorunlu Alandır!' }]
+                    rules: [{ required: false }]
                   })(
                     <Select showSearch placeholder="Hesap Türü" optionFilterProp="children">
                       <Option value="TL">
@@ -162,7 +213,7 @@ class BankInfoModal extends Component<AllProps> {
               <Col span={24}>
                 <Form.Item hasFeedback>
                   {getFieldDecorator('accountName', {
-                    rules: [{ required: true, message: 'Banka Adı Zorunlu Alandır!' }]
+                    rules: [{ required: false }]
                   })(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Hesap Adı" />
                   )}
@@ -175,58 +226,7 @@ class BankInfoModal extends Component<AllProps> {
               </Button>
             </Form.Item>
           </Form>
-          <Table
-            columns={[
-              {
-                key: 'operasyon',
-                render: (text, record: BankInfoModel) => (
-                  <Popconfirm title="Seçili Kayıt Silinecek?" onConfirm={() => this.props.deleteBankInfo(record)}>
-                    <Icon type="delete" title="Sil" style={{ color: '#ff2a00', cursor: 'pointer' }} />{' '}
-                    <span style={{ cursor: 'pointer' }}>Sil</span>
-                  </Popconfirm>
-                )
-              },
-              {
-                key: 'bankName',
-                title: 'Banka Adı',
-                dataIndex: 'bankName'
-              },
-              {
-                title: 'Şube',
-                dataIndex: 'branch',
-                key: 'branch'
-              },
-              {
-                title: 'Şube Kodu',
-                dataIndex: 'branchCode',
-                key: 'branchCode'
-              },
-              {
-                title: 'Hesap No',
-                dataIndex: 'accountCode',
-                key: 'accountCode'
-              },
-              {
-                title: 'Hesap Türü',
-                dataIndex: 'accountType',
-                key: 'accountType',
-                width: 30
-              },
-              {
-                title: 'Iban',
-                dataIndex: 'iban',
-                key: 'iban'
-              },
-              {
-                title: 'Hesap Adı',
-                dataIndex: 'accountName',
-                key: 'accountName',
-                width: 200
-              }
-            ]}
-            pagination={false}
-            dataSource={this.props.list}
-          />
+          <Table columns={dataList} pagination={false} dataSource={this.props.list} />
         </React.Fragment>
       </Modal>
     );

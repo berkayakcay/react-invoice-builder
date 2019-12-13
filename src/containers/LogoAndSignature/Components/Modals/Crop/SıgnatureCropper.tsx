@@ -111,7 +111,7 @@ class SignatureCropper extends Component<AllProps> {
               <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                 <h2>Kırpılmış olan İmza</h2>
 
-                <img width="450" src={this.state.cropResult} />
+                <img width="200" src={this.state.cropResult} />
               </div>
             )}
 

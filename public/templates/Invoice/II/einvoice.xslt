@@ -29,7 +29,6 @@
 	<xsl:template match="/">
 
 
-		<!-- XSLT_DEF:009a0efc4a11c82c75e5e643d7f150e2 -->
 		<!--DEGISKENLER-->
 		<xsl:variable name="ublversiyon" select="//n1:Invoice/cbc:UBLVersionID"/>
 		<xsl:variable name="ublversiyon_str"
@@ -76,10 +75,10 @@
 		</xsl:variable>
 
 		<xsl:variable name="firma_adi2">
-			<xsl:text disable-output-escaping="yes">Test</xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_adresi2">
-			<xsl:text disable-output-escaping="yes">Adres Bilgisi Satır 1&lt;br&gt;Adres Bilgisi Satır 2</xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_vkno_alt1">
 			<xsl:for-each
@@ -108,7 +107,7 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="firma_vkno2">
-			<xsl:text disable-output-escaping="yes"><!--22229282302--></xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_vdaire_alt1">
 			<xsl:value-of
@@ -134,7 +133,7 @@
 				disable-output-escaping="yes"/>
 		</xsl:variable>
 		<xsl:variable name="firma_tel_alt2">
-			<xsl:text disable-output-escaping="yes"> 05556259955 --></xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_tel">
 			<xsl:choose>
@@ -152,7 +151,7 @@
 				disable-output-escaping="yes"/>
 		</xsl:variable>
 		<xsl:variable name="firma_fax_alt2">
-			<xsl:text disable-output-escaping="yes"><!--02163163444--></xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_fax">
 			<xsl:choose>
@@ -188,7 +187,7 @@
 				disable-output-escaping="yes"/>
 		</xsl:variable>
 		<xsl:variable name="firma_email_alt2">
-			<xsl:text disable-output-escaping="yes">ozgurguler@gmail.com</xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_email">
 			<xsl:choose>
@@ -205,7 +204,7 @@
 				disable-output-escaping="yes"/>
 		</xsl:variable>
 		<xsl:variable name="firma_web_alt2">
-			<xsl:text disable-output-escaping="yes">www.ozgurguler.net</xsl:text>
+			<xsl:text disable-output-escaping="yes"></xsl:text>
 		</xsl:variable>
 		<xsl:variable name="firma_web">
 			<xsl:choose>
@@ -648,7 +647,7 @@
 
 							<tr>
 
-								<td>
+								<td style="width: 300px;">
 
 									<div class="firma_adi">
 										<xsl:choose>
@@ -661,6 +660,11 @@
 												disable-output-escaping="yes"/>
 											</xsl:otherwise>
 										</xsl:choose>
+									<xsl:if test="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Person">
+										<span style="font-weight:bold;">
+											<xsl:value-of select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Person/cbc:FamilyName"/>&#160;<xsl:value-of select="//n1:Invoice/cac:AccountingCustomerParty/cac:Party/cac:Person/cbc:FirstName"/>
+										</span>
+									</xsl:if>
 									</div>
 									<div class="firma_adresi">
 										<xsl:choose>
@@ -952,7 +956,7 @@ belki lazım olur
 						<tbody>
 							<tr class="tr_baslik">
 								<td class="satir_sira kolon_baslik">
-									<span>#</span>
+									<span>Sıra</span>
 								</td>
 								<td class="satir_kod kolon_baslik">
 									<span>Kod</span>

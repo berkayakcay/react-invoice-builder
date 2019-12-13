@@ -854,6 +854,15 @@
                                 </span>
                               </td>
                             </tr>
+                            <xsl:if test="cac:Person">
+                              <tr>
+                                <td colspan="2">
+                                  <span style="font-weight:bold;">
+                                    <xsl:value-of select="cac:Person/cbc:FamilyName"/>&#160;<xsl:value-of select="cac:Person/cbc:FirstName"/>
+                                  </span>
+                                </td>
+                              </tr>
+                            </xsl:if>
                             <tr>
                               <td colspan="2">
                                 <xsl:for-each select="cac:PostalAddress">
@@ -1926,65 +1935,63 @@
         <table style="border:1px solid orange; border-collapse:collapse;" cellspacing="0px"
           width="800" cellpadding="5px">
           <tbody>
-            <tr>
-              <td>
-                <span style="font-weight:bold; ">
-                  <font color="navy">Notlar :</font>
-                </span>
-              </td>
-            </tr>
-            {{NOTES.FIRST}}
-            {{NOTES.SECOND}}
-            {{NOTES.THIRD}}
-            <xsl:for-each select="//n1:Invoice/cbc:Note">
-              <xsl:choose>
-                <xsl:when test="substring-before(., ':') = 'NOT'">
-                  <tr align="left">
-                    <td id="notesTableTd">
-                      <span>
-                        <xsl:value-of select="substring-after(., ':')"/>
-                      </span>
-                    </td>
-            </tr>
-                </xsl:when>
-              </xsl:choose>
-            </xsl:for-each>
-
             <tr align="left">
               <td id="notesTableTd">
                 <xsl:for-each select="//n1:Invoice/cac:TaxTotal/cac:TaxSubtotal">
-                  <xsl:if
-                    test="cbc:Percent = 0 and cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode = &apos;0015&apos;">
-                    <b> &#160;&#160;&#160;&#160;&#160;<font color="navy"> Vergi İstisna Muafiyet
-                        Sebebi: </font>
-                    </b>
+                  <xsl:if	test="(cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode='0015' or ../../cbc:InvoiceTypeCode='OZELMATRAH') and cac:TaxCategory/cbc:TaxExemptionReason">									
+                    <b>Vergi İstisna Muafiyet Sebebi: </b>
+                    <xsl:value-of select="cac:TaxCategory/cbc:TaxExemptionReasonCode"/>
+                    <xsl:text>-</xsl:text>
+                    <xsl:value-of select="cac:TaxCategory/cbc:TaxExemptionReason"/>
+                    <br/>
+                  </xsl:if>
+                  <xsl:if	test="starts-with(cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode,'007') and cac:TaxCategory/cbc:TaxExemptionReason">									
+                    <b>ÖTV İstisna Muafiyet Sebebi: </b>
+                    <xsl:value-of select="cac:TaxCategory/cbc:TaxExemptionReasonCode"/>
+                    <xsl:text>-</xsl:text>
                     <xsl:value-of select="cac:TaxCategory/cbc:TaxExemptionReason"/>
                     <br/>
                   </xsl:if>
                 </xsl:for-each>
-
+                <xsl:for-each select="//n1:Invoice/cac:WithholdingTaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+                  <b>Tevkifat Sebebi: </b>
+                  <xsl:value-of select="cbc:TaxTypeCode"/>
+                  <xsl:text>-</xsl:text>
+                  <xsl:value-of select="cbc:Name"/>
+                  <br/>
+                </xsl:for-each>
+                <xsl:for-each select="//n1:Invoice/cbc:Note">
+                  <b>Not: </b>
+                  <xsl:value-of select="."/>	
+                  <br/>
+                </xsl:for-each>									
                 <xsl:if test="//n1:Invoice/cac:PaymentMeans/cbc:InstructionNote">
-                  <b> &#160;&#160;&#160;&#160;&#160; <font color="navy"> Ödeme Notu: </font>
-                  </b>
-                  <xsl:value-of select="//n1:Invoice/cac:PaymentMeans/cbc:InstructionNote"/>
+                  <b>Ödeme Notu: </b>
+                  <xsl:value-of
+                    select="//n1:Invoice/cac:PaymentMeans/cbc:InstructionNote"/>
                   <br/>
                 </xsl:if>
                 <xsl:if
                   test="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:PaymentNote">
-                  <b> &#160;&#160;&#160;&#160;&#160; <font color="navy"> Hesap Açıklaması: </font>
-                  </b>
+                  <b>Hesap Açıklaması: </b>
                   <xsl:value-of
                     select="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:PaymentNote"/>
                   <br/>
                 </xsl:if>
                 <xsl:if test="//n1:Invoice/cac:PaymentTerms/cbc:Note">
-                  <b> &#160;&#160;&#160;&#160;&#160; <font color="navy"> Ödeme Koşulu: </font>
-                  </b>
+                  <b>Ödeme Koşulu: </b>
                   <xsl:value-of select="//n1:Invoice/cac:PaymentTerms/cbc:Note"/>
                   <br/>
                 </xsl:if>
+                <xsl:if test="//n1:Invoice/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='PARTYTYPE']='TAXFREE' and //n1:Invoice/cac:TaxRepresentativeParty/cac:PartyTaxScheme/cbc:ExemptionReasonCode">
+                  <br/>
+                  <b>VAT OFF - NO CASH REFUND </b>
+                </xsl:if>
               </td>
             </tr>
+            {{NOTES.FIRST}}
+            {{NOTES.SECOND}}
+            {{NOTES.THIRD}}
           </tbody>
         </table>
         <xsl:variable name="invLinesWithResourcesCount"

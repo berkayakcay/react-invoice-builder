@@ -42,8 +42,6 @@ const ReplaceWithParameter = (props: IProps) => {
         '</td></tr>');
     }, '');
 
-    console.log('content', body);
-
     props.text = props.text.replace(
       /{{BANKINFO}}/gim,
       `<table id='bankaHesap' style='width:800px; margin-top:10px'><thead><tr><th>Banka Adı</th><th>Şube</th><th style='width:30px'>Şube Kodu</th><th>Hesap No</th><th>Hesap Türü</th><th>Hesap Iban</th><th>Hesap Adı</th></tr></thead><tbody>${body}</tbody></table>`
@@ -55,7 +53,9 @@ const ReplaceWithParameter = (props: IProps) => {
   if (props.state.documentNotes.notes.firstNote !== '') {
     props.text = props.text.replace(
       /{{NOTES.FIRST}}/gim,
-      '<tr align="left"><td id="notesTableTd"><b>Not: </b>' + props.state.documentNotes.notes.firstNote + '</td></tr>'
+      '<tr align="left"><td id="notesTableTd" style="font-size:13px;"><b>Not: </b>' +
+        props.state.documentNotes.notes.firstNote +
+        '</td></tr>'
     );
   } else {
     props.text = props.text.replace(/{{NOTES.FIRST}}/gim, '');
@@ -64,7 +64,9 @@ const ReplaceWithParameter = (props: IProps) => {
   if (props.state.documentNotes.notes.secondNote !== '') {
     props.text = props.text.replace(
       /{{NOTES.SECOND}}/gim,
-      '<tr align="left"><td id="notesTableTd"><b>Not: </b>' + props.state.documentNotes.notes.secondNote + '</td></tr>'
+      '<tr align="left"><td id="notesTableTd" style="font-size:13px;"><b>Not: </b>' +
+        props.state.documentNotes.notes.secondNote +
+        '</td></tr>'
     );
   } else {
     props.text = props.text.replace(/{{NOTES.SECOND}}/gim, '');
@@ -73,7 +75,9 @@ const ReplaceWithParameter = (props: IProps) => {
   if (props.state.documentNotes.notes.thirdNote !== '') {
     props.text = props.text.replace(
       /{{NOTES.THIRD}}/gim,
-      '<tr align="left"><td id="notesTableTd"><b>Not: </b>' + props.state.documentNotes.notes.thirdNote + '</td></tr>'
+      '<tr align="left"><td id="notesTableTd" style="font-size:13px;"><b>Not: </b>' +
+        props.state.documentNotes.notes.thirdNote +
+        '</td></tr>'
     );
   } else {
     props.text = props.text.replace(/{{NOTES.THIRD}}/gim, '');
@@ -82,7 +86,9 @@ const ReplaceWithParameter = (props: IProps) => {
   if (props.state.logoAndSignature.logoBase64 !== undefined) {
     props.text = props.text.replace(
       /{{LOGO}}/gim,
-      '<img style="width: 150px; height: 150px;" src="' + props.state.logoAndSignature.logoBase64 + '" />'
+      '<img style="max-width: 100px; max-height: 100px; min-height:50px; width:100px;" src="' +
+        props.state.logoAndSignature.logoBase64 +
+        '" />'
     );
   } else {
     props.text = props.text.replace(/{{LOGO}}/gim, '');
@@ -91,7 +97,9 @@ const ReplaceWithParameter = (props: IProps) => {
   if (props.state.logoAndSignature.signatureBase64 !== undefined) {
     props.text = props.text.replace(
       /{{IMZA}}/gim,
-      '<img style="width: 100px; height: 100px;" src="' + props.state.logoAndSignature.signatureBase64 + '" />'
+      '<img style="max-width: 100px; max-height: 100px; min-height:50px; width:100px;" src="' +
+        props.state.logoAndSignature.signatureBase64 +
+        '" />'
     );
   } else {
     props.text = props.text.replace(/{{IMZA}}/gim, '');

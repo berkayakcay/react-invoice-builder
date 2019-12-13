@@ -465,7 +465,7 @@
             <span style="font-size: 9px;">
              <span style="color: rgb(0, 0, 0);">
               <span style="font-family: verdana,geneva,sans-serif;">
-               <span style="font-weight: bold; white-space: pre;">&#214;zelle&#351;tirme No:</span>
+               <span style="font-weight: bold; white-space: pre;">Özelleştirme No:</span>
               </span>
              </span>
             </span>
@@ -571,7 +571,7 @@
             <span style="font-size: 9px;">
              <span style="color: rgb(0, 0, 0);">
               <span style="font-family: verdana,geneva,sans-serif;">
-               <strong>&#304;rsaliye No:</strong>
+               <strong>İrsaliye No:</strong>
               </span>
              </span>
             </span>
@@ -594,7 +594,7 @@
             <span style="font-size: 9px;">
              <span style="color: rgb(0, 0, 0);">
               <span style="font-family: verdana,geneva,sans-serif;">
-               <strong>&#304;rsaliye Tarihi:</strong>
+               <strong>İrsaliye Tarihi:</strong>
               </span>
              </span>
             </span>
@@ -648,7 +648,7 @@
         style="border: 0.05em solid rgb(132, 132, 132); border-image: none; width: 31px; text-align: center; background-color: rgb(0, 153, 153);">
         <span style="color: rgb(255, 240, 245);">
          <strong>
-          <span style="font-size: 10px;">S&#305;ra No</span>
+          <span style="font-size: 10px;">Sıra No</span>
          </strong>
         </span>
        </td>
@@ -666,7 +666,7 @@
         style="border: 0.05em solid rgb(132, 132, 132); border-image: none; width: 31px; text-align: center; background-color: rgb(0, 153, 153);">
         <span style="color: rgb(255, 240, 245);">
          <strong>
-          <span style="font-size: 10px;">Malzeme&#160;</span>
+          <span style="font-size: 10px;">Malzeme;</span>
          </strong>
         </span>
        </td>
@@ -698,7 +698,7 @@
         style="border: 0.05em solid rgb(132, 132, 132); border-image: none; width: 31px; text-align: center; background-color: rgb(0, 153, 153);">
         <span style="color: rgb(255, 240, 245);">
          <strong>
-          <span style="font-size: 10px;">KDV Oran&#305;</span>
+          <span style="font-size: 10px;">KDV Oranı</span>
          </strong>
         </span>
        </td>
@@ -706,7 +706,7 @@
         style="border: 0.05em solid rgb(132, 132, 132); border-image: none; width: 31px; text-align: center; background-color: rgb(0, 153, 153);">
         <span style="color: rgb(255, 240, 245);">
          <strong>
-          <span style="font-size: 10px;">KDV Tutar&#305;</span>
+          <span style="font-size: 10px;">KDV Tutarı</span>
          </strong>
         </span>
        </td>
@@ -714,7 +714,7 @@
         style="border: 0.05em solid rgb(132, 132, 132); border-image: none; width: 31px; text-align: center; background-color: rgb(0, 153, 153);">
         <span style="color: rgb(255, 240, 245);">
          <strong>
-          <span style="font-size: 10px;">Di&#287;er Vergiler</span>
+          <span style="font-size: 10px;">Diğer Vergiler</span>
          </strong>
         </span>
        </td>
@@ -722,7 +722,7 @@
         style="border: 0.05em solid rgb(132, 132, 132); border-image: none; width: 31px; text-align: center; background-color: rgb(0, 153, 153);">
         <span style="color: rgb(255, 240, 245);">
          <strong>
-          <span style="font-size: 10px;">Malzeme Tutar&#305;</span>
+          <span style="font-size: 10px;">Malzeme Tutarı</span>
          </strong>
         </span>
        </td>
@@ -891,7 +891,7 @@
               <xsl:when test="@unitCode = &apos;MMQ&apos;">
                <span>
                 <xsl:text>
-               MM&#179;
+               MM3
               </xsl:text>
                </span>
               </xsl:when>
@@ -905,14 +905,14 @@
               <xsl:when test="@unitCode = &apos;CMK&apos;">
                <span>
                 <xsl:text>
-               CM&#178;
+               CM2
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;CMQ&apos;">
                <span>
                 <xsl:text>
-               CM&#179;
+               CM3
               </xsl:text>
                </span>
               </xsl:when>
@@ -926,21 +926,21 @@
               <xsl:when test="@unitCode = &apos;MTK&apos;">
                <span>
                 <xsl:text>
-               M&#178;
+               M2
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;MTQ&apos;">
                <span>
                 <xsl:text>
-               M&#179;
+               M3
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;DAY&apos;">
                <span>
                 <xsl:text>
-                G&#252;n
+                Gün
               </xsl:text>
                </span>
               </xsl:when>
@@ -982,35 +982,35 @@
               <xsl:when test="@unitCode = &apos;MMK&apos;">
                <span>
                 <xsl:text>
-               MM&#178;
+               MM2
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;INK&apos;">
                <span>
                 <xsl:text>
-               IN&#178;
+               IN2
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;FTK&apos;">
                <span>
                 <xsl:text>
-               FT&#178;
+               FT2
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;INQ&apos;">
                <span>
                 <xsl:text>
-               IN&#179;
+               IN3
               </xsl:text>
                </span>
               </xsl:when>
               <xsl:when test="@unitCode = &apos;FTQ&apos;">
                <span>
                 <xsl:text>
-               FT&#179;
+               FT3
               </xsl:text>
                </span>
               </xsl:when>
@@ -1031,7 +1031,7 @@
               <xsl:when test="@unitCode = &apos;PR&apos;">
                <span>
                 <xsl:text>
-               &#199;ift
+               Çift
               </xsl:text>
                </span>
               </xsl:when>
@@ -1153,7 +1153,7 @@
              <xsl:choose>
               <xsl:when test="cac:TaxCategory/cac:TaxScheme/cbc:Name = &apos;&apos;">
                <xsl:text>
-              Di&#287;er Vergiler Toplam&#305; 
+              Diğer Vergiler Toplamı 
              </xsl:text>
               </xsl:when>
               <xsl:otherwise>
@@ -1268,7 +1268,7 @@
             <span style="font-size: 10px;">
              <span style="color: rgb(0, 0, 0);">
               <span style="font-family: verdana,geneva,sans-serif;">
-               <span style="font-weight: bold;">Mal / Hizmet Toplam Tutar&#305;</span>
+               <span style="font-weight: bold;">Mal / Hizmet Toplam Tutarı</span>
               </span>
              </span>
             </span>
@@ -1307,7 +1307,7 @@
               <strong>
                <span style="font-family: verdana,geneva,sans-serif;">
                 <xsl:text>
-               Toplam &#304;skonto
+               Toplam iskonto
               </xsl:text>
                 <xsl:if test="//n1:Invoice/cac:AllowanceCharge/cbc:MultiplierFactorNumeric">
                  <xsl:text>
@@ -1372,7 +1372,7 @@
                           <xsl:choose>
                            <xsl:when test="cac:TaxCategory/cac:TaxScheme/cbc:Name = &apos;&apos;">
                             <xsl:text>
-                            Di&#287;er Vergiler Toplam&#305; 
+                            Di&#287;er Vergiler Toplamı 
                           </xsl:text>
                            </xsl:when>
                            <xsl:otherwise>
@@ -1463,7 +1463,7 @@
                        <xsl:choose>
                         <xsl:when test="cac:TaxCategory/cac:TaxScheme/cbc:Name = &apos;&apos;">
                          <xsl:text>
-                        Di&#287;er Vergiler Toplam&#305; 
+                        Di&#287;er Vergiler Toplamı 
                        </xsl:text>
                         </xsl:when>
                         <xsl:otherwise>
@@ -1580,7 +1580,7 @@
             <span style="font-size: 10px;">
              <span style="color: rgb(0, 0, 0);">
               <span style="font-family: verdana,geneva,sans-serif;">
-               <span style="font-weight: bold;">&#214;denecek Tutar</span>
+               <span style="font-weight: bold;">Ödenecek Tutar</span>
               </span>
              </span>
             </span>
@@ -1633,7 +1633,7 @@
              <span style="font-size: 10px;">
               <span style="color: rgb(0, 0, 0);">
                <span style="font-family: verdana,geneva,sans-serif;">
-                <span style="font-weight: bold;">D&#246;viz Kuru (</span>
+                <span style="font-weight: bold;">Döviz Kuru (</span>
                 <strong>
                  <xsl:value-of select="//n1:Invoice/cac:PricingExchangeRate/cbc:TargetCurrencyCode"
                  />
@@ -1664,7 +1664,7 @@
              <span style="font-size: 10px;">
               <span style="color: rgb(0, 0, 0);">
                <span style="font-family: verdana,geneva,sans-serif;">
-                <span style="font-weight: bold;">Mal / Hizmet Toplam Tutar&#305;</span>
+                <span style="font-weight: bold;">Mal / Hizmet Toplam Tutarı</span>
                </span>
               </span>
              </span>
@@ -1694,7 +1694,7 @@
              <span style="font-size: 10px;">
               <span style="color: rgb(0, 0, 0);">
                <span style="font-family: verdana,geneva,sans-serif;">
-                <span style="font-weight: bold;">Toplam &#304;skonto</span>
+                <span style="font-weight: bold;">Toplam iskonto</span>
                </span>
               </span>
              </span>
@@ -1739,7 +1739,7 @@
                            <xsl:choose>
                             <xsl:when test="cac:TaxCategory/cac:TaxScheme/cbc:Name = &apos;&apos;">
                              <xsl:text>
-                             Di&#287;er Vergiler Toplam&#305; 
+                             Di&#287;er Vergiler Toplamı 
                            </xsl:text>
                             </xsl:when>
                             <xsl:otherwise>
@@ -1827,7 +1827,7 @@
                         <xsl:choose>
                          <xsl:when test="cac:TaxCategory/cac:TaxScheme/cbc:Name = &apos;&apos;">
                           <xsl:text>
-                         Di&#287;er Vergiler Toplam&#305; 
+                         Di&#287;er Vergiler Toplamı 
                         </xsl:text>
                          </xsl:when>
                          <xsl:otherwise>
@@ -1957,7 +1957,7 @@
              <span style="font-size: 10px;">
               <span style="color: rgb(0, 0, 0);">
                <span style="font-family: verdana,geneva,sans-serif;">
-                <span style="font-weight: bold;">&#214;denecek Tutar</span>
+                <span style="font-weight: bold;">Ödenecek Tutar</span>
                </span>
               </span>
              </span>
@@ -1997,29 +1997,29 @@
         <p style="margin-left: 40px;">
          <span style="font-size: 10px;">
           <xsl:if test="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID">
-           <b>&#304;ban Numaras&#305;:</b>
+           <b>iban Numarası:</b>
            <xsl:value-of select="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID"/>
            <br/>
           </xsl:if>
           <xsl:if test="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:CurrencyCode">
-           <b>D&#246;viz Cinsi:</b>
+           <b>Döviz Cinsi:</b>
            <xsl:value-of
             select="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:CurrencyCode"/>
            <br/>
           </xsl:if>
           <xsl:if test="//n1:Invoice/cac:PaymentMeans/cbc:InstructionNote">
-           <b>&#214;deme Notu:</b>
+           <b>Ödeme Notu:</b>
            <xsl:value-of select="//n1:Invoice/cac:PaymentMeans/cbc:InstructionNote"/>
            <br/>
           </xsl:if>
           <xsl:if test="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:PaymentNote">
-           <b>Hesap A&#231;&#305;klamas&#305;:</b>
+           <b>Hesap Açıklaması:</b>
            <xsl:value-of
             select="//n1:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:PaymentNote"/>
            <br/>
           </xsl:if>
           <xsl:if test="//n1:Invoice/cac:PaymentTerms/cbc:Note">
-           <b>&#214;deme Ko&#351;ulu:</b>
+           <b>Ödeme Koşulu:</b>
            <xsl:value-of select="//n1:Invoice/cac:PaymentTerms/cbc:Note"/>
            <br/>
           </xsl:if>
@@ -2033,7 +2033,7 @@
           <br/>
           <br/>
           <xsl:if test="//n1:Invoice/cbc:Note">
-           <b>Genel A&#231;&#305;klamalar</b>
+           <b>Genel Açıklamalar</b>
            <br/>
            <xsl:for-each select="//n1:Invoice/cbc:Note">
             <xsl:value-of select="."/>

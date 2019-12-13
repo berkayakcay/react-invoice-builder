@@ -1,4 +1,4 @@
-import { Button, Form, Input, message, Modal } from 'antd';
+import { Alert, Button, Form, Input, message, Modal } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import 'antd/lib/timeline/style/index.css';
 import React, { Component } from 'react';
@@ -52,6 +52,12 @@ class DocumentNotesModal extends Component<AllProps> {
           </>
         ]}
       >
+        <Alert
+          message="Bilgilendirme"
+          description="Not alanlarına gireceğiniz bilgiler Tasarımınıza sabitlenir. Tüm fatura ve makbuzlarınızda görünür."
+          type="warning"
+          showIcon
+        />
         <Form>
           <Form.Item hasFeedback label="1.Not Alanı">
             {getFieldDecorator('firstNote', {

@@ -34,8 +34,8 @@ class LogoAndSignatureModal extends Component<AllProps> {
         visible={this.props.open}
         footer={[
           <>
-            <Button key="kaydet" type="primary" icon="check">
-              KAYDET
+            <Button key="kaydet" type="primary" icon="check" onClick={() => this.props.close()}>
+              TAMAM
             </Button>
             <Button key="kapat" type="danger" icon="close" onClick={() => this.props.close()}>
               KAPAT
