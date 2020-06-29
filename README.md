@@ -6,6 +6,7 @@ templates << Templates folder
     |_  default.html  << template html
         default.xslt  << template xslt
         default.jpg   << template image
+        
 |_ yellow << template
     |_  default.html  << template html
         default.xslt  << template xslt
